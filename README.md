@@ -12,3 +12,4 @@
 
   # Collaborators (Group S 1 G 3)
   * Elvis Nguyen 1261068
+  * Joyceline Nathaniel 1254557
