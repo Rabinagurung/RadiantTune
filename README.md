@@ -37,7 +37,7 @@
 - [ ] Users can favourite/unfavourite radio stations
 - [ ] Users can change the app language in the app preferences
 - [ ] Users can filter search by tags/genre
-- Users can set a sleep timer to automatically stop playing the radio at a set time
+- [ ] Users can set a sleep timer to automatically stop playing the radio at a set time
 - [ ] Users can play a radio station
 - [ ] Users can search for radio stations
 - [ ] Users can filter search by country
