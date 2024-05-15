@@ -5,11 +5,11 @@
 # Description
 
 # Data Source
-## Single-user input
+### Single-user input
 * User input will be gathered when the user saves their favourite stations and songs
 * User input will be gathered when users save their app preferences such as themes/language
 
-## 3rd Party API 
+### 3rd Party APIs
 * **[RadioBrowser API](https://docs.radio-browser.info/#)**
 
   
@@ -32,3 +32,5 @@
 - [ ] Item 2
 
 - [ ] Item 3
+
+
