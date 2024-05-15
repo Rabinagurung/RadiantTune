@@ -33,4 +33,9 @@
 
 - [ ] Item 3
 
+- [ ] Users can favourite/unfavourite radio stations
+- [ ] Users can change the app language in the app preferences
+- [ ] Users can filter search by tags/genre
+- Users can set a sleep timer to automatically stop playing the radio at a set time
+
 
