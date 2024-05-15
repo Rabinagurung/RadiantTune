@@ -28,10 +28,7 @@
   
 
 - [x] List item
-
-<<<<<<< HEAD
 - [ ] Item 2
-
 - [ ] Item 3
 
 - [ ] Users can favourite/unfavourite radio stations
