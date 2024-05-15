@@ -1,9 +1,9 @@
 # RadiantTune (Radio App)
 
-# Description
+## Description
 RadiantTune is an app that allows you to listen to radio stations from around the world.
 
-# Data Source
+## Data Source
 
 ### Single-user input
 
@@ -14,7 +14,7 @@ RadiantTune is an app that allows you to listen to radio stations from around th
 
 - **[RadioBrowser API](https://docs.radio-browser.info/#)**
 
-# Collaborators (Group S 1 G 3)
+## Collaborators (Group S 1 G 3)
 
 - Elvis Nguyen 1261068
 
@@ -24,7 +24,7 @@ RadiantTune is an app that allows you to listen to radio stations from around th
 
 - Rabina Gurung 1176708
 
-# Features
+## Features
 - [ ] Users can play a radio station
 - [ ] Users can search for radio stations
 - [ ] Users can filter search by country
