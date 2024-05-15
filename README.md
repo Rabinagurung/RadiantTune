@@ -1,6 +1,7 @@
 # RadiantTune (Radio App)
 
 # Description
+RadiantTune is an app that allows you to listen to radio stations from around the world.
 
 # Data Source
 
@@ -24,11 +25,6 @@
 - Rabina Gurung 1176708
 
 # Features
-
-- [x] List item
-- [ ] Item 2
-- [ ] Item 3
-
 - [ ] Users can play a radio station
 - [ ] Users can search for radio stations
 - [ ] Users can filter search by country
