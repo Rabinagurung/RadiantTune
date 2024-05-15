@@ -41,3 +41,7 @@
 - [ ] Users can select color themes for the app in the app preferences
 - [ ] Users can view a radio station's logo when browsing through radio station names
 - [ ] Users can set the app to dark mode in the app preferences
+- [ ] Users can view recommended stations based on their location
+- [ ] Users can set Autoplay setting in the app preferences
+- [ ] Users can use Airplay to broadcast a radio station on other devices
+- [ ] Users can add in their own radio stations locally onto the app
