@@ -41,3 +41,11 @@
 - [ ] Users can change the app language in the app preferences
 - [ ] Users can filter search by tags/genre
 - [ ] Users can set a sleep timer to automatically stop playing the radio at a set time
+- [ ] Users can play a radio station
+- [ ] Users can search for radio stations
+- [ ] Users can filter search by country
+- [ ] Users can see a list of their recently listened to radio stations
+- [ ] Users can delete/reset all app data from settings
+- [ ] Users can select color themes for the app in the app preferences
+- [ ] Users can view a radio station's logo when browsing through radio station names
+- [ ] Users can set the app to dark mode in the app preferences
