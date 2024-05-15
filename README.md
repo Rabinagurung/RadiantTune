@@ -29,8 +29,10 @@
 
 - [x] List item
 
-- [ ] Item 2
+- [ ] Users can play a radio station
 
-- [ ] Item 3
+- [ ] Users can search for radio stations
 
+- [ ] Users can filter search by country
 
+- [ ] Users can see a list of their recently listened to radio stations
