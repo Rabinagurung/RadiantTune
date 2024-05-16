@@ -7,29 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FABBF6202BEEC1400019C16A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBF61F2BEEC1400019C16A /* AppDelegate.swift */; };
-		FABBF6222BEEC1400019C16A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBF6212BEEC1400019C16A /* SceneDelegate.swift */; };
-		FABBF6242BEEC1400019C16A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBF6232BEEC1400019C16A /* ViewController.swift */; };
-		FABBF6272BEEC1400019C16A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABBF6252BEEC1400019C16A /* Main.storyboard */; };
-		FABBF62A2BEEC1400019C16A /* RadiantTune.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FABBF6282BEEC1400019C16A /* RadiantTune.xcdatamodeld */; };
-		FABBF62C2BEEC1420019C16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABBF62B2BEEC1420019C16A /* Assets.xcassets */; };
-		FABBF62F2BEEC1420019C16A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABBF62D2BEEC1420019C16A /* LaunchScreen.storyboard */; };
+		BC7FE0E92BF26C52005C0B4C /* RTHomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */; };
+		BC7FE0EC2BF26C67005C0B4C /* RTFavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0EB2BF26C67005C0B4C /* RTFavoriteViewController.storyboard */; };
+		BC7FE0EF2BF26C86005C0B4C /* RTSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */; };
+		BC7FE0F62BF28000005C0B4C /* RTUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FE0F52BF28000005C0B4C /* RTUtils.swift */; };
+		BC8326CC2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8326CA2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift */; };
+		BC8326CD2BF2B29D003C30D6 /* RTHomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8326CB2BF2B29D003C30D6 /* RTHomeCollectionViewCell.xib */; };
+		BCB5E13A2BF039D200C7ADB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1392BF039D200C7ADB7 /* AppDelegate.swift */; };
+		BCB5E13C2BF039D200C7ADB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E13B2BF039D200C7ADB7 /* SceneDelegate.swift */; };
+		BCB5E1412BF039D200C7ADB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB5E13F2BF039D200C7ADB7 /* Main.storyboard */; };
+		BCB5E1432BF039D500C7ADB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB5E1422BF039D500C7ADB7 /* Assets.xcassets */; };
+		BCB5E1462BF039D500C7ADB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB5E1442BF039D500C7ADB7 /* LaunchScreen.storyboard */; };
+		BCB5E1592BF03E2B00C7ADB7 /* RTTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1582BF03E2B00C7ADB7 /* RTTabbarController.swift */; };
+		BCB5E15B2BF03E5400C7ADB7 /* RTBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E15A2BF03E5400C7ADB7 /* RTBaseViewController.swift */; };
+		BCB5E15D2BF03E8300C7ADB7 /* RTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E15C2BF03E8300C7ADB7 /* RTHomeViewController.swift */; };
+		BCB5E15F2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E15E2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift */; };
+		BCB5E1612BF03EAB00C7ADB7 /* RTSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1602BF03EAB00C7ADB7 /* RTSettingViewController.swift */; };
+		BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FABBF61C2BEEC1400019C16A /* RadiantTune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadiantTune.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FABBF61F2BEEC1400019C16A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FABBF6212BEEC1400019C16A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FABBF6232BEEC1400019C16A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FABBF6262BEEC1400019C16A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FABBF6292BEEC1400019C16A /* RadiantTune.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RadiantTune.xcdatamodel; sourceTree = "<group>"; };
-		FABBF62B2BEEC1420019C16A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FABBF62E2BEEC1420019C16A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FABBF6302BEEC1420019C16A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTHomeViewController.storyboard; sourceTree = "<group>"; };
+		BC7FE0EB2BF26C67005C0B4C /* RTFavoriteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTFavoriteViewController.storyboard; sourceTree = "<group>"; };
+		BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTSettingViewController.storyboard; sourceTree = "<group>"; };
+		BC7FE0F52BF28000005C0B4C /* RTUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTUtils.swift; sourceTree = "<group>"; };
+		BC8326CA2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTHomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		BC8326CB2BF2B29D003C30D6 /* RTHomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTHomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		BCB5E1362BF039D200C7ADB7 /* RadiantTune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadiantTune.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCB5E1392BF039D200C7ADB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCB5E13B2BF039D200C7ADB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BCB5E1402BF039D200C7ADB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BCB5E1422BF039D500C7ADB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCB5E1452BF039D500C7ADB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BCB5E1472BF039D500C7ADB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCB5E1582BF03E2B00C7ADB7 /* RTTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTTabbarController.swift; sourceTree = "<group>"; };
+		BCB5E15A2BF03E5400C7ADB7 /* RTBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTBaseViewController.swift; sourceTree = "<group>"; };
+		BCB5E15C2BF03E8300C7ADB7 /* RTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTHomeViewController.swift; sourceTree = "<group>"; };
+		BCB5E15E2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTFavoriteViewController.swift; sourceTree = "<group>"; };
+		BCB5E1602BF03EAB00C7ADB7 /* RTSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSettingViewController.swift; sourceTree = "<group>"; };
+		BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTBaseNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FABBF6192BEEC1400019C16A /* Frameworks */ = {
+		BCB5E1332BF039D200C7ADB7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,83 +59,211 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FABBF6132BEEC1400019C16A = {
+		BC7FE0E72BF26C35005C0B4C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				FABBF61E2BEEC1400019C16A /* RadiantTune */,
-				FABBF61D2BEEC1400019C16A /* Products */,
-				FABBF6432BEEC3400019C16A /* Frameworks */,
+				BC8326C62BF2B221003C30D6 /* Controller */,
+				BC8326C52BF2B21D003C30D6 /* View */,
+				BC8326C42BF2B217003C30D6 /* Model */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BC7FE0EA2BF26C57005C0B4C /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				BC8326C92BF2B256003C30D6 /* Controller */,
+				BC8326C82BF2B252003C30D6 /* View */,
+				BC8326C72BF2B24C003C30D6 /* Model */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		BC7FE0ED2BF26C76005C0B4C /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				BC8326C02BF2AC2B003C30D6 /* View */,
+				BC8326BF2BF2AC26003C30D6 /* Model */,
+				BC8326BE2BF2AC1C003C30D6 /* ViewController */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		BC8326BE2BF2AC1C003C30D6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BCB5E1602BF03EAB00C7ADB7 /* RTSettingViewController.swift */,
+				BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BC8326BF2BF2AC26003C30D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC8326C02BF2AC2B003C30D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC8326C42BF2B217003C30D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC8326C52BF2B21D003C30D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BC8326CA2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift */,
+				BC8326CB2BF2B29D003C30D6 /* RTHomeCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC8326C62BF2B221003C30D6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BCB5E15C2BF03E8300C7ADB7 /* RTHomeViewController.swift */,
+				BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BC8326C72BF2B24C003C30D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC8326C82BF2B252003C30D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC8326C92BF2B256003C30D6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BCB5E15E2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift */,
+				BC7FE0EB2BF26C67005C0B4C /* RTFavoriteViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BCB5E12D2BF039D200C7ADB7 = {
+			isa = PBXGroup;
+			children = (
+				BCB5E1382BF039D200C7ADB7 /* RadiantTune */,
+				BCB5E1372BF039D200C7ADB7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FABBF61D2BEEC1400019C16A /* Products */ = {
+		BCB5E1372BF039D200C7ADB7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FABBF61C2BEEC1400019C16A /* RadiantTune.app */,
+				BCB5E1362BF039D200C7ADB7 /* RadiantTune.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FABBF61E2BEEC1400019C16A /* RadiantTune */ = {
+		BCB5E1382BF039D200C7ADB7 /* RadiantTune */ = {
 			isa = PBXGroup;
 			children = (
-				FABBF61F2BEEC1400019C16A /* AppDelegate.swift */,
-				FABBF6212BEEC1400019C16A /* SceneDelegate.swift */,
-				FABBF6232BEEC1400019C16A /* ViewController.swift */,
-				FABBF6252BEEC1400019C16A /* Main.storyboard */,
-				FABBF62B2BEEC1420019C16A /* Assets.xcassets */,
-				FABBF62D2BEEC1420019C16A /* LaunchScreen.storyboard */,
-				FABBF6302BEEC1420019C16A /* Info.plist */,
-				FABBF6282BEEC1400019C16A /* RadiantTune.xcdatamodeld */,
+				BCB5E1522BF03B3D00C7ADB7 /* Base */,
+				BCB5E1512BF03B3100C7ADB7 /* Others */,
+				BCB5E1502BF03B1400C7ADB7 /* Utils */,
+				BCB5E14D2BF03AF000C7ADB7 /* Viewcontrollers */,
+				BCB5E13F2BF039D200C7ADB7 /* Main.storyboard */,
+				BCB5E1422BF039D500C7ADB7 /* Assets.xcassets */,
+				BCB5E1442BF039D500C7ADB7 /* LaunchScreen.storyboard */,
+				BCB5E1472BF039D500C7ADB7 /* Info.plist */,
 			);
 			path = RadiantTune;
 			sourceTree = "<group>";
 		};
-		FABBF6432BEEC3400019C16A /* Frameworks */ = {
+		BCB5E14D2BF03AF000C7ADB7 /* Viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+				BC7FE0ED2BF26C76005C0B4C /* Setting */,
+				BC7FE0EA2BF26C57005C0B4C /* Favorite */,
+				BC7FE0E72BF26C35005C0B4C /* Home */,
 			);
-			name = Frameworks;
+			path = Viewcontrollers;
+			sourceTree = "<group>";
+		};
+		BCB5E1502BF03B1400C7ADB7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BC7FE0F52BF28000005C0B4C /* RTUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BCB5E1512BF03B3100C7ADB7 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				BCB5E1392BF039D200C7ADB7 /* AppDelegate.swift */,
+				BCB5E13B2BF039D200C7ADB7 /* SceneDelegate.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		BCB5E1522BF03B3D00C7ADB7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BCB5E1582BF03E2B00C7ADB7 /* RTTabbarController.swift */,
+				BCB5E15A2BF03E5400C7ADB7 /* RTBaseViewController.swift */,
+				BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FABBF61B2BEEC1400019C16A /* RadiantTune */ = {
+		BCB5E1352BF039D200C7ADB7 /* RadiantTune */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FABBF6332BEEC1420019C16A /* Build configuration list for PBXNativeTarget "RadiantTune" */;
+			buildConfigurationList = BCB5E14A2BF039D500C7ADB7 /* Build configuration list for PBXNativeTarget "RadiantTune" */;
 			buildPhases = (
-				FABBF6182BEEC1400019C16A /* Sources */,
-				FABBF6192BEEC1400019C16A /* Frameworks */,
-				FABBF61A2BEEC1400019C16A /* Resources */,
+				BCB5E1322BF039D200C7ADB7 /* Sources */,
+				BCB5E1332BF039D200C7ADB7 /* Frameworks */,
+				BCB5E1342BF039D200C7ADB7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = RadiantTune;
-			packageProductDependencies = (
-			);
 			productName = RadiantTune;
-			productReference = FABBF61C2BEEC1400019C16A /* RadiantTune.app */;
+			productReference = BCB5E1362BF039D200C7ADB7 /* RadiantTune.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FABBF6142BEEC1400019C16A /* Project object */ = {
+		BCB5E12E2BF039D200C7ADB7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					FABBF61B2BEEC1400019C16A = {
+					BCB5E1352BF039D200C7ADB7 = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
-			buildConfigurationList = FABBF6172BEEC1400019C16A /* Build configuration list for PBXProject "RadiantTune" */;
+			buildConfigurationList = BCB5E1312BF039D200C7ADB7 /* Build configuration list for PBXProject "RadiantTune" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,58 +271,66 @@
 				en,
 				Base,
 			);
-			mainGroup = FABBF6132BEEC1400019C16A;
-			packageReferences = (
-			);
-			productRefGroup = FABBF61D2BEEC1400019C16A /* Products */;
+			mainGroup = BCB5E12D2BF039D200C7ADB7;
+			productRefGroup = BCB5E1372BF039D200C7ADB7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FABBF61B2BEEC1400019C16A /* RadiantTune */,
+				BCB5E1352BF039D200C7ADB7 /* RadiantTune */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FABBF61A2BEEC1400019C16A /* Resources */ = {
+		BCB5E1342BF039D200C7ADB7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FABBF62F2BEEC1420019C16A /* LaunchScreen.storyboard in Resources */,
-				FABBF62C2BEEC1420019C16A /* Assets.xcassets in Resources */,
-				FABBF6272BEEC1400019C16A /* Main.storyboard in Resources */,
+				BC7FE0E92BF26C52005C0B4C /* RTHomeViewController.storyboard in Resources */,
+				BC8326CD2BF2B29D003C30D6 /* RTHomeCollectionViewCell.xib in Resources */,
+				BCB5E1462BF039D500C7ADB7 /* LaunchScreen.storyboard in Resources */,
+				BC7FE0EC2BF26C67005C0B4C /* RTFavoriteViewController.storyboard in Resources */,
+				BCB5E1432BF039D500C7ADB7 /* Assets.xcassets in Resources */,
+				BC7FE0EF2BF26C86005C0B4C /* RTSettingViewController.storyboard in Resources */,
+				BCB5E1412BF039D200C7ADB7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FABBF6182BEEC1400019C16A /* Sources */ = {
+		BCB5E1322BF039D200C7ADB7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FABBF6242BEEC1400019C16A /* ViewController.swift in Sources */,
-				FABBF6202BEEC1400019C16A /* AppDelegate.swift in Sources */,
-				FABBF6222BEEC1400019C16A /* SceneDelegate.swift in Sources */,
-				FABBF62A2BEEC1400019C16A /* RadiantTune.xcdatamodeld in Sources */,
+				BCB5E15B2BF03E5400C7ADB7 /* RTBaseViewController.swift in Sources */,
+				BCB5E1592BF03E2B00C7ADB7 /* RTTabbarController.swift in Sources */,
+				BCB5E13A2BF039D200C7ADB7 /* AppDelegate.swift in Sources */,
+				BCB5E13C2BF039D200C7ADB7 /* SceneDelegate.swift in Sources */,
+				BCB5E1612BF03EAB00C7ADB7 /* RTSettingViewController.swift in Sources */,
+				BCB5E15F2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift in Sources */,
+				BCB5E15D2BF03E8300C7ADB7 /* RTHomeViewController.swift in Sources */,
+				BC8326CC2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift in Sources */,
+				BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */,
+				BC7FE0F62BF28000005C0B4C /* RTUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FABBF6252BEEC1400019C16A /* Main.storyboard */ = {
+		BCB5E13F2BF039D200C7ADB7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FABBF6262BEEC1400019C16A /* Base */,
+				BCB5E1402BF039D200C7ADB7 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		FABBF62D2BEEC1420019C16A /* LaunchScreen.storyboard */ = {
+		BCB5E1442BF039D500C7ADB7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FABBF62E2BEEC1420019C16A /* Base */,
+				BCB5E1452BF039D500C7ADB7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -182,7 +338,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FABBF6312BEEC1420019C16A /* Debug */ = {
+		BCB5E1482BF039D500C7ADB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -245,7 +401,7 @@
 			};
 			name = Debug;
 		};
-		FABBF6322BEEC1420019C16A /* Release */ = {
+		BCB5E1492BF039D500C7ADB7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -301,54 +457,64 @@
 			};
 			name = Release;
 		};
-		FABBF6342BEEC1420019C16A /* Debug */ = {
+		BCB5E14B2BF039D500C7ADB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M53ML4GY86;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadiantTune/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.rabinagurung.RadiantTune;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.leledu.RadiantTune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		FABBF6352BEEC1420019C16A /* Release */ = {
+		BCB5E14C2BF039D500C7ADB7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M53ML4GY86;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RadiantTune/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.rabinagurung.RadiantTune;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.leledu.RadiantTune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,38 +524,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FABBF6172BEEC1400019C16A /* Build configuration list for PBXProject "RadiantTune" */ = {
+		BCB5E1312BF039D200C7ADB7 /* Build configuration list for PBXProject "RadiantTune" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FABBF6312BEEC1420019C16A /* Debug */,
-				FABBF6322BEEC1420019C16A /* Release */,
+				BCB5E1482BF039D500C7ADB7 /* Debug */,
+				BCB5E1492BF039D500C7ADB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FABBF6332BEEC1420019C16A /* Build configuration list for PBXNativeTarget "RadiantTune" */ = {
+		BCB5E14A2BF039D500C7ADB7 /* Build configuration list for PBXNativeTarget "RadiantTune" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FABBF6342BEEC1420019C16A /* Debug */,
-				FABBF6352BEEC1420019C16A /* Release */,
+				BCB5E14B2BF039D500C7ADB7 /* Debug */,
+				BCB5E14C2BF039D500C7ADB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FABBF6282BEEC1400019C16A /* RadiantTune.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FABBF6292BEEC1400019C16A /* RadiantTune.xcdatamodel */,
-			);
-			currentVersion = FABBF6292BEEC1400019C16A /* RadiantTune.xcdatamodel */;
-			path = RadiantTune.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = FABBF6142BEEC1400019C16A /* Project object */;
+	rootObject = BCB5E12E2BF039D200C7ADB7 /* Project object */;
 }

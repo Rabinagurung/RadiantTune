@@ -1,26 +1,19 @@
 //
-//  ViewController.swift
+//  RTBaseViewController.swift
 //  RadiantTune
 //
-//  Created by Aaribna Gurung on 2024-05-10.
+//  Created by 杜乐乐 on 2024-05-11.
 //
 
 import UIKit
 
-
-class ViewController: UIViewController {
-    
+class RTBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-        
-       
-    
     }
-  
-    
-   
+
 
 }
-
