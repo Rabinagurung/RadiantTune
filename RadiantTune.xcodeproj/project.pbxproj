@@ -15,9 +15,6 @@
 		FABBF62C2BEEC1420019C16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABBF62B2BEEC1420019C16A /* Assets.xcassets */; };
 		FABBF62F2BEEC1420019C16A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABBF62D2BEEC1420019C16A /* LaunchScreen.storyboard */; };
 		FABBF6372BEEC1910019C16A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FABBF6362BEEC1910019C16A /* GoogleService-Info.plist */; };
-		FABBF6452BEEC3400019C16A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FABBF6442BEEC3400019C16A /* FirebaseAuth */; };
-		FABBF6472BEEC35D0019C16A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FABBF6462BEEC35D0019C16A /* FirebaseFirestore */; };
-		FABBF6492BEEC35D0019C16A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FABBF6482BEEC35D0019C16A /* FirebaseFirestoreSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,9 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FABBF6452BEEC3400019C16A /* FirebaseAuth in Frameworks */,
-				FABBF6472BEEC35D0019C16A /* FirebaseFirestore in Frameworks */,
-				FABBF6492BEEC35D0019C16A /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,9 +98,6 @@
 			);
 			name = RadiantTune;
 			packageProductDependencies = (
-				FABBF6442BEEC3400019C16A /* FirebaseAuth */,
-				FABBF6462BEEC35D0019C16A /* FirebaseFirestore */,
-				FABBF6482BEEC35D0019C16A /* FirebaseFirestoreSwift */,
 			);
 			productName = RadiantTune;
 			productReference = FABBF61C2BEEC1400019C16A /* RadiantTune.app */;
@@ -137,7 +128,6 @@
 			);
 			mainGroup = FABBF6132BEEC1400019C16A;
 			packageReferences = (
-				FABBF6382BEEC3160019C16A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = FABBF61D2BEEC1400019C16A /* Products */;
 			projectDirPath = "";
@@ -391,35 +381,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FABBF6382BEEC3160019C16A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.25.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FABBF6442BEEC3400019C16A /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FABBF6382BEEC3160019C16A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		FABBF6462BEEC35D0019C16A /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FABBF6382BEEC3160019C16A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		FABBF6482BEEC35D0019C16A /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FABBF6382BEEC3160019C16A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FABBF6282BEEC1400019C16A /* RadiantTune.xcdatamodeld */ = {
