@@ -6,13 +6,20 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Kingfisher
+import SwiftAudioPlayer
 
 class RTBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    func showHUDWithMessege(messege: String) {
+        
     }
 
 
