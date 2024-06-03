@@ -8,7 +8,6 @@
 import UIKit
 import SVProgressHUD
 import Kingfisher
-import SwiftAudioPlayer
 
 class RTBaseViewController: UIViewController {
 

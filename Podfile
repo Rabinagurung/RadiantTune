@@ -8,7 +8,7 @@ target 'RadiantTune' do
   # audio player
   pod 'StreamingKit'
   # image
-  pod 'Kingfisher', '~> 7.0'
+  pod 'Kingfisher'
   
   #hud
   pod 'SVProgressHUD'

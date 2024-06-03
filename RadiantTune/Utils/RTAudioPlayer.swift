@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftAudioPlayer
 import AVFoundation
 
 protocol RTAudioPlayerDelegate {
