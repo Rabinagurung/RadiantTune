@@ -16,7 +16,7 @@ class RTBaseNavigationViewController: UINavigationController {
         // set navigatonbar background color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .red
+        appearance.backgroundColor = .white
         navigationBar.standardAppearance = appearance;
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
     }
