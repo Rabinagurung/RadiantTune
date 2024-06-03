@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-tg-AWk">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="679"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N2R-UR-8Ch">
                                     <size key="itemSize" width="128" height="128"/>
@@ -38,11 +38,20 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Do5-Ja-RpE" customClass="RTPlayerWidgetView" customModule="RadiantTune" customModuleProvider="target">
+                                <rect key="frame" x="16" y="748" width="361" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="NBb-cQ-zlt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Vqy-tg-AWk" secondAttribute="bottom" id="Zqy-3b-mbG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Do5-Ja-RpE" secondAttribute="trailing" constant="16" id="65R-qN-zcg"/>
+                            <constraint firstItem="Do5-Ja-RpE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="O4V-ph-cUG"/>
+                            <constraint firstItem="Do5-Ja-RpE" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="ZoD-ij-J9R"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Vqy-tg-AWk" secondAttribute="bottom" constant="80" id="Zqy-3b-mbG"/>
                             <constraint firstItem="Vqy-tg-AWk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="tGL-HU-9iJ"/>
                             <constraint firstItem="Vqy-tg-AWk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ucM-0F-rrd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vqy-tg-AWk" secondAttribute="trailing" id="yJL-4z-xnU"/>
@@ -50,11 +59,12 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Vqy-tg-AWk" id="V5k-wy-gSe"/>
+                        <outlet property="playerWidget" destination="Do5-Ja-RpE" id="fK4-Eg-lLf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-193" y="-117"/>
+            <point key="canvasLocation" x="-544.27480916030527" y="-156.33802816901408"/>
         </scene>
     </scenes>
     <resources>

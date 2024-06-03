@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  RadiantTune
+
+  Created by 杜乐乐 on 2024-05-31.
+  
+*/
+
+
+"player_button_play" = "播放";
+"player_button_stop" = "停止";
+
