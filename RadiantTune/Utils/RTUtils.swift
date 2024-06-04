@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 
+struct Constants {
+    // MARK: - Reuse identifier for the FavoriteTableViewCell
+    static let favoriteTableViewCell = "FavoriteTableViewCell"
+}
+
 ///screen Width
 let kScreenWidth = UIScreen.main.bounds.size.width
 ///screen Height
