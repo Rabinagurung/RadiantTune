@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9990BE6F2C073CA300B513DC /* RTFavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990BE6E2C073CA300B513DC /* RTFavoriteStationCell.swift */; };
+		99A661A62C0724AD008593A9 /* RTFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A661A52C0724AD008593A9 /* RTFavoriteModel.swift */; };
+		99B95D1F2C0832D600993620 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B95D1E2C0832D600993620 /* libsqlite3.tbd */; };
+		99B95D212C08344C00993620 /* RTDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B95D202C08344C00993620 /* RTDatabaseManager.swift */; };
 		BC7FE0E92BF26C52005C0B4C /* RTHomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */; };
 		BC7FE0EC2BF26C67005C0B4C /* RTFavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0EB2BF26C67005C0B4C /* RTFavoriteViewController.storyboard */; };
 		BC7FE0EF2BF26C86005C0B4C /* RTSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */; };
@@ -27,6 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9990BE6E2C073CA300B513DC /* RTFavoriteStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTFavoriteStationCell.swift; path = RadiantTune/Viewcontrollers/Favorite/Controller/RTFavoriteStationCell.swift; sourceTree = SOURCE_ROOT; };
+		99A661A52C0724AD008593A9 /* RTFavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTFavoriteModel.swift; path = RadiantTune/Viewcontrollers/Favorite/Controller/RTFavoriteModel.swift; sourceTree = SOURCE_ROOT; };
+		99B95D1E2C0832D600993620 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		99B95D202C08344C00993620 /* RTDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTDatabaseManager.swift; sourceTree = "<group>"; };
 		BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTHomeViewController.storyboard; sourceTree = "<group>"; };
 		BC7FE0EB2BF26C67005C0B4C /* RTFavoriteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTFavoriteViewController.storyboard; sourceTree = "<group>"; };
 		BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTSettingViewController.storyboard; sourceTree = "<group>"; };
@@ -53,12 +61,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B95D1F2C0832D600993620 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99B95D1D2C0832D600993620 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99B95D1E2C0832D600993620 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC7FE0E72BF26C35005C0B4C /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +157,7 @@
 		BC8326C72BF2B24C003C30D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				99A661A52C0724AD008593A9 /* RTFavoriteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,6 +165,7 @@
 		BC8326C82BF2B252003C30D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9990BE6E2C073CA300B513DC /* RTFavoriteStationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,6 +184,7 @@
 			children = (
 				BCB5E1382BF039D200C7ADB7 /* RadiantTune */,
 				BCB5E1372BF039D200C7ADB7 /* Products */,
+				99B95D1D2C0832D600993620 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7FE0F52BF28000005C0B4C /* RTUtils.swift */,
+				99B95D202C08344C00993620 /* RTDatabaseManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -312,7 +333,10 @@
 				BCB5E15D2BF03E8300C7ADB7 /* RTHomeViewController.swift in Sources */,
 				BC8326CC2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift in Sources */,
 				BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */,
+				99B95D212C08344C00993620 /* RTDatabaseManager.swift in Sources */,
 				BC7FE0F62BF28000005C0B4C /* RTUtils.swift in Sources */,
+				9990BE6F2C073CA300B513DC /* RTFavoriteStationCell.swift in Sources */,
+				99A661A62C0724AD008593A9 /* RTFavoriteModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
