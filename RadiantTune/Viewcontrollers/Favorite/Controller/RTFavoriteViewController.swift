@@ -8,19 +8,22 @@
 import UIKit
 
 class RTFavoriteViewController: RTBaseViewController {
+
     @IBOutlet weak var favoriteTableView: UITableView!
     @IBOutlet weak var trashUIButton: UIButton!
    
-    
+
+
     var emptyLabel: UILabel!
     var activityIndicator: UIActivityIndicatorView!
     var  favoriteStations: [RTFavoriteModel] = []
     
- 
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the default Red navigation bar
         navigationController?.setNavigationBarHidden(true, animated: animated)
+
   
     }
     override func viewDidLoad() {
@@ -30,8 +33,9 @@ class RTFavoriteViewController: RTBaseViewController {
         initialSetup()
         addEmptyLabel()
        
-        
+
     }
+    
     
     private func addLoadingIndicator() {
      
@@ -47,6 +51,9 @@ class RTFavoriteViewController: RTBaseViewController {
     }
 
     private func initialSetup() {
+
+        trashUIButton.setTitle("", for: .normal)
+
         activityIndicator.startAnimating()
         DispatchQueue.global(qos: .userInitiated).async {
             let favorites = RTDatabaseManager.shared.fetchFavorites()
@@ -162,6 +169,7 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         favoriteTableView.deselectRow(at: indexPath, animated: true)
+
     }
     
 
@@ -190,6 +198,12 @@ extension RTFavoriteViewController: RTFavoriteStationCellDelegate {
                 })
             }
         }
+
     }
+    
+
+   
 }
+
+
 
