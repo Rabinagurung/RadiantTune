@@ -5,6 +5,7 @@
 # Xcode
 /DerivedData/
 /build/
+xcuserdata/
 
 # Pods
 /Pods/
