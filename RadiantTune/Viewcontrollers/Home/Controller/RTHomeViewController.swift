@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RTHomeViewController: RTBaseViewController {
 
@@ -13,9 +14,17 @@ class RTHomeViewController: RTBaseViewController {
     
     @IBOutlet weak var playerWidget: RTPlayerWidgetView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var stations = [Station]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshData()
         setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        playerWidget.refreshState(station: nil)
     }
     
     
@@ -23,7 +32,8 @@ class RTHomeViewController: RTBaseViewController {
         // collection View
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(RTHomeCollectionViewCell.self, forCellWithReuseIdentifier: kHomeCellID)
+        let nib = UINib(nibName: "RTHomeCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: kHomeCellID)
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 5
@@ -36,25 +46,8 @@ class RTHomeViewController: RTBaseViewController {
         playerWidget.delegate = self
         
     }
-
-}
-
-//MARK:- CollectionViewDelegate
-extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeCellID, for: indexPath) as! RTHomeCollectionViewCell
-
-        cell.backgroundColor = UIColor.red
-        return cell
-    }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
+    fileprivate func refreshData() {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         guard let url = URL(string: "https://de1.api.radio-browser.info/json/stations/bycountry/Canada?limit=40") else {
             return
@@ -64,10 +57,9 @@ extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let task = session.dataTask(with: request) { data, res, error in
             if let data = data {
                 do {
-                    let stations = try JSONDecoder().decode([Station].self, from: data)
-                    let station = stations[indexPath.row]
+                    self.stations = try JSONDecoder().decode([Station].self, from: data)
                     DispatchQueue.main.async {
-                        self.pushToPlayingController(station: station)
+                        self.collectionView.reloadData()
                     }
                 } catch {
                     
@@ -82,7 +74,29 @@ extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         task.resume()
     }
+
+}
+
+//MARK:- CollectionViewDelegate
+extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeCellID, for: indexPath) as! RTHomeCollectionViewCell
+        let station = stations[indexPath.row]
+        cell.iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
+        cell.nameLabel.text = station.name
+        return cell
+    }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return stations.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let station = stations[indexPath.row]
+        pushToPlayingController(station: station)
+
+    }
     
 }
 

@@ -44,18 +44,23 @@ class RTPlayingViewController: RTBaseViewController {
     }
     
     private func setupUI() {
-        playBtn.setTitle(NSLocalizedString("player_button_play", comment: ""), for: .normal)
-        playBtn.setTitle(NSLocalizedString("player_button_stop", comment: ""), for: .selected)
+        playBtn.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        playBtn.setImage(UIImage(systemName: "pause.fill"), for: .selected)
+        favoriteBtn.setImage(UIImage(systemName: "star"), for: .normal)
+        favoriteBtn.setImage(UIImage(systemName: "star.fill"), for: .selected)
+        
+        
+        playBtn.setTitle("", for: .normal)
+        playBtn.setTitle("", for: .selected)
+        favoriteBtn.setTitle("", for: .normal)
+        favoriteBtn.setTitle("", for: .selected)
         
     }
     
     private func configData() {
         // icon View
         if let station = station {
-            guard let url = URL(string: station.favicon) else {
-                return
-            }
-            iconImageView.kf.setImage(with: url)
+            iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
             
             // title Label
             nameLabel.text = station.name
@@ -90,6 +95,12 @@ class RTPlayingViewController: RTBaseViewController {
         playBtn.isSelected = !playBtn.isSelected
         
     }
+    @IBAction func favoriteAction(_ sender: UIButton) {
+        if let station = station {
+            RTDatabaseManager.shared.addFavorite(station: convertStationToFavorite(station: station))
+            sender.isSelected = true
+        }
+    }
 }
 
 //MARK:- Audio Delegate
@@ -103,6 +114,7 @@ extension RTPlayingViewController: RTAudioPlayerDelegate {
             SVProgressHUD.show()
         } else if state == .error {
             SVProgressHUD.dismiss()
+            SVProgressHUD.showError(withStatus: "load error")
             playBtn.isSelected = false
         } else {
             playBtn.isSelected = false
