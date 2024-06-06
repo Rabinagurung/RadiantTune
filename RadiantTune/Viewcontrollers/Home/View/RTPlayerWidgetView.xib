@@ -31,25 +31,28 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUo-ac-PjN">
-                    <rect key="frame" x="112.33333333333334" y="5" width="370.66666666666663" height="21"/>
+                    <rect key="frame" x="112.33333333333334" y="5" width="290.66666666666663" height="21"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNY-dm-WZP">
-                    <rect key="frame" x="112.33333333333333" y="36" width="230.66666666666669" height="21"/>
+                    <rect key="frame" x="112.33333333333333" y="36" width="210.66666666666669" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTn-6q-1ia">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTn-6q-1ia">
                     <rect key="frame" x="383" y="27.666666666666671" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="cD1-2E-LRp"/>
                         <constraint firstAttribute="height" constant="60" id="tEq-vD-Hu5"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                    <connections>
+                        <action selector="saveButtonAction:" destination="-1" eventType="touchUpInside" id="SAG-46-s3P"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcC-xL-7xJ">
                     <rect key="frame" x="453" y="27.666666666666671" width="60" height="60"/>
@@ -58,10 +61,8 @@
                         <constraint firstAttribute="width" constant="60" id="zsn-EH-hLb"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button">
-                        <backgroundConfiguration key="background">
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </backgroundConfiguration>
+                    <buttonConfiguration key="configuration" style="plain">
+                        <backgroundConfiguration key="background"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="playStopAction:" destination="-1" eventType="touchUpInside" id="Enq-pY-8DJ"/>
@@ -73,20 +74,20 @@
             <constraints>
                 <constraint firstItem="TNY-dm-WZP" firstAttribute="leading" secondItem="gUo-ac-PjN" secondAttribute="leading" id="5Ck-jc-7Hy"/>
                 <constraint firstAttribute="bottom" secondItem="LvP-YD-Zci" secondAttribute="bottom" constant="5" id="I4c-wv-gzb"/>
-                <constraint firstAttribute="trailing" secondItem="gUo-ac-PjN" secondAttribute="trailing" constant="40" id="I4s-6u-PAt"/>
+                <constraint firstItem="TNY-dm-WZP" firstAttribute="trailing" secondItem="JTn-6q-1ia" secondAttribute="trailing" constant="-120" id="I4s-6u-PAt"/>
                 <constraint firstItem="mcC-xL-7xJ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Ml7-kc-kK1"/>
                 <constraint firstItem="LvP-YD-Zci" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="T35-JG-5mC"/>
                 <constraint firstItem="LvP-YD-Zci" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Xr4-1n-qrp"/>
                 <constraint firstItem="mcC-xL-7xJ" firstAttribute="leading" secondItem="JTn-6q-1ia" secondAttribute="trailing" constant="10" id="av7-eJ-XMB"/>
                 <constraint firstItem="TNY-dm-WZP" firstAttribute="top" secondItem="gUo-ac-PjN" secondAttribute="bottom" constant="10" id="cMg-bd-zZw"/>
                 <constraint firstItem="JTn-6q-1ia" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="eTT-xH-Ys2"/>
+                <constraint firstAttribute="trailing" secondItem="gUo-ac-PjN" secondAttribute="trailing" constant="120" id="hCN-74-OGI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mcC-xL-7xJ" secondAttribute="trailing" constant="10" id="jyF-Xc-sHr"/>
-                <constraint firstItem="JTn-6q-1ia" firstAttribute="leading" secondItem="TNY-dm-WZP" secondAttribute="trailing" constant="40" id="sb2-X1-7dC"/>
                 <constraint firstItem="gUo-ac-PjN" firstAttribute="leading" secondItem="LvP-YD-Zci" secondAttribute="trailing" constant="10" id="xHW-in-anG"/>
                 <constraint firstItem="gUo-ac-PjN" firstAttribute="top" secondItem="LvP-YD-Zci" secondAttribute="top" id="xqw-Qc-0rd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-193" y="-313"/>
+            <point key="canvasLocation" x="-437" y="-309"/>
         </view>
     </objects>
     <resources>

@@ -19,3 +19,22 @@ struct Station: Codable {
     var tags: String
     
 }
+
+
+/*
+ struct RTFavoriteModel  {
+     var id: Int?
+     var imageName: String
+     var stationName: String
+     var location: String
+     var genre: String
+
+ }
+ 
+ */
+
+func convertStationToFavorite(station: Station) -> RTFavoriteModel {
+    var favoriteModel = RTFavoriteModel(imageName: station.favicon, stationName: station.name, location: station.country, genre: "default")
+    favoriteModel.id = 23
+    return favoriteModel
+}
