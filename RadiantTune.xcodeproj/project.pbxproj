@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140534042C102E5A0082D12D /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140534032C102E5A0082D12D /* Search.storyboard */; };
 		8D73E5D052A67A2BB839B16C /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644913268308652714FAF87C /* Pods_RadiantTune.framework */; };
 		BC1F9DA52C06257B009A074F /* RTAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */; };
 		BC1F9DA72C06B456009A074F /* RTPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA62C06B456009A074F /* RTPlayingViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		140534032C102E5A0082D12D /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		3B523B4A999F81B321FC2380 /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
 		644913268308652714FAF87C /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAudioPlayer.swift; sourceTree = "<group>"; };
@@ -85,6 +87,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		140533FF2C102DCD0082D12D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				140534252C10E5D40082D12D /* View */,
+				140534022C102E0B0082D12D /* ViewController */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		140534022C102E0B0082D12D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		140534252C10E5D40082D12D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				140534032C102E5A0082D12D /* Search.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1FEECDE94CF26958E8073C94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +270,7 @@
 		BCB5E14D2BF03AF000C7ADB7 /* Viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+				140533FF2C102DCD0082D12D /* Search */,
 				BC7FE0ED2BF26C76005C0B4C /* Setting */,
 				BC7FE0EA2BF26C57005C0B4C /* Favorite */,
 				BC7FE0E72BF26C35005C0B4C /* Home */,
@@ -320,7 +347,7 @@
 				};
 			};
 			buildConfigurationList = BCB5E1312BF039D200C7ADB7 /* Build configuration list for PBXProject "RadiantTune" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -351,6 +378,7 @@
 				BC67D9262C0A17A900A4D092 /* RTPlayerWidgetView.xib in Resources */,
 				BC67D9392C0A1CDB00A4D092 /* Localizable.strings in Resources */,
 				BC7FE0EC2BF26C67005C0B4C /* RTFavoriteViewController.storyboard in Resources */,
+				140534042C102E5A0082D12D /* Search.storyboard in Resources */,
 				BCB5E1432BF039D500C7ADB7 /* Assets.xcassets in Resources */,
 				BC7FE0EF2BF26C86005C0B4C /* RTSettingViewController.storyboard in Resources */,
 				BCB5E1412BF039D200C7ADB7 /* Main.storyboard in Resources */,
@@ -512,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -570,7 +598,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

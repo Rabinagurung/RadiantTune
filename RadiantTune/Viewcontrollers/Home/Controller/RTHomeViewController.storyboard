@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,8 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-tg-AWk">
-                                <rect key="frame" x="0.0" y="59" width="393" height="679"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-tg-AWk">
+                                <rect key="frame" x="0.0" y="86" width="393" height="679"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N2R-UR-8Ch">
                                     <size key="itemSize" width="128" height="128"/>
@@ -44,17 +45,35 @@
                                     <constraint firstAttribute="height" constant="70" id="NBb-cQ-zlt"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohk-3V-jfo">
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QIJ-ub-dwi">
+                                        <rect key="frame" x="0.0" y="-6" width="393" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="QWD-1E-poR"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QIJ-ub-dwi" secondAttribute="trailing" id="DA7-5V-I2x"/>
+                                    <constraint firstAttribute="height" constant="50" id="F07-eN-ZF3"/>
+                                    <constraint firstAttribute="bottom" secondItem="QIJ-ub-dwi" secondAttribute="bottom" id="ji4-1B-QFI"/>
+                                    <constraint firstItem="QIJ-ub-dwi" firstAttribute="leading" secondItem="Ohk-3V-jfo" secondAttribute="leading" id="rj1-Xn-whB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Do5-Ja-RpE" secondAttribute="trailing" constant="16" id="65R-qN-zcg"/>
+                            <constraint firstItem="Ohk-3V-jfo" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AXM-4l-g2v"/>
                             <constraint firstItem="Do5-Ja-RpE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="O4V-ph-cUG"/>
                             <constraint firstItem="Do5-Ja-RpE" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="ZoD-ij-J9R"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Vqy-tg-AWk" secondAttribute="bottom" constant="80" id="Zqy-3b-mbG"/>
-                            <constraint firstItem="Vqy-tg-AWk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="tGL-HU-9iJ"/>
-                            <constraint firstItem="Vqy-tg-AWk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ucM-0F-rrd"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vqy-tg-AWk" secondAttribute="trailing" id="yJL-4z-xnU"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ohk-3V-jfo" secondAttribute="trailing" id="kwg-tf-9F4"/>
+                            <constraint firstItem="Ohk-3V-jfo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="n57-x9-mbe"/>
                         </constraints>
                     </view>
                     <connections>
@@ -65,6 +84,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-544.27480916030527" y="-156.33802816901408"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="llY-ba-7My">
+            <objects>
+                <viewController id="HXq-ty-Whq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8vR-1d-Ozi">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CS5-CT-EE6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1356" y="-165"/>
         </scene>
     </scenes>
     <resources>

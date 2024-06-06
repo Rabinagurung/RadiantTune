@@ -7,12 +7,16 @@ target 'RadiantTune' do
 	
   # audio player
   pod 'StreamingKit'
+  
   # image
   pod 'Kingfisher'
   
   #hud
   pod 'SVProgressHUD'
 
+  #HTTP Library
+  pod 'Alamofire'
+  
   # Pods for RadiantTune
 
 end

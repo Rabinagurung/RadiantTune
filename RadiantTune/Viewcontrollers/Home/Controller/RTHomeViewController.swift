@@ -30,7 +30,7 @@ class RTHomeViewController: RTBaseViewController {
         layout.itemSize = CGSize(width: (kScreenWidth - 20)/3, height: (kScreenWidth - 15)/3)
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = .white
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 5)
+        collectionView.contentInset = UIEdgeInsets(top: 60, left: 5, bottom: 0, right: 5)
         
         // widget View
         playerWidget.delegate = self
