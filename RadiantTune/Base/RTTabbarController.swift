@@ -41,7 +41,7 @@ class RTTabbarController: UITabBarController {
             // for iOS13
             let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
-            tabBarAppearance.backgroundColor = UIColor.red
+//            tabBarAppearance.backgroundColor = UIColor.red
             UITabBar.appearance().standardAppearance = tabBarAppearance
         }
     }
