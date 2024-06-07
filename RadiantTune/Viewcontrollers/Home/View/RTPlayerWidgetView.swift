@@ -38,8 +38,15 @@ class RTPlayerWidgetView: UIView {
         // 加载XIB文件
         Bundle.main.loadNibNamed("RTPlayerWidgetView", owner: self, options: nil)
         addSubview(contentView)
-        playButton.setTitle(NSLocalizedString("player_button_play", comment: ""), for: .normal)
-        playButton.setTitle(NSLocalizedString("player_button_stop", comment: ""), for: .selected)
+        playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        playButton.setImage(UIImage(systemName: "pause.fill"), for: .selected)
+        saveButton.setImage(UIImage(systemName: "star"), for: .normal)
+        saveButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
+        
+        playButton.setTitle("", for: .normal)
+        playButton.setTitle("", for: .selected)
+        saveButton.setTitle("", for: .normal)
+        saveButton.setTitle("", for: .selected)
         contentView.frame = self.bounds
         
         // add gesture to iconview
@@ -51,7 +58,9 @@ class RTPlayerWidgetView: UIView {
     // refresh widget state
     func refreshState(station: Station?) {
         let playerState = RTAudioPlayer.shared.playerState
-        self.station = station
+        if station != nil {
+            self.station = station
+        }
         
         if (playerState == .playing) {
             playButton.isSelected = true
@@ -59,11 +68,8 @@ class RTPlayerWidgetView: UIView {
             playButton.isSelected = false
         }
         if let station = station {
-            guard let url = URL(string: station.favicon) else {
-                return
-            }
             // icon Image View
-            iconImageView.kf.setImage(with: url)
+            iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
             
             // title Label
             stationNameLabel.text = station.name
@@ -91,4 +97,13 @@ class RTPlayerWidgetView: UIView {
             sender.isSelected = !sender.isSelected
         }
     }
+    
+    @IBAction func saveButtonAction(_ sender: UIButton) {
+        
+        if let station = station {
+            RTDatabaseManager.shared.addFavorite(station: convertStationToFavorite(station: station))
+            sender.isSelected = true
+        }
+    }
+    
 }

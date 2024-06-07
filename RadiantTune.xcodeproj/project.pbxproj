@@ -17,7 +17,6 @@
 		BC67D9262C0A17A900A4D092 /* RTPlayerWidgetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC67D9252C0A17A900A4D092 /* RTPlayerWidgetView.xib */; };
 		BC67D9392C0A1CDB00A4D092 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC67D93B2C0A1CDB00A4D092 /* Localizable.strings */; };
 		BC7FE0E92BF26C52005C0B4C /* RTHomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */; };
-		BC7FE0EC2BF26C67005C0B4C /* RTFavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0EB2BF26C67005C0B4C /* RTFavoriteViewController.storyboard */; };
 		BC7FE0EF2BF26C86005C0B4C /* RTSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */; };
 		BC7FE0F62BF28000005C0B4C /* RTUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FE0F52BF28000005C0B4C /* RTUtils.swift */; };
 		BC8326CC2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8326CA2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift */; };
@@ -30,9 +29,13 @@
 		BCB5E1592BF03E2B00C7ADB7 /* RTTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1582BF03E2B00C7ADB7 /* RTTabbarController.swift */; };
 		BCB5E15B2BF03E5400C7ADB7 /* RTBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E15A2BF03E5400C7ADB7 /* RTBaseViewController.swift */; };
 		BCB5E15D2BF03E8300C7ADB7 /* RTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E15C2BF03E8300C7ADB7 /* RTHomeViewController.swift */; };
-		BCB5E15F2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E15E2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift */; };
 		BCB5E1612BF03EAB00C7ADB7 /* RTSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1602BF03EAB00C7ADB7 /* RTSettingViewController.swift */; };
 		BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */; };
+		FA4042602C0EBA4200B43F72 /* RTFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */; };
+		FA4042612C0EBA4200B43F72 /* RTFavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */; };
+		FA4042632C0EBA5500B43F72 /* RTFavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */; };
+		FA4042652C0EBA6000B43F72 /* RTFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4042642C0EBA6000B43F72 /* RTFavoriteModel.swift */; };
+		FA4042672C0EBA8100B43F72 /* RTDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4042662C0EBA8100B43F72 /* RTDatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +57,6 @@
 		BC67D93C2C0A1D2B00A4D092 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BC67D93D2C0A1D4C00A4D092 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTHomeViewController.storyboard; sourceTree = "<group>"; };
-		BC7FE0EB2BF26C67005C0B4C /* RTFavoriteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTFavoriteViewController.storyboard; sourceTree = "<group>"; };
 		BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTSettingViewController.storyboard; sourceTree = "<group>"; };
 		BC7FE0F52BF28000005C0B4C /* RTUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTUtils.swift; sourceTree = "<group>"; };
 		BC8326CA2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTHomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -69,9 +71,13 @@
 		BCB5E1582BF03E2B00C7ADB7 /* RTTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTTabbarController.swift; sourceTree = "<group>"; };
 		BCB5E15A2BF03E5400C7ADB7 /* RTBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTBaseViewController.swift; sourceTree = "<group>"; };
 		BCB5E15C2BF03E8300C7ADB7 /* RTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTHomeViewController.swift; sourceTree = "<group>"; };
-		BCB5E15E2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTFavoriteViewController.swift; sourceTree = "<group>"; };
 		BCB5E1602BF03EAB00C7ADB7 /* RTSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSettingViewController.swift; sourceTree = "<group>"; };
 		BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTBaseNavigationViewController.swift; sourceTree = "<group>"; };
+		FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteViewController.swift; sourceTree = "<group>"; };
+		FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTFavoriteViewController.storyboard; sourceTree = "<group>"; };
+		FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteStationCell.swift; sourceTree = "<group>"; };
+		FA4042642C0EBA6000B43F72 /* RTFavoriteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteModel.swift; sourceTree = "<group>"; };
+		FA4042662C0EBA8100B43F72 /* RTDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDatabaseManager.swift; sourceTree = "<group>"; };
 		FB3A214CAF945FB0DF0AF03E /* Pods-RadiantTune.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.debug.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +197,7 @@
 		BC8326C72BF2B24C003C30D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA4042642C0EBA6000B43F72 /* RTFavoriteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +205,7 @@
 		BC8326C82BF2B252003C30D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,8 +213,8 @@
 		BC8326C92BF2B256003C30D6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BCB5E15E2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift */,
-				BC7FE0EB2BF26C67005C0B4C /* RTFavoriteViewController.storyboard */,
+				FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */,
+				FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +265,7 @@
 		BCB5E1502BF03B1400C7ADB7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA4042662C0EBA8100B43F72 /* RTDatabaseManager.swift */,
 				BC7FE0F52BF28000005C0B4C /* RTUtils.swift */,
 				BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */,
 				BC1F9DAA2C06D026009A074F /* RadiantTune-Bridging-Header.h */,
@@ -353,8 +362,8 @@
 				BCB5E1462BF039D500C7ADB7 /* LaunchScreen.storyboard in Resources */,
 				BC67D9262C0A17A900A4D092 /* RTPlayerWidgetView.xib in Resources */,
 				BC67D9392C0A1CDB00A4D092 /* Localizable.strings in Resources */,
-				BC7FE0EC2BF26C67005C0B4C /* RTFavoriteViewController.storyboard in Resources */,
 				BCB5E1432BF039D500C7ADB7 /* Assets.xcassets in Resources */,
+				FA4042612C0EBA4200B43F72 /* RTFavoriteViewController.storyboard in Resources */,
 				BC7FE0EF2BF26C86005C0B4C /* RTSettingViewController.storyboard in Resources */,
 				BCB5E1412BF039D200C7ADB7 /* Main.storyboard in Resources */,
 			);
@@ -414,15 +423,18 @@
 				BCB5E13A2BF039D200C7ADB7 /* AppDelegate.swift in Sources */,
 				BCB5E13C2BF039D200C7ADB7 /* SceneDelegate.swift in Sources */,
 				BCB5E1612BF03EAB00C7ADB7 /* RTSettingViewController.swift in Sources */,
-				BCB5E15F2BF03E9F00C7ADB7 /* RTFavoriteViewController.swift in Sources */,
 				BCB5E15D2BF03E8300C7ADB7 /* RTHomeViewController.swift in Sources */,
 				BC8326CC2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift in Sources */,
+				FA4042652C0EBA6000B43F72 /* RTFavoriteModel.swift in Sources */,
 				BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */,
+				FA4042672C0EBA8100B43F72 /* RTDatabaseManager.swift in Sources */,
 				BC1F9DA72C06B456009A074F /* RTPlayingViewController.swift in Sources */,
 				BC1F9DA52C06257B009A074F /* RTAudioPlayer.swift in Sources */,
+				FA4042602C0EBA4200B43F72 /* RTFavoriteViewController.swift in Sources */,
 				BC7FE0F62BF28000005C0B4C /* RTUtils.swift in Sources */,
 				BC1F9DA92C06B4BF009A074F /* RTStationModel.swift in Sources */,
 				AF7952282C1239F90093FE4A /* RTSleepTimerViewController.swift in Sources */,
+				FA4042632C0EBA5500B43F72 /* RTFavoriteStationCell.swift in Sources */,
 				BC67D9242C0A179800A4D092 /* RTPlayerWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,7 +613,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -638,7 +650,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

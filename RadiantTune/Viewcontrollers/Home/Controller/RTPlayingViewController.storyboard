@@ -29,10 +29,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftC-0l-J1v">
-                                <rect key="frame" x="168.66666666666666" y="733" width="56" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftC-0l-J1v">
+                                <rect key="frame" x="184.66666666666666" y="754" width="24" height="14"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Play"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
                                     <action selector="playActionWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Nl1-6f-9ZU"/>
                                 </connections>
@@ -51,6 +51,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="favoriteAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NPA-CQ-GRG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
