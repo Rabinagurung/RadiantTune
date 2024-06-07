@@ -13,8 +13,8 @@ class RTSleepTimerViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     var pickerData: [[String]] = []
     
-    var hour: Int?
-    var minute: Int?
+    var hour: Int = 0
+    var minute: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +23,19 @@ class RTSleepTimerViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.sleepTimerPicker.delegate = self
         self.sleepTimerPicker.dataSource = self
         
+        hour = UserDefaults.standard.integer(forKey: "Hour")
+        minute = UserDefaults.standard.integer(forKey: "Minute")
+        
         //Set values of picker
-        sleepTimerPicker.selectRow(UserDefaults.standard.integer(forKey: "Hour"), inComponent: 0, animated: false)
-        sleepTimerPicker.selectRow(UserDefaults.standard.integer(forKey: "Minute"), inComponent: 1, animated: false)
+        sleepTimerPicker.selectRow(hour, inComponent: 0, animated: false)
+        sleepTimerPicker.selectRow(minute, inComponent: 1, animated: false)
         
     }
     @IBAction func onSaveTapped(_ sender: UIButton) {
         UserDefaults.standard.set(hour, forKey: "Hour")
         UserDefaults.standard.set(minute, forKey: "Minute")
+        UserDefaults.standard.synchronize()
+        
         dismiss(animated: true)
     }
     
@@ -68,6 +73,7 @@ class RTSleepTimerViewController: UIViewController, UIPickerViewDelegate, UIPick
         switch component {
         case 0:
             hour = row
+            return
         case 1:
             minute = row
             return
