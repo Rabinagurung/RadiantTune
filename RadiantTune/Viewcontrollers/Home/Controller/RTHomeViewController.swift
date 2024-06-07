@@ -26,7 +26,7 @@ class RTHomeViewController: RTBaseViewController {
         let moya = MoyaProvider<RadioAPI>()
         /*
         moya.request(RadioAPI.searchStations(codec: .none, order: .none, reverse: .none, limit: 1)) */
-        moya.request(RadioAPI.searchbyname(searchTerm: "jazz") ) { result in
+        moya.request(RadioAPI.searchbyname(searchTerm: "The beat") ) { result in
             switch result {
                 case let .success(moyaResponse):
                     do {
