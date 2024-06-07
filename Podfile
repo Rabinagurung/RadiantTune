@@ -14,8 +14,9 @@ target 'RadiantTune' do
   #hud
   pod 'SVProgressHUD'
 
-  #HTTP Library
+  #Network Libraries
   pod 'Alamofire'
+  pod 'Moya'
   
   # Pods for RadiantTune
   # Setting the same iOS deployment target for all pods as the project

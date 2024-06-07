@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Moya
 
 class RTHomeViewController: RTBaseViewController {
 
@@ -20,6 +21,26 @@ class RTHomeViewController: RTBaseViewController {
         super.viewDidLoad()
         refreshData()
         setupUI()
+        
+        
+        let moya = MoyaProvider<RadioAPI>()
+        /*
+        moya.request(RadioAPI.searchStations(codec: .none, order: .none, reverse: .none, limit: 1)) */
+        moya.request(RadioAPI.searchbyname(searchTerm: "jazz") ) { result in
+            switch result {
+                case let .success(moyaResponse):
+                    do {
+                        //try moyaResponse.filterSuccessfulStatusCodes()
+                        let data = try moyaResponse.mapJSON()
+                        debugPrint(data)
+                    }
+                    catch {
+                        print(error)
+                    }
+                case let .failure(error):
+                    print(error.localizedDescription)
+                }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
