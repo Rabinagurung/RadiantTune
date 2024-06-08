@@ -13,6 +13,8 @@ class RTSettingViewController: RTBaseViewController {
     
     @IBOutlet weak var sleepTimerSwitch: UISwitch!
     @IBOutlet weak var setTimerBtn: UIButton!
+    
+    
     var hour: Int?
     var minute: Int?
     private let segueSleepTimer = "goToSleepTimerScreen"
@@ -74,7 +76,7 @@ class RTSettingViewController: RTBaseViewController {
                 RTAudioPlayer.shared.stop()
             }
         }
-<<<<<<< HEAD
+
     }
     private func setupPlayerWidgetConstraints() {
         
@@ -96,7 +98,6 @@ class RTSettingViewController: RTBaseViewController {
             trailingConstraint,
             bottomConstraint
         ])
-=======
->>>>>>> main
+
     }
 }

@@ -10,7 +10,6 @@
 		9904EB242C14E3B20069723E /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9904EB232C14E3B20069723E /* Lottie.framework */; };
 		991550A52C13EB4E00DC804A /* RTAnimationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */; };
 		991550A92C144CC200DC804A /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 991550A82C144CC200DC804A /* wave.json */; };
-		8D73E5D052A67A2BB839B16C /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644913268308652714FAF87C /* Pods_RadiantTune.framework */; };
 		AF7952282C1239F90093FE4A /* RTSleepTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */; };
 		BC1F9DA52C06257B009A074F /* RTAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */; };
 		BC1F9DA72C06B456009A074F /* RTPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA62C06B456009A074F /* RTPlayingViewController.swift */; };
@@ -34,7 +33,7 @@
 		BCB5E15D2BF03E8300C7ADB7 /* RTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E15C2BF03E8300C7ADB7 /* RTHomeViewController.swift */; };
 		BCB5E1612BF03EAB00C7ADB7 /* RTSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1602BF03EAB00C7ADB7 /* RTSettingViewController.swift */; };
 		BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */; };
-		EDC8389A2D68565C9B2E028E /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD54DE95098CDF6C47EC667 /* Pods_RadiantTune.framework */; };
+		D1CD3567B2B4481F759C0AA8 /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C937A0A7AE91CF82920CB983 /* Pods_RadiantTune.framework */; };
 		FA4042602C0EBA4200B43F72 /* RTFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */; };
 		FA4042612C0EBA4200B43F72 /* RTFavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */; };
 		FA4042632C0EBA5500B43F72 /* RTFavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */; };
@@ -45,8 +44,8 @@
 		9904EB232C14E3B20069723E /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAnimationUtility.swift; sourceTree = "<group>"; };
 		991550A82C144CC200DC804A /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
-		3B523B4A999F81B321FC2380 /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
-		644913268308652714FAF87C /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A002F0EF9CE721E76397281 /* Pods-RadiantTune.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.debug.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.debug.xcconfig"; sourceTree = "<group>"; };
+		A0B8644635FEE066A16D7E85 /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
 		AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSleepTimerViewController.swift; sourceTree = "<group>"; };
 		BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAudioPlayer.swift; sourceTree = "<group>"; };
 		BC1F9DA62C06B456009A074F /* RTPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayingViewController.swift; sourceTree = "<group>"; };
@@ -79,11 +78,11 @@
 		BCB5E15C2BF03E8300C7ADB7 /* RTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTHomeViewController.swift; sourceTree = "<group>"; };
 		BCB5E1602BF03EAB00C7ADB7 /* RTSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSettingViewController.swift; sourceTree = "<group>"; };
 		BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTBaseNavigationViewController.swift; sourceTree = "<group>"; };
+		C937A0A7AE91CF82920CB983 /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteViewController.swift; sourceTree = "<group>"; };
 		FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTFavoriteViewController.storyboard; sourceTree = "<group>"; };
 		FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteStationCell.swift; sourceTree = "<group>"; };
 		FA4042662C0EBA8100B43F72 /* RTDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDatabaseManager.swift; sourceTree = "<group>"; };
-		FCD54DE95098CDF6C47EC667 /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9904EB242C14E3B20069723E /* Lottie.framework in Frameworks */,
-				EDC8389A2D68565C9B2E028E /* Pods_RadiantTune.framework in Frameworks */,
+				D1CD3567B2B4481F759C0AA8 /* Pods_RadiantTune.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				9904EB232C14E3B20069723E /* Lottie.framework */,
-				FCD54DE95098CDF6C47EC667 /* Pods_RadiantTune.framework */,
+				C937A0A7AE91CF82920CB983 /* Pods_RadiantTune.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -111,8 +110,8 @@
 		8BF55B6E5A46271A5F4E07FE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				786C5064BAC7D4B073D194C4 /* Pods-RadiantTune.debug.xcconfig */,
-				11A60B56792FC0A3567668A5 /* Pods-RadiantTune.release.xcconfig */,
+				9A002F0EF9CE721E76397281 /* Pods-RadiantTune.debug.xcconfig */,
+				A0B8644635FEE066A16D7E85 /* Pods-RadiantTune.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -308,11 +307,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCB5E14A2BF039D500C7ADB7 /* Build configuration list for PBXNativeTarget "RadiantTune" */;
 			buildPhases = (
-				862DDE9611599F48FF59061C /* [CP] Check Pods Manifest.lock */,
+				621E626CCC67E4A7EBAEB960 /* [CP] Check Pods Manifest.lock */,
 				BCB5E1322BF039D200C7ADB7 /* Sources */,
 				BCB5E1332BF039D200C7ADB7 /* Frameworks */,
 				BCB5E1342BF039D200C7ADB7 /* Resources */,
-				EDDD7B52CAC9A5E0768A2771 /* [CP] Embed Pods Frameworks */,
+				50F33B1F6367F2CE4AFF08DB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -381,7 +380,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		862DDE9611599F48FF59061C /* [CP] Check Pods Manifest.lock */ = {
+		50F33B1F6367F2CE4AFF08DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RadiantTune/Pods-RadiantTune-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RadiantTune/Pods-RadiantTune-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RadiantTune/Pods-RadiantTune-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		621E626CCC67E4A7EBAEB960 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -401,23 +417,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EDDD7B52CAC9A5E0768A2771 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RadiantTune/Pods-RadiantTune-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RadiantTune/Pods-RadiantTune-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RadiantTune/Pods-RadiantTune-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -607,7 +606,7 @@
 		};
 		BCB5E14B2BF039D500C7ADB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 786C5064BAC7D4B073D194C4 /* Pods-RadiantTune.debug.xcconfig */;
+			baseConfigurationReference = 9A002F0EF9CE721E76397281 /* Pods-RadiantTune.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -644,7 +643,7 @@
 		};
 		BCB5E14C2BF039D500C7ADB7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11A60B56792FC0A3567668A5 /* Pods-RadiantTune.release.xcconfig */;
+			baseConfigurationReference = A0B8644635FEE066A16D7E85 /* Pods-RadiantTune.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
