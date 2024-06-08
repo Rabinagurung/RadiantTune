@@ -8,24 +8,38 @@
 import UIKit
 import Kingfisher
 
-class RTHomeViewController: RTBaseViewController {
 
+class RTHomeViewController: RTBaseViewController {
+    
     let kHomeCellID = "RTHomeCollectionViewCell"
     
     @IBOutlet weak var playerWidget: RTPlayerWidgetView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var stations = [Station]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let station = RTDatabaseManager.shared.activeStation {
+            playerWidget.station = station
+            playerWidget.refreshState(station: station)
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         refreshData()
         setupUI()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         playerWidget.refreshState(station: nil)
     }
+    
     
     
     fileprivate func setupUI() {
@@ -44,6 +58,7 @@ class RTHomeViewController: RTBaseViewController {
         
         // widget View
         playerWidget.delegate = self
+        
         
     }
     
@@ -64,7 +79,7 @@ class RTHomeViewController: RTBaseViewController {
                 } catch {
                     
                 }
-
+                
             }
             
             if let error = error {
@@ -74,7 +89,9 @@ class RTHomeViewController: RTBaseViewController {
         
         task.resume()
     }
-
+    
+    
+    
 }
 
 //MARK:- CollectionViewDelegate
@@ -94,8 +111,9 @@ extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let station = stations[indexPath.row]
+        
         pushToPlayingController(station: station)
-
+        
     }
     
 }
@@ -105,11 +123,14 @@ extension RTHomeViewController: RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?) {
         playerWidget.station = station
         playerWidget.refreshState(station: station)
+        RTDatabaseManager.shared.activeStation = station
+        
     }
 }
 
 //MARK:- RTPlayerWidgetViewDelegate
 extension RTHomeViewController: RTPlayerWidgetViewDelegate {
+    
     func clickIconImageView(station: Station?) {
         guard let station = station else { return }
         pushToPlayingController(station: station)
@@ -126,3 +147,4 @@ extension RTHomeViewController {
         self.navigationController?.pushViewController(playingVC, animated: true)
     }
 }
+

@@ -5,7 +5,11 @@
 # Xcode
 /DerivedData/
 /build/
-xcuserdata/
+
+
+# Ignore Xcode user data
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
 
 # Pods
 /Pods/

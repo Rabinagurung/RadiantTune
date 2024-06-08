@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,20 +17,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZhD-nm-H9L">
-                                <rect key="frame" x="30" y="89" width="333" height="91.333333333333314"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZhD-nm-H9L">
+                                <rect key="frame" x="30" y="89.000000000000014" width="333" height="129.33333333333337"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cgt-He-Vni">
-                                        <rect key="frame" x="0.0" y="0.0" width="276" height="91.333333333333329"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="cgt-He-Vni">
+                                        <rect key="frame" x="0.0" y="0.0" width="276" height="129.33333333333334"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleep Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4DX-vo-Lbk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Sleep Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4DX-vo-Lbk">
                                                 <rect key="frame" x="0.0" y="0.0" width="276" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJC-3H-GJO">
+                                                <rect key="frame" x="0.0" y="28" width="276" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10Z-QM-qqO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="34.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="tXk-0L-jI1"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Set timer"/>
+                                                        <connections>
+                                                            <action selector="onEditTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bqp-Pb-JCY"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="10Z-QM-qqO" firstAttribute="top" secondItem="KJC-3H-GJO" secondAttribute="top" id="RJW-Ff-HdM"/>
+                                                    <constraint firstAttribute="height" constant="40" id="dia-Nb-omZ"/>
+                                                    <constraint firstItem="10Z-QM-qqO" firstAttribute="leading" secondItem="KJC-3H-GJO" secondAttribute="leading" id="juP-sv-OrF"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set a timer to automatically to turn off radio station after a set period of time." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txd-h1-oeH">
-                                                <rect key="frame" x="0.0" y="34" width="276" height="57.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="72" width="276" height="57.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -39,12 +61,17 @@
                                     </stackView>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khe-r0-lEA">
                                         <rect key="frame" x="284" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="onSwitchValueChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="nZh-D3-OYR"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                             </stackView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YD-or-XpO">
-                                <rect key="frame" x="30" y="195" width="333" height="216"/>
-                            </pickerView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kj4-9o-6a8" userLabel="Player Widget View" customClass="RTPlayerWidgetView" customModule="RadiantTune" customModuleProvider="target">
+                                <rect key="frame" x="4" y="729" width="385" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -52,15 +79,61 @@
                             <constraint firstItem="ZhD-nm-H9L" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="8Gg-wi-Zd9"/>
                             <constraint firstAttribute="trailing" secondItem="ZhD-nm-H9L" secondAttribute="trailing" constant="30" id="Doh-kv-K5Y"/>
                             <constraint firstItem="ZhD-nm-H9L" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="KUF-YO-6S7"/>
-                            <constraint firstItem="7YD-or-XpO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="VPv-OG-Pj0"/>
-                            <constraint firstItem="7YD-or-XpO" firstAttribute="top" secondItem="ZhD-nm-H9L" secondAttribute="bottom" constant="15" id="krT-aN-bOC"/>
-                            <constraint firstAttribute="trailing" secondItem="7YD-or-XpO" secondAttribute="trailing" constant="30" id="uvd-Ly-YF0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerWidgetView" destination="Kj4-9o-6a8" id="eWB-uO-Jtl"/>
+                        <outlet property="setTimerBtn" destination="10Z-QM-qqO" id="L4J-AN-Kd4"/>
+                        <outlet property="sleepTimerSwitch" destination="khe-r0-lEA" id="fPE-hr-A0B"/>
+                        <segue destination="rIW-fy-gue" kind="presentation" identifier="goToSleepTimerScreen" id="aAI-uP-rWZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92.36641221374046" y="-34.507042253521128"/>
+        </scene>
+        <!--Sleep Timer View Controller-->
+        <scene sceneID="Hc2-PI-iLp">
+            <objects>
+                <viewController id="rIW-fy-gue" customClass="RTSleepTimerViewController" customModule="RadiantTune" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GFk-Ey-swv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulP-O3-4MG">
+                                <rect key="frame" x="36.666666666666657" y="313" width="320" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOf-bk-N2e">
+                                <rect key="frame" x="30" y="752" width="333" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RKg-Ji-E4a"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="SAVE"/>
+                                <connections>
+                                    <action selector="onSaveTapped:" destination="rIW-fy-gue" eventType="touchUpInside" id="qpU-2k-o25"/>
+                                    <action selector="onSaveTapped:" destination="LAb-Q6-3KY" eventType="touchUpInside" id="uL5-pb-oRR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lpr-7S-OTp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lpr-7S-OTp" firstAttribute="trailing" secondItem="eOf-bk-N2e" secondAttribute="trailing" constant="30" id="06s-Dy-bgQ"/>
+                            <constraint firstItem="ulP-O3-4MG" firstAttribute="centerX" secondItem="GFk-Ey-swv" secondAttribute="centerX" id="7Lf-gs-cUq"/>
+                            <constraint firstItem="ulP-O3-4MG" firstAttribute="centerY" secondItem="GFk-Ey-swv" secondAttribute="centerY" id="MsZ-7j-6pT"/>
+                            <constraint firstItem="eOf-bk-N2e" firstAttribute="leading" secondItem="Lpr-7S-OTp" secondAttribute="leading" constant="30" id="P3Y-S3-qSw"/>
+                            <constraint firstItem="Lpr-7S-OTp" firstAttribute="bottom" secondItem="eOf-bk-N2e" secondAttribute="bottom" constant="30" id="w5y-FB-Vbk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sleepTimerPicker" destination="ulP-O3-4MG" id="hPk-dp-6wK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jHm-Ua-Uaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="LAb-Q6-3KY" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="858.77862595419845" y="-35.211267605633807"/>
         </scene>
     </scenes>
     <resources>

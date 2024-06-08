@@ -33,8 +33,8 @@ struct Station: Codable {
  
  */
 
-func convertStationToFavorite(station: Station) -> RTFavoriteModel {
-    var favoriteModel = RTFavoriteModel(imageName: station.favicon, stationName: station.name, location: station.country, genre: "default")
-    favoriteModel.id = 23
-    return favoriteModel
-}
+//func convertStationToFavorite(station: Station) -> RTFavoriteModel {
+//    var favoriteModel = RTFavoriteModel(imageName: station.favicon, stationName: station.name, location: station.country, genre: "default")
+//    favoriteModel.id = 23
+//    return favoriteModel
+//}

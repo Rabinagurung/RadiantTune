@@ -53,6 +53,12 @@ extension RTAudioPlayer: STKAudioPlayerDelegate {
     func audioPlayer(_ audioPlayer: STKAudioPlayer, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState) {
         playerState = state
         delegate?.playerStateDidChanged(state: state)
+    
+        if playerState == .playing {
+            NotificationCenter.default.post(name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
+        }
+          
+      
     }
     
     func audioPlayer(_ audioPlayer: STKAudioPlayer, didFinishPlayingQueueItemId queueItemId: NSObject, with stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {

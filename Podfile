@@ -12,6 +12,9 @@ target 'RadiantTune' do
   
   #hud
   pod 'SVProgressHUD'
+  
+  #lottie
+  pod 'lottie-ios'
 
   # Pods for RadiantTune
   # Setting the same iOS deployment target for all pods as the project
