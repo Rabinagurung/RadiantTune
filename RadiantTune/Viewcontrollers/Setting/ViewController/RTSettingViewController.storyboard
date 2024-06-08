@@ -67,11 +67,6 @@
                                     </switch>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kj4-9o-6a8" userLabel="Player Widget View" customClass="RTPlayerWidgetView" customModule="RadiantTune" customModuleProvider="target">
-                                <rect key="frame" x="4" y="729" width="385" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

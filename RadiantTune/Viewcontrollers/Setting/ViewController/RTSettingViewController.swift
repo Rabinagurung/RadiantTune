@@ -34,7 +34,7 @@ class RTSettingViewController: RTBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPlayerWidgetConstraints()
-        
+    
         let switchValue = UserDefaults.standard.bool(forKey: "Switch")
         sleepTimerSwitch.isOn = switchValue
         
@@ -74,6 +74,7 @@ class RTSettingViewController: RTBaseViewController {
                 RTAudioPlayer.shared.stop()
             }
         }
+<<<<<<< HEAD
     }
     private func setupPlayerWidgetConstraints() {
         
@@ -95,5 +96,7 @@ class RTSettingViewController: RTBaseViewController {
             trailingConstraint,
             bottomConstraint
         ])
+=======
+>>>>>>> main
     }
 }

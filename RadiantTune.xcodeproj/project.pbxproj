@@ -10,6 +10,8 @@
 		9904EB242C14E3B20069723E /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9904EB232C14E3B20069723E /* Lottie.framework */; };
 		991550A52C13EB4E00DC804A /* RTAnimationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */; };
 		991550A92C144CC200DC804A /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 991550A82C144CC200DC804A /* wave.json */; };
+		8D73E5D052A67A2BB839B16C /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644913268308652714FAF87C /* Pods_RadiantTune.framework */; };
+		AF7952282C1239F90093FE4A /* RTSleepTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */; };
 		BC1F9DA52C06257B009A074F /* RTAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */; };
 		BC1F9DA72C06B456009A074F /* RTPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA62C06B456009A074F /* RTPlayingViewController.swift */; };
 		BC1F9DA92C06B4BF009A074F /* RTStationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA82C06B4BF009A074F /* RTStationModel.swift */; };
@@ -40,11 +42,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		11A60B56792FC0A3567668A5 /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
-		786C5064BAC7D4B073D194C4 /* Pods-RadiantTune.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.debug.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.debug.xcconfig"; sourceTree = "<group>"; };
 		9904EB232C14E3B20069723E /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAnimationUtility.swift; sourceTree = "<group>"; };
 		991550A82C144CC200DC804A /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
+		3B523B4A999F81B321FC2380 /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
+		644913268308652714FAF87C /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSleepTimerViewController.swift; sourceTree = "<group>"; };
 		BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAudioPlayer.swift; sourceTree = "<group>"; };
 		BC1F9DA62C06B456009A074F /* RTPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayingViewController.swift; sourceTree = "<group>"; };
 		BC1F9DA82C06B4BF009A074F /* RTStationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTStationModel.swift; path = RadiantTune/Viewcontrollers/Home/Controller/RTStationModel.swift; sourceTree = SOURCE_ROOT; };
@@ -149,6 +152,7 @@
 			children = (
 				BCB5E1602BF03EAB00C7ADB7 /* RTSettingViewController.swift */,
 				BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */,
+				AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -437,6 +441,7 @@
 				FA4042602C0EBA4200B43F72 /* RTFavoriteViewController.swift in Sources */,
 				BC7FE0F62BF28000005C0B4C /* RTUtils.swift in Sources */,
 				BC1F9DA92C06B4BF009A074F /* RTStationModel.swift in Sources */,
+				AF7952282C1239F90093FE4A /* RTSleepTimerViewController.swift in Sources */,
 				FA4042632C0EBA5500B43F72 /* RTFavoriteStationCell.swift in Sources */,
 				BC67D9242C0A179800A4D092 /* RTPlayerWidgetView.swift in Sources */,
 				991550A52C13EB4E00DC804A /* RTAnimationUtility.swift in Sources */,
