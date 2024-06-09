@@ -107,6 +107,7 @@ extension RTHomeViewController: UISearchBarDelegate {
         
         searchViewController.searchString = searchBar.text
         searchViewController.modalPresentationStyle = .fullScreen
+        searchViewController.delegate = self
         self.present(searchViewController, animated: true, completion: nil)
         //self.navigationController?.pushViewController(searchViewController, animated: true)
         
@@ -170,6 +171,14 @@ extension RTHomeViewController {
         playingVC.delegate = self
         playingVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(playingVC, animated: true)
+    }
+}
+
+//MARK:- Search VC Delegate
+extension RTHomeViewController: SearchViewControllerDelegate {
+    func rearchControllerDidClosed(station: Station?) {
+        playerWidget.station = station
+        playerWidget.refreshState(station: station)
     }
 }
 

@@ -10,6 +10,10 @@ import UIKit
 import Moya
 import Kingfisher
 
+protocol SearchViewControllerDelegate {
+    func rearchControllerDidClosed(station: Station?)
+}
+
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
@@ -18,7 +22,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
-    
+    var delegate: SearchViewControllerDelegate?
+    var station: Station?
     var searchString: String?
     var stations = [APIStation]()
     
@@ -41,6 +46,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             searchBar.text = searchString
             //debugPrint("Recieved \(searchString) from Homepage search")
             searchbyname(searchString: searchString)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // if the player is playing it should call the delegate to refresh the widget
+        if RTAudioPlayer.shared.playerState == .playing {
+            delegate?.rearchControllerDidClosed(station: station)
         }
     }
 
@@ -219,6 +232,6 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController : RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?) {
-        
+        self.station = station
     }
 }
