@@ -14,3 +14,4 @@
 # Pods
 /Pods/
 /Podfile.lock
+/xcuserdata/
