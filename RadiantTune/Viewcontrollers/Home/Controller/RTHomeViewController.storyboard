@@ -78,7 +78,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Vqy-tg-AWk" id="V5k-wy-gSe"/>
-                        <outlet property="playerWidget" destination="Do5-Ja-RpE" id="fK4-Eg-lLf"/>
+                        <outlet property="playerWidget" destination="Do5-Ja-RpE" id="fKo-os-qIj"/>
                         <outlet property="stationSearch" destination="QIJ-ub-dwi" id="Da5-P4-9an"/>
                     </connections>
                 </viewController>
