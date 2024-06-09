@@ -45,6 +45,10 @@ class RTHomeViewController: RTBaseViewController {
         // widget View
         playerWidget.delegate = self
         
+        
+        
+        
+        
     }
     
     fileprivate func refreshData() {
