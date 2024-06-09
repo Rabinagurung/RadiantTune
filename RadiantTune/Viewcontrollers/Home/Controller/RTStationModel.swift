@@ -20,7 +20,6 @@ struct Station: Codable {
     
 }
 
-
 /*
  struct RTFavoriteModel  {
      var id: Int?
