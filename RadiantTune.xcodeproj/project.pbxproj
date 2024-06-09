@@ -11,6 +11,8 @@
 		140534292C12571F0082D12D /* RTRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140534282C12571E0082D12D /* RTRadioAPI.swift */; };
 		1405342B2C1597A70082D12D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1405342A2C1597A70082D12D /* SearchViewController.swift */; };
 		1405342E2C15A2860082D12D /* RTAPIStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1405342D2C15A2860082D12D /* RTAPIStation.swift */; };
+		140534302C15AA440082D12D /* StationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1405342F2C15AA440082D12D /* StationTableCell.swift */; };
+		140534342C15B5D70082D12D /* StationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 140534332C15B5D70082D12D /* StationTableCell.xib */; };
 		8D73E5D052A67A2BB839B16C /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644913268308652714FAF87C /* Pods_RadiantTune.framework */; };
 		AF7952282C1239F90093FE4A /* RTSleepTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */; };
 		BC1F9DA52C06257B009A074F /* RTAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */; };
@@ -47,6 +49,8 @@
 		140534282C12571E0082D12D /* RTRadioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRadioAPI.swift; sourceTree = "<group>"; };
 		1405342A2C1597A70082D12D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1405342D2C15A2860082D12D /* RTAPIStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAPIStation.swift; sourceTree = "<group>"; };
+		1405342F2C15AA440082D12D /* StationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableCell.swift; sourceTree = "<group>"; };
+		140534332C15B5D70082D12D /* StationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationTableCell.xib; sourceTree = "<group>"; };
 		3B523B4A999F81B321FC2380 /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
 		644913268308652714FAF87C /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSleepTimerViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				1405342A2C1597A70082D12D /* SearchViewController.swift */,
+				1405342F2C15AA440082D12D /* StationTableCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				1405342D2C15A2860082D12D /* RTAPIStation.swift */,
+				140534332C15B5D70082D12D /* StationTableCell.xib */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -403,6 +409,7 @@
 				BC7FE0E92BF26C52005C0B4C /* RTHomeViewController.storyboard in Resources */,
 				BC8326CD2BF2B29D003C30D6 /* RTHomeCollectionViewCell.xib in Resources */,
 				BC1F9DAF2C0763B3009A074F /* RTPlayingViewController.storyboard in Resources */,
+				140534342C15B5D70082D12D /* StationTableCell.xib in Resources */,
 				BCB5E1462BF039D500C7ADB7 /* LaunchScreen.storyboard in Resources */,
 				BC67D9262C0A17A900A4D092 /* RTPlayerWidgetView.xib in Resources */,
 				BC67D9392C0A1CDB00A4D092 /* Localizable.strings in Resources */,
@@ -474,6 +481,7 @@
 				BC8326CC2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift in Sources */,
 				FA4042652C0EBA6000B43F72 /* RTFavoriteModel.swift in Sources */,
 				BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */,
+				140534302C15AA440082D12D /* StationTableCell.swift in Sources */,
 				1405342B2C1597A70082D12D /* SearchViewController.swift in Sources */,
 				FA4042672C0EBA8100B43F72 /* RTDatabaseManager.swift in Sources */,
 				BC1F9DA72C06B456009A074F /* RTPlayingViewController.swift in Sources */,
