@@ -48,7 +48,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohk-3V-jfo">
                                 <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="QIJ-ub-dwi">
+                                    <searchBar contentMode="redraw" placeholder="Search for a Radio Station" translatesAutoresizingMaskIntoConstraints="NO" id="QIJ-ub-dwi">
                                         <rect key="frame" x="0.0" y="-6" width="393" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -79,6 +79,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Vqy-tg-AWk" id="V5k-wy-gSe"/>
                         <outlet property="playerWidget" destination="Do5-Ja-RpE" id="fK4-Eg-lLf"/>
+                        <outlet property="stationSearch" destination="QIJ-ub-dwi" id="Da5-P4-9an"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -92,6 +93,7 @@
                     <view key="view" contentMode="scaleToFill" id="8vR-1d-Ozi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="m0S-kB-tH8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>

@@ -13,6 +13,7 @@ class RTHomeViewController: RTBaseViewController {
 
     let kHomeCellID = "RTHomeCollectionViewCell"
     
+    @IBOutlet weak var stationSearch: UISearchBar!
     @IBOutlet weak var playerWidget: RTPlayerWidgetView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -21,26 +22,7 @@ class RTHomeViewController: RTBaseViewController {
         super.viewDidLoad()
         refreshData()
         setupUI()
-        
-        
-        let moya = MoyaProvider<RadioAPI>()
-        /*
-        moya.request(RadioAPI.searchStations(codec: .none, order: .none, reverse: .none, limit: 1)) */
-        moya.request(RadioAPI.searchbyname(searchTerm: "The beat") ) { result in
-            switch result {
-                case let .success(moyaResponse):
-                    do {
-                        //try moyaResponse.filterSuccessfulStatusCodes()
-                        let data = try moyaResponse.mapJSON()
-                        debugPrint(data)
-                    }
-                    catch {
-                        print(error)
-                    }
-                case let .failure(error):
-                    print(error.localizedDescription)
-                }
-        }
+        stationSearch.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,6 +80,43 @@ class RTHomeViewController: RTBaseViewController {
 
 }
 
+extension RTHomeViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //Search suggestions here maybe
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let storyboard = UIStoryboard(name: "Search", bundle: nil)
+        
+        guard let searchViewController = storyboard.instantiateViewController(withIdentifier: "search") as? SearchViewController else {
+            print("search storyboard not found")
+            return
+        }
+        
+        searchViewController.searchString = searchBar.text
+        self.present(searchViewController, animated: true, completion: nil)
+        
+      searchBar.text = ""
+        searchBar.showsCancelButton = false
+      searchBar.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        searchBar.endEditing(true)
+    }
+}
+
+
 //MARK:- CollectionViewDelegate
 extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -147,3 +166,4 @@ extension RTHomeViewController {
         self.navigationController?.pushViewController(playingVC, animated: true)
     }
 }
+
