@@ -15,8 +15,11 @@
 /Pods/
 /Podfile.lock
 /xcuserdata/
+<<<<<<< HEAD
 *.xcuserdatad
 *.xcuserstate
 !/Pods/Podfile
 !Podfile
 RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/aaribnagurung.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/duyuele.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/elvis.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/joycelinenathaniel.xcuserdatad
+=======
+>>>>>>> 203a798 (#22 sync with main branch and fix merge conflicts)
