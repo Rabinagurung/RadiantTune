@@ -7,17 +7,17 @@
 
 import UIKit
 
-class RTSettingViewController: RTBaseViewController {
+class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
     
     @IBOutlet weak var playerWidgetView: RTPlayerWidgetView!
-    
     @IBOutlet weak var sleepTimerSwitch: UISwitch!
     @IBOutlet weak var setTimerBtn: UIButton!
-    
-    
+    var currentTimer: Timer?
+
     var hour: Int?
     var minute: Int?
     private let segueSleepTimer = "goToSleepTimerScreen"
+    var isTimerSet: Bool = true
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,7 +43,7 @@ class RTSettingViewController: RTBaseViewController {
         if switchValue == true {
             setRadioTimer()
         }
-        
+        loadSwitchValue()
     }
     
     @IBAction func onEditTapped(_ sender: UIButton) {
@@ -55,25 +55,38 @@ class RTSettingViewController: RTBaseViewController {
             UserDefaults.standard.setValue(true, forKey: "Switch")
             setTimerBtn.isHidden = false
             setRadioTimer()
+            isTimerSet = true
         } else {
             UserDefaults.standard.setValue(false, forKey: "Switch")
             setTimerBtn.isHidden = true
+            isTimerSet = false
+            invalidateCurrentTimer()
         }
     }
     
     func setRadioTimer() {
+        
+        invalidateCurrentTimer()
+        
         hour = UserDefaults.standard.integer(forKey: "Hour")
         minute = UserDefaults.standard.integer(forKey: "Minute")
         
         //Add and convert time interval into seconds
         var timeLeft = ((hour ?? 0)*60*60) + ((minute ?? 0)*60)
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+        currentTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             timeLeft -= 1
+            print(timeLeft)
+            
+            guard self.isTimerSet == true else {
+                timer.invalidate()
+                return
+            }
             
             if(timeLeft == 0) {
                 timer.invalidate()
                 RTAudioPlayer.shared.stop()
+                RTPlayerWidgetView().playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .selected)
             }
         }
 
@@ -99,5 +112,32 @@ class RTSettingViewController: RTBaseViewController {
             bottomConstraint
         ])
 
+    }
+    
+    func invalidateCurrentTimer() {
+        currentTimer?.invalidate()
+        currentTimer = nil
+    }
+    
+    func loadSwitchValue() {
+        let switchValue = UserDefaults.standard.bool(forKey: "Switch")
+        sleepTimerSwitch.isOn = switchValue
+        
+        if switchValue == true {
+            setRadioTimer()
+        } else {
+            setTimerBtn.isHidden = true
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueSleepTimer,
+           let destinationVC = segue.destination as? RTSleepTimerViewController {
+            destinationVC.delegate = self
+        }
+    }
+    
+    func didUpdateTimer() {
+        setRadioTimer()
     }
 }
