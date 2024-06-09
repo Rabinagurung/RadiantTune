@@ -46,44 +46,6 @@ struct APIStation: Codable {
     let geoLong: Double?
     let hasExtendedInfo: Bool?
 
-    enum CodingKeys: String, CodingKey {
-        case changeuuid
-        case stationuuid
-        case serveruuid
-        case name
-        case url
-        case urlResolved
-        case homepage
-        case favicon
-        case tags
-        case country
-        case countrycode
-        case iso3166_2
-        case state
-        case language
-        case languagecodes
-        case votes
-        case lastchangetime
-        case lastchangetimeIso8601
-        case codec
-        case bitrate
-        case hls
-        case lastcheckok
-        case lastchecktime
-        case lastchecktimeIso8601
-        case lastcheckoktime
-        case lastcheckoktimeIso8601
-        case lastlocalchecktime
-        case lastlocalchecktimeIso8601
-        case clicktimestamp
-        case clicktimestampIso8601
-        case clickcount
-        case clicktrend
-        case sslError
-        case geoLat
-        case geoLong
-        case hasExtendedInfo
-    }
 }
 
 enum Codec: String, Codable {

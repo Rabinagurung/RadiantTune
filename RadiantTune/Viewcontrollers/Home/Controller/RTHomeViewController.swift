@@ -82,7 +82,7 @@ class RTHomeViewController: RTBaseViewController {
 
 extension RTHomeViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = false
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -97,12 +97,14 @@ extension RTHomeViewController: UISearchBarDelegate {
         let storyboard = UIStoryboard(name: "Search", bundle: nil)
         
         guard let searchViewController = storyboard.instantiateViewController(withIdentifier: "search") as? SearchViewController else {
-            print("search storyboard not found")
+            //print("search storyboard not found")
             return
         }
         
         searchViewController.searchString = searchBar.text
+        searchViewController.modalPresentationStyle = .fullScreen
         self.present(searchViewController, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(searchViewController, animated: true)
         
       searchBar.text = ""
         searchBar.showsCancelButton = false

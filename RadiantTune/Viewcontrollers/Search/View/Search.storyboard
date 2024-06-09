@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" text="" placeholder="Search Radio Stations" translatesAutoresizingMaskIntoConstraints="NO" id="YHC-qd-ebz">
+                            <searchBar contentMode="redraw" text="" placeholder="Search Radio Stations" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHC-qd-ebz">
                                 <rect key="frame" x="0.0" y="64" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -41,6 +41,7 @@
                             <constraint firstItem="xT6-j4-Ge0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qdJ-Qp-DQ8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="edz-xu-21D"/>
                     <connections>
                         <outlet property="searchBar" destination="YHC-qd-ebz" id="n4i-Cb-vZD"/>
                         <outlet property="searchTableView" destination="xT6-j4-Ge0" id="z9I-RM-7li"/>
