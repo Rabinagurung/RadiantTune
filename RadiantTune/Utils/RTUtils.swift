@@ -12,6 +12,7 @@ struct Constants {
     // MARK: - Reuse identifier for the FavoriteTableViewCell
     static let favoriteTableViewCell = "FavoriteTableViewCell"
     static let FavoritesUpdated = "FavoritesUpdated"
+    static let StationStopped = "StationStopped"
 }
 
 

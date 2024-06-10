@@ -57,6 +57,10 @@ extension RTAudioPlayer: STKAudioPlayerDelegate {
         if playerState == .playing {
             NotificationCenter.default.post(name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
         }
+        
+        if playerState == .stopped {
+            NotificationCenter.default.post(name: NSNotification.Name(Constants.StationStopped), object: nil)
+        }
           
       
     }

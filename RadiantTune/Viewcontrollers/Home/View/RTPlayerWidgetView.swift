@@ -36,13 +36,25 @@ class RTPlayerWidgetView: UIView {
         super.init(frame: frame)
         commonInit()
         setupAnimationView()
+     
+        NotificationCenter.default.addObserver(self, selector: #selector(playerStop), name: NSNotification.Name(Constants.StationStopped), object: nil)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
         setupAnimationView()
+        NotificationCenter.default.addObserver(self, selector: #selector(playerStop), name: NSNotification.Name(Constants.StationStopped), object: nil)
+ 
         
+        
+    }
+    
+    @objc private func playerStop() {
+        animationView.stop()
+        
+        playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        playButton.isSelected = false
     }
     
     private func setupAnimationView() {
