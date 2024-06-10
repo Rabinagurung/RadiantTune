@@ -6,6 +6,11 @@
 /DerivedData/
 /build/
 
+
+# Ignore Xcode user data
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
 # Pods
 /Pods/
 /Podfile.lock

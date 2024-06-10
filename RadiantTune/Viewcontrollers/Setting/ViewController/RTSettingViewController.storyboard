@@ -67,6 +67,11 @@
                                     </switch>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BqE-eL-W9q" customClass="RTPlayerWidgetView" customModule="RadiantTune" customModuleProvider="target">
+                                <rect key="frame" x="30" y="733" width="326" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -77,6 +82,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="playerWidgetView" destination="BqE-eL-W9q" id="CX3-fS-f1r"/>
                         <outlet property="setTimerBtn" destination="10Z-QM-qqO" id="L4J-AN-Kd4"/>
                         <outlet property="sleepTimerSwitch" destination="khe-r0-lEA" id="fPE-hr-A0B"/>
                         <segue destination="rIW-fy-gue" kind="presentation" identifier="goToSleepTimerScreen" id="aAI-uP-rWZ"/>
