@@ -55,26 +55,36 @@
                                     <action selector="favoriteAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NPA-CQ-GRG"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bhx-vN-2Zi" customClass="LottieAnimationView" customModule="Lottie">
+                                <rect key="frame" x="0.0" y="331" width="393" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="r48-Dh-sBl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Bhx-vN-2Zi" firstAttribute="top" secondItem="Q3T-oN-bk6" secondAttribute="bottom" constant="15" id="3yY-w6-bx4"/>
                             <constraint firstItem="ftC-0l-J1v" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="A1r-Xx-pu2"/>
                             <constraint firstItem="HLZ-8y-f1p" firstAttribute="centerY" secondItem="4dk-Zg-8OT" secondAttribute="centerY" id="CoR-YV-c23"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4dk-Zg-8OT" secondAttribute="trailing" constant="90" id="Pua-Qy-1JV"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OUs-tw-4jJ" secondAttribute="bottom" constant="234" id="Vt0-cj-LVV"/>
                             <constraint firstItem="OUs-tw-4jJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="WNx-WL-HHh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ftC-0l-J1v" secondAttribute="bottom" constant="50" id="XWF-s7-U8Q"/>
+                            <constraint firstItem="Bhx-vN-2Zi" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="YkU-db-VMe"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HLZ-8y-f1p" secondAttribute="trailing" constant="10" id="dzP-Yf-WiX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OUs-tw-4jJ" secondAttribute="trailing" constant="20" id="fA2-3X-DMe"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Q3T-oN-bk6" secondAttribute="trailing" constant="20" id="gA1-qL-MXA"/>
                             <constraint firstItem="Q3T-oN-bk6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="oKi-Te-Uqw"/>
+                            <constraint firstItem="Bhx-vN-2Zi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="pJb-R6-6LZ"/>
                             <constraint firstItem="4dk-Zg-8OT" firstAttribute="top" secondItem="OUs-tw-4jJ" secondAttribute="bottom" constant="28" id="pTl-sg-rjx"/>
                             <constraint firstItem="Q3T-oN-bk6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="107" id="prj-Md-TWr"/>
                             <constraint firstItem="4dk-Zg-8OT" firstAttribute="leading" secondItem="OUs-tw-4jJ" secondAttribute="leading" id="s8I-rD-AQA"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animationView" destination="Bhx-vN-2Zi" id="4iN-Sl-VUi"/>
                         <outlet property="favoriteBtn" destination="HLZ-8y-f1p" id="A8g-2h-wtu"/>
                         <outlet property="iconImageView" destination="Q3T-oN-bk6" id="kq5-rd-BWR"/>
                         <outlet property="nameLabel" destination="OUs-tw-4jJ" id="rac-Y7-Ww1"/>
