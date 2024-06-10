@@ -24,6 +24,8 @@ class RTPlayerWidgetView: UIView {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    static let shared = RTPlayerWidgetView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
