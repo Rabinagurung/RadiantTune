@@ -6,39 +6,65 @@
 //
 
 import UIKit
+import Lottie
 
 class RTFavoriteViewController: RTBaseViewController {
-
+    
+    
     @IBOutlet weak var favoriteTableView: UITableView!
     @IBOutlet weak var trashUIButton: UIButton!
-   
-
-
+    
+    
+    @IBOutlet weak var playerWidget: RTPlayerWidgetView!
+    
+    
     var emptyLabel: UILabel!
     var activityIndicator: UIActivityIndicatorView!
-    var  favoriteStations: [RTFavoriteModel] = []
+    var  favoriteStations: [Station] = []
+    var previouslySelectedIndexPath: IndexPath?
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the default Red navigation bar
         navigationController?.setNavigationBarHidden(true, animated: animated)
-
-  
+        
+        favoriteTableView.reloadData()
+        if let station = RTDatabaseManager.shared.activeStation {
+            playerWidget.station = station
+            playerWidget.refreshState(station: station)
+            playerWidget.isHidden = false
+        } else {
+            playerWidget.isHidden = true
+        }
+      
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+        setupPlayerWidgetConstraints()
+        //
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshFavorites), name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
         addLoadingIndicator()
         initialSetup()
         addEmptyLabel()
-       
-
+        
+        
     }
     
     
+    @objc func refreshFavorites() {
+        initialSetup()
+       
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private func addLoadingIndicator() {
-     
+        
         activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
@@ -49,16 +75,15 @@ class RTFavoriteViewController: RTBaseViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
-
+    
     private func initialSetup() {
-
+        
         trashUIButton.setTitle("", for: .normal)
-
+        
         activityIndicator.startAnimating()
         DispatchQueue.global(qos: .userInitiated).async {
             let favorites = RTDatabaseManager.shared.fetchFavorites()
-            let delayTime = DispatchTime.now() + 0.5
-            DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            DispatchQueue.main.async {
                 self.favoriteStations = favorites
                 self.favoriteTableView.reloadData()
                 self.updateEmptyStateUI()
@@ -69,9 +94,30 @@ class RTFavoriteViewController: RTBaseViewController {
         trashUIButton.addTarget(self, action: #selector(trashButtonTapped(_:)), for: .touchUpInside)
         favoriteTableView.dataSource = self
         favoriteTableView.delegate = self
-     
+        
     }
     
+    func setupPlayerWidgetConstraints() {
+        
+        playerWidget.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(playerWidget)
+        guard let superview = playerWidget.superview else { return }
+        
+        // Constraints
+        let heightConstraint = playerWidget.heightAnchor.constraint(equalToConstant: 70)
+        let leadingConstraint = playerWidget.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
+        let trailingConstraint = playerWidget.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
+        let bottomConstraint = playerWidget.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)  // Adjusted for safe area
+        
+        // Activate all constraints
+        NSLayoutConstraint.activate([
+            heightConstraint,
+            leadingConstraint,
+            trailingConstraint,
+            bottomConstraint
+        ])
+    }
     
     func addEmptyLabel() {
         
@@ -112,7 +158,7 @@ class RTFavoriteViewController: RTBaseViewController {
     }
     
     private func deleteAllFavorites() {
-
+        
         DispatchQueue.global(qos: .userInitiated).async {
             RTDatabaseManager.shared.deleteAllFavorites()
             DispatchQueue.main.async {
@@ -121,20 +167,21 @@ class RTFavoriteViewController: RTBaseViewController {
                 // Update the table view
                 self.favoriteTableView.reloadData()
                 self.updateEmptyStateUI()
+                self.playerWidget.saveButton.setImage(UIImage(systemName: "star"), for: .normal)
             }
         }
         
-      
-   
+        
+        
     }
     
     func updateEmptyStateUI() {
-       
+        
         trashUIButton.isEnabled = !favoriteStations.isEmpty  // Disable the button if the array is empty
         emptyLabel.isHidden = !favoriteStations.isEmpty      // show the emty label
-    
+        
     }
-
+    
 }
 
 extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
@@ -152,58 +199,176 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
         
         let station = favoriteStations[indexPath.row]
         
-        cell.logoView?.image = UIImage(named: station.imageName)
-        
-        let fullText = "\(station.location) | \(station.genre)"
+        cell.logoView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
+     
+        let fullText = "\(station.country) | \(station.tags)"
         let maxLength = 35
         
         cell.detailLabel?.text = fullText.count > maxLength ? String(fullText.prefix(maxLength)) + "..." : fullText
-        cell.stationName?.text = station.stationName
+        cell.stationName?.text = station.name
         
         cell.delegate = self
         cell.indexPath = indexPath
         
+        // Check if this cell's station is the active station
+        if station.stationuuid == RTDatabaseManager.shared.activeStation?.stationuuid {
+            cell.cellContentView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)  // Highlight color
+            previouslySelectedIndexPath = indexPath
+            RTDatabaseManager.shared.activeStation = station
+            if RTAudioPlayer.shared.playerState == .playing {
+                cell.animationView.play()
+            }
+            else {
+                cell.animationView.stop()
+            }
+          
+        } else {
+           
+            cell.cellContentView.backgroundColor = UIColor.clear
+            cell.animationView.stop()
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        favoriteTableView.deselectRow(at: indexPath, animated: true)
+    
+        if let previousIndexPath = previouslySelectedIndexPath {
+            let activeStation = RTDatabaseManager.shared.activeStation
+            let isNotPlaying = RTAudioPlayer.shared.playerState != .playing
+            let station = favoriteStations[previousIndexPath.row]
+            if previousIndexPath == indexPath, activeStation?.stationuuid == station.stationuuid , isNotPlaying {
 
+                playRadioStation(station: station)
+                return
+            }
+            
+        }
+           
+        if let previousIndexPath = previouslySelectedIndexPath,
+           let previousCell = tableView.cellForRow(at: previousIndexPath) as? RTFavoriteStationCell {
+            UIView.animate(withDuration: 0.15, animations: {
+                previousCell.cellContentView.transform = CGAffineTransform.identity
+                previousCell.cellContentView.backgroundColor = UIColor.clear
+                if RTAudioPlayer.shared.playerState == .playing {
+                    previousCell.animationView.play()
+                } else {
+                    previousCell.animationView.stop()
+                }
+                
+            })
+        }
+        
+        // Handle the newly selected cell
+        guard let cell = tableView.cellForRow(at: indexPath) as? RTFavoriteStationCell else { return }
+        
+        UIView.animate(withDuration: 0.15, animations: {
+            // Scale up the contentView
+            cell.cellContentView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }) { _ in
+            UIView.animate(withDuration: 0.15) {
+                // Scale back down
+                cell.cellContentView.transform = CGAffineTransform.identity
+                cell.cellContentView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
+            }
+        }
+        
+        // Store the current indexPath as previously selected for next time
+        previouslySelectedIndexPath = indexPath
+        
+        
+        let station = favoriteStations[indexPath.row]
+        
+        if RTAudioPlayer.shared.currentURL == station.url {
+            // the same, set the button's state
+            if RTAudioPlayer.shared.playerState == .playing {
+                playerWidget.playButton.isSelected = true
+            } else {
+                playerWidget.playButton.isSelected = false
+            }
+        } else {
+            
+            playRadioStation(station: station)
+        }
+        
+        
+        favoriteTableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
-
-   
+    private func playRadioStation (station: Station) {
+        playerWidget.station = station
+        playerWidget.refreshState(station: station)
+        playerWidget.playButton.isSelected = true
+        playerWidget.isHidden = false
+        RTAudioPlayer.shared.playWith(url: station.url)
+        RTAudioPlayer.shared.delegate = self
+        RTDatabaseManager.shared.activeStation = station
+    }
+    
+    
 }
 
 // MARK: - handle favorite button press
 extension RTFavoriteViewController: RTFavoriteStationCellDelegate {
-
+    
     func didPressFavoriteButton(at indexPath: IndexPath, completion: @escaping () -> Void) {
-       
         DispatchQueue.global(qos: .userInitiated).async {
             let station = self.favoriteStations[indexPath.row]
-            RTDatabaseManager.shared.deleteFavoriteById(id: station.id!)
+            RTDatabaseManager.shared.deleteFavoriteByUUID(stationUUID: station.stationuuid)
             
             DispatchQueue.main.async {
-                
+                if self.previouslySelectedIndexPath == indexPath {
+                    // Reset the previouslySelectedIndexPath
+                    self.previouslySelectedIndexPath = nil
+                }
                 self.favoriteStations.remove(at: indexPath.row)
                 self.favoriteTableView.performBatchUpdates({
                     self.favoriteTableView.deleteRows(at: [indexPath], with: .fade)
                 }, completion: { _ in
                     self.updateEmptyStateUI()
                     self.favoriteTableView.reloadData()
+                    self.playerWidget.checkIfStationIsFavorite()
                     completion()
-                
+                    
                 })
             }
         }
-
     }
     
-
-   
 }
 
 
-
+extension RTFavoriteViewController: RTAudioPlayerDelegate {
+    
+    func playerStateDidChanged(state: STKAudioPlayerState) {
+        
+        if state == .playing {
+            SVProgressHUD.dismiss()
+            playerWidget.playButton.isSelected = true
+            playerWidget.saveButton.isEnabled = true
+            playerWidget.playButton.isEnabled = true
+            
+        } else if state == .buffering {
+            SVProgressHUD.show()
+            playerWidget.saveButton.isEnabled = false
+            playerWidget.playButton.isEnabled = false
+            
+        } else if state == .error {
+            SVProgressHUD.dismiss()
+            playerWidget.playButton.isSelected = false
+            playerWidget.saveButton.isEnabled = false
+            playerWidget.playButton.isEnabled = false
+            SVProgressHUD.showError(withStatus: "load error")
+           
+        
+        } else {
+            playerWidget.playButton.isSelected = false
+            playerWidget.saveButton.isEnabled = true
+            playerWidget.playButton.isEnabled = true
+           
+            
+        }
+    }
+    
+}

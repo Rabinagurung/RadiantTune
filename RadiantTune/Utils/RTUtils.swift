@@ -11,6 +11,7 @@ import UIKit
 struct Constants {
     // MARK: - Reuse identifier for the FavoriteTableViewCell
     static let favoriteTableViewCell = "FavoriteTableViewCell"
+    static let FavoritesUpdated = "FavoritesUpdated"
 }
 
 
@@ -43,3 +44,12 @@ func showHUDWithMessege(messege: String) {
 }
 
 
+import Lottie
+
+// Setup Lottie animation
+func setupLottieAnimation(_ animationView: LottieAnimationView, withName name: String, speed: CGFloat = 1.0, loopMode: LottieLoopMode = .loop, contentMode: UIView.ContentMode = .scaleAspectFit) {
+    animationView.animation = LottieAnimation.named(name)
+    animationView.contentMode = contentMode
+    animationView.loopMode = loopMode
+    animationView.animationSpeed = speed
+}

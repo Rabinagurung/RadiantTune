@@ -9,25 +9,35 @@ import Foundation
 import SQLite3
 
 
+protocol RTDatabaseManagerDelegate: AnyObject {
+    func didChangeActiveStation(to newStation: Station?)
+}
+
 class RTDatabaseManager {
     static let shared = RTDatabaseManager()
+    weak var delegate: RTDatabaseManagerDelegate?
+    
     var db: OpaquePointer?
     
-    init() {
-        openDatabase()
-        createTable()
-        initializeDatabaseIfNeeded()
+    var activeStation: Station? {
+        didSet {
+            if let newStation = activeStation {
+                delegate?.didChangeActiveStation(to: newStation)
+            }
+        }
     }
     
-    func dummyDataFavorites() -> [RTFavoriteModel] {
-        return [
-            RTFavoriteModel(imageName: "chum", stationName: "CHUM 104.5", location: "Canada", genre: "Pop, Rock, Alternative"),
-            RTFavoriteModel(imageName: "q107", stationName: "Q107 Toronto", location: "Canada", genre: "Pop, Rock, Alternative"),
-            RTFavoriteModel(imageName: "boom", stationName: "BOOM 101.9", location: "Canada", genre: "Today's Hits!"),
-            RTFavoriteModel(imageName: "indie", stationName: "INDIE 88", location: "Canada", genre: "Indie...")
-        ]
+    
+    var favoriteStationUUIDs = Set<String>()
+    
+    init() {
+        
+        openDatabase()
+        createTable()
+        
     }
-
+    
+    
     
     func openDatabase() {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -40,13 +50,17 @@ class RTDatabaseManager {
     
     func createTable() {
         let createTableString = """
-        CREATE TABLE IF NOT EXISTS Favorites(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        imageName TEXT,
-        stationName TEXT,
-        location TEXT,
-        genre TEXT);
-        """
+            CREATE TABLE IF NOT EXISTS Favorites(
+            changeuuid TEXT,
+            stationuuid TEXT PRIMARY KEY,
+            name TEXT,
+            url TEXT,
+            favicon TEXT,
+            country TEXT,
+            language TEXT,
+            tags TEXT
+            );
+            """
         
         if sqlite3_exec(db, createTableString, nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -54,30 +68,23 @@ class RTDatabaseManager {
         }
     }
     
-    
-    func insertFavorite(station: RTFavoriteModel) {
-        let insertQuery = "INSERT INTO Favorites (imageName, stationName, location, genre) VALUES (?, ?, ?, ?);"
-        var insertStatement: OpaquePointer? = nil
+    func dropFavoritesTable() {
+        let dropTableString = "DROP TABLE IF EXISTS Favorites;"
+        var dropStatement: OpaquePointer?
         
-        if sqlite3_prepare_v2(db, insertQuery, -1, &insertStatement, nil) == SQLITE_OK {
-            sqlite3_bind_text(insertStatement, 1, (station.imageName as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 2, (station.stationName as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 3, (station.location as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 4, (station.genre as NSString).utf8String, -1, nil)
-            
-            if sqlite3_step(insertStatement) == SQLITE_DONE {
-                print("Successfully inserted favorite.")
+        if sqlite3_prepare_v2(db, dropTableString, -1, &dropStatement, nil) == SQLITE_OK {
+            if sqlite3_step(dropStatement) == SQLITE_DONE {
+                print("Favorites table successfully dropped.")
             } else {
-                let errmsg = String(cString: sqlite3_errmsg(db)!)
-                print("Failure inserting favorite: \(errmsg)")
+                print("Could not drop Favorites table.")
             }
         } else {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("prepare failed: \(errmsg)")
+            print("DROP TABLE statement could not be prepared.")
         }
-        sqlite3_finalize(insertStatement)
+        sqlite3_finalize(dropStatement)
     }
-
+    
+    
     
     func isDatabaseEmpty() -> Bool {
         let countQuery = "SELECT COUNT(*) FROM Favorites;"
@@ -98,29 +105,42 @@ class RTDatabaseManager {
         return isEmpty
     }
     
-    func initializeDatabaseIfNeeded() {
-        if isDatabaseEmpty() {
-            let defaultFavorites = self.dummyDataFavorites()
-            for favorite in defaultFavorites {
-                self.insertFavorite(station: favorite)
-            }
-        }
-    }
-    
-    func fetchFavorites() -> [RTFavoriteModel] {
-        let query = "SELECT id, imageName, stationName, location, genre FROM Favorites;"
+    func fetchFavorites() -> [Station] {
+        let query = "SELECT  changeuuid, stationuuid, name, url, favicon, country, language, tags FROM Favorites;"
         var queryStatement: OpaquePointer? = nil
-        var favorites: [RTFavoriteModel] = []
+        var favorites: [Station] = []
         
         if sqlite3_prepare_v2(db, query, -1, &queryStatement, nil) == SQLITE_OK {
             while sqlite3_step(queryStatement) == SQLITE_ROW {
-                let id = sqlite3_column_int(queryStatement, 0)
-                let imageName = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
-                let stationName = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
-                let location = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
-                let genre = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
                 
-                let station = RTFavoriteModel(id: Int(id), imageName: imageName, stationName: stationName, location: location, genre: genre)
+                
+                guard let changeuuidCStr = sqlite3_column_text(queryStatement, 0),
+                      let stationuuidCStr = sqlite3_column_text(queryStatement, 1),
+                      let urlCStr = sqlite3_column_text(queryStatement, 3),
+                      let languageCStr = sqlite3_column_text(queryStatement, 6) else {
+                    continue
+                }
+                
+                let changeuuid = String(cString: changeuuidCStr)
+                let stationuuid = String(cString: stationuuidCStr)
+                let name = String(cString: sqlite3_column_text(queryStatement, 2)!)
+                let url = String(cString: urlCStr)
+                let favicon = String(cString: sqlite3_column_text(queryStatement, 4)!)
+                let country = String(cString: sqlite3_column_text(queryStatement, 5)!)
+                let language = String(cString: languageCStr)
+                let tags = String(cString: sqlite3_column_text(queryStatement, 7)!)
+                
+                
+                let station = Station(
+                    changeuuid: changeuuid,
+                    stationuuid: stationuuid,
+                    name: name,
+                    url: url,
+                    favicon: favicon,
+                    country: country,
+                    language: language,
+                    tags: tags
+                )
                 favorites.append(station)
             }
         } else {
@@ -131,38 +151,50 @@ class RTDatabaseManager {
         
         return favorites
     }
-
     
-    func addFavorite(station: RTFavoriteModel) {
-        let insertStatementString = "INSERT INTO Favorites (imageName, stationName, location, genre) VALUES (?, ?, ?, ?);"
+    
+    
+    func addFavorite(station: Station) {
+        let insertStatementString = """
+    INSERT INTO Favorites (changeuuid, stationuuid, name, url, favicon, country, language, tags)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+    """
         var insertStatement: OpaquePointer?
         
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
-            sqlite3_bind_text(insertStatement, 1, (station.imageName as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 2, (station.stationName as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 3, (station.location as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 4, (station.genre as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 1, (station.changeuuid as NSString?)?.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, (station.stationuuid as NSString?)?.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, (station.name as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 4, (station.url as NSString?)?.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 5, (station.favicon as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 6, (station.country as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 7, (station.language as NSString?)?.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 8, (station.tags as NSString).utf8String, -1, nil)
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
-                print("Successfully inserted row.")
+                favoriteStationUUIDs.insert(station.stationuuid)
+                print("Successfully inserted favorite.")
             } else {
-                print("Could not insert row.")
+                print("Could not insert row. Error: \(String(describing: sqlite3_errmsg(db)))")
             }
         } else {
-            print("INSERT statement could not be prepared.")
+            print("INSERT statement could not be prepared. Error: \(String(describing: sqlite3_errmsg(db)))")
         }
         sqlite3_finalize(insertStatement)
     }
     
-    func deleteFavoriteById(id: Int) {
-        let deleteStatementString = "DELETE FROM Favorites WHERE id = ?;"
+    
+    func deleteFavoriteByUUID(stationUUID: String) {
+        let deleteStatementString = "DELETE FROM Favorites WHERE stationuuid = ?;"
         var deleteStatement: OpaquePointer?
         
         if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
-            sqlite3_bind_int(deleteStatement, 1, Int32(id))  // Bind the integer id to the statement
+            sqlite3_bind_text(deleteStatement, 1, (stationUUID as NSString).utf8String, -1, nil)  // Bind the string stationUUID to the statement
             
             if sqlite3_step(deleteStatement) == SQLITE_DONE {
-                print("Successfully deleted favorite with id \(id).")
+                removeFromFavorites(uuid: stationUUID)
+                print("Successfully deleted favorite with stationUUID \(stationUUID).")
+                
             } else {
                 print("Could not delete favorite.")
             }
@@ -172,11 +204,13 @@ class RTDatabaseManager {
         sqlite3_finalize(deleteStatement)
     }
     
+    
     func deleteAllFavorites() {
         let deleteStatementString = "DELETE FROM Favorites;"
         var deleteStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
             if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                emptyFavoriteUUIDs()
                 print("Successfully deleted all favorites.")
             } else {
                 print("Could not delete favorites.")
@@ -185,6 +219,40 @@ class RTDatabaseManager {
             print("DELETE statement could not be prepared.")
         }
         sqlite3_finalize(deleteStatement)
+    }
+    
+    func populateFavoriteUUIDs() {
+        let query = "SELECT stationuuid FROM Favorites;"
+        var queryStatement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &queryStatement, nil) == SQLITE_OK {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                
+                if let stationuuidCStr = sqlite3_column_text(queryStatement, 0) {
+                    let uuid = String(cString: stationuuidCStr)
+                    favoriteStationUUIDs.insert(uuid)
+                }
+                
+            }
+            sqlite3_finalize(queryStatement)
+        } else {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            print("Error preparing fetch: \(errmsg)")
+        }
+    }
+    
+    func isFavoriteStation(uuid: String) -> Bool {
+        return favoriteStationUUIDs.contains(uuid)
+    }
+    
+    func removeFromFavorites(uuid: String)  {
+        if favoriteStationUUIDs.contains(uuid) {
+            favoriteStationUUIDs.remove(uuid)
+        }
+    }
+    
+    func emptyFavoriteUUIDs() {
+        favoriteStationUUIDs.removeAll()
     }
 }
 

@@ -13,6 +13,9 @@ target 'RadiantTune' do
   
   #hud
   pod 'SVProgressHUD'
+  
+  #lottie
+  pod 'lottie-ios'
 
   #Network Libraries
   pod 'Alamofire'

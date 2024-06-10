@@ -16,6 +16,8 @@ class RTSleepTimerViewController: UIViewController, UIPickerViewDelegate, UIPick
     var hour: Int = 0
     var minute: Int = 0
     
+    weak var delegate: RTSleepTimerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +38,7 @@ class RTSleepTimerViewController: UIViewController, UIPickerViewDelegate, UIPick
         UserDefaults.standard.set(minute, forKey: "Minute")
         UserDefaults.standard.synchronize()
         
+        delegate?.didUpdateTimer()
         dismiss(animated: true)
     }
     
@@ -83,4 +86,9 @@ class RTSleepTimerViewController: UIViewController, UIPickerViewDelegate, UIPick
         
     }
 
+}
+
+// Define the delegate protocol
+protocol RTSleepTimerDelegate: AnyObject {
+    func didUpdateTimer()
 }

@@ -6,6 +6,17 @@
 /DerivedData/
 /build/
 
+
+# Ignore Xcode user data
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
 # Pods
 /Pods/
 /Podfile.lock
+/xcuserdata/
+*.xcuserdatad
+*.xcuserstate
+!/Pods/Podfile
+!Podfile
+RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/aaribnagurung.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/duyuele.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/elvis.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/joycelinenathaniel.xcuserdatad
