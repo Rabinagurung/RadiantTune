@@ -24,6 +24,9 @@ class RTHomeViewController: RTBaseViewController {
         if let station = RTDatabaseManager.shared.activeStation {
             playerWidget.station = station
             playerWidget.refreshState(station: station)
+            playerWidget.isHidden = false
+        } else {
+            playerWidget.isHidden = true
         }
         
     }
@@ -53,8 +56,9 @@ class RTHomeViewController: RTBaseViewController {
         layout.itemSize = CGSize(width: (kScreenWidth - 20)/3, height: (kScreenWidth - 15)/3)
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = .white
-        collectionView.contentInset = UIEdgeInsets(top: 60, left: 5, bottom: 0, right: 5)
-        
+        collectionView.contentInset = UIEdgeInsets(top: 60, left: 5, bottom: 150, right: 5)
+       
+        setupPlayerWidgetConstraints(in: self, playerWidget: playerWidget)
         // widget View
         playerWidget.delegate = self
         
@@ -188,9 +192,14 @@ extension RTHomeViewController {
 //MARK:- Search VC Delegate
 extension RTHomeViewController: SearchViewControllerDelegate {
     func rearchControllerDidClosed(station: Station?) {
+        guard let station = station else {
+            print("No station selected")
+            return
+        }
         playerWidget.station = station
         playerWidget.refreshState(station: station)
         RTDatabaseManager.shared.activeStation = station
+        
     }
 }
 
