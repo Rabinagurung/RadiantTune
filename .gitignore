@@ -13,3 +13,4 @@
 *.xcuserdatad
 *.xcuserstate
 !/Pods/Podfile
+!Podfile
