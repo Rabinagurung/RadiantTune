@@ -86,6 +86,8 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
             if(timeLeft == 0) {
                 timer.invalidate()
                 RTAudioPlayer.shared.stop()
+                
+                //Update UI after timer is up
                 RTPlayerWidgetView.shared.refreshState(station: nil)
                 
 
