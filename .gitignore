@@ -10,3 +10,5 @@
 /Pods/
 /Podfile.lock
 /xcuserdata/
+*.xcuserdatad
+*.xcuserstate
