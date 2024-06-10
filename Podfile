@@ -7,12 +7,20 @@ target 'RadiantTune' do
 	
   # audio player
   pod 'StreamingKit'
+  
   # image
   pod 'Kingfisher'
   
   #hud
   pod 'SVProgressHUD'
+  
+  #lottie
+  pod 'lottie-ios'
 
+  #Network Libraries
+  pod 'Alamofire'
+  pod 'Moya'
+  
   # Pods for RadiantTune
   # Setting the same iOS deployment target for all pods as the project
   # to prevent errors, such as the one encountered previously.

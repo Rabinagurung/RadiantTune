@@ -7,25 +7,42 @@
 
 import UIKit
 import Kingfisher
+import Moya
+
 
 class RTHomeViewController: RTBaseViewController {
-
+    
     let kHomeCellID = "RTHomeCollectionViewCell"
     
+    @IBOutlet weak var stationSearch: UISearchBar!
     @IBOutlet weak var playerWidget: RTPlayerWidgetView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var stations = [Station]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let station = RTDatabaseManager.shared.activeStation {
+            playerWidget.station = station
+            playerWidget.refreshState(station: station)
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         refreshData()
         setupUI()
+        
+        stationSearch.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         playerWidget.refreshState(station: nil)
     }
+    
     
     
     fileprivate func setupUI() {
@@ -40,13 +57,10 @@ class RTHomeViewController: RTBaseViewController {
         layout.itemSize = CGSize(width: (kScreenWidth - 20)/3, height: (kScreenWidth - 15)/3)
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = .white
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 5)
+        collectionView.contentInset = UIEdgeInsets(top: 60, left: 5, bottom: 0, right: 5)
         
         // widget View
         playerWidget.delegate = self
-        
-        
-        
         
         
     }
@@ -68,7 +82,7 @@ class RTHomeViewController: RTBaseViewController {
                 } catch {
                     
                 }
-
+                
             }
             
             if let error = error {
@@ -78,8 +92,49 @@ class RTHomeViewController: RTBaseViewController {
         
         task.resume()
     }
-
+    
+    
+    
 }
+
+extension RTHomeViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //Search suggestions here maybe
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let storyboard = UIStoryboard(name: "Search", bundle: nil)
+        
+        guard let searchViewController = storyboard.instantiateViewController(withIdentifier: "search") as? SearchViewController else {
+            //print("search storyboard not found")
+            return
+        }
+        
+        searchViewController.searchString = searchBar.text
+        searchViewController.modalPresentationStyle = .fullScreen
+        self.present(searchViewController, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(searchViewController, animated: true)
+        
+      searchBar.text = ""
+        searchBar.showsCancelButton = false
+      searchBar.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        searchBar.endEditing(true)
+    }
+}
+
 
 //MARK:- CollectionViewDelegate
 extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -98,8 +153,9 @@ extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let station = stations[indexPath.row]
+        
         pushToPlayingController(station: station)
-
+        
     }
     
 }
@@ -109,11 +165,14 @@ extension RTHomeViewController: RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?) {
         playerWidget.station = station
         playerWidget.refreshState(station: station)
+        RTDatabaseManager.shared.activeStation = station
+        
     }
 }
 
 //MARK:- RTPlayerWidgetViewDelegate
 extension RTHomeViewController: RTPlayerWidgetViewDelegate {
+    
     func clickIconImageView(station: Station?) {
         guard let station = station else { return }
         pushToPlayingController(station: station)
@@ -130,3 +189,4 @@ extension RTHomeViewController {
         self.navigationController?.pushViewController(playingVC, animated: true)
     }
 }
+

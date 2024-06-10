@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 protocol RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?)
@@ -13,6 +14,7 @@ protocol RTPlayingViewControllerDelegate {
 
 
 class RTPlayingViewController: RTBaseViewController {
+    @IBOutlet weak var animationView: LottieAnimationView!
     
     var delegate: RTPlayingViewControllerDelegate?
     
@@ -24,12 +26,15 @@ class RTPlayingViewController: RTBaseViewController {
     
     var station: Station?
     var playerState: STKAudioPlayerState = STKAudioPlayerState.stopped
-
+    private var isFavorite: Bool = false
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupAnimationView()
         setupUI()
-        configData()
+        checkIfStationIsFavorite(uuid: station?.stationuuid)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,11 +48,14 @@ class RTPlayingViewController: RTBaseViewController {
         }
     }
     
+    private func setupAnimationView() {
+        setupLottieAnimation(animationView, withName: "wave", speed: 1.5)
+    }
+    
+    
     private func setupUI() {
         playBtn.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
         playBtn.setImage(UIImage(systemName: "pause.fill"), for: .selected)
-        favoriteBtn.setImage(UIImage(systemName: "star"), for: .normal)
-        favoriteBtn.setImage(UIImage(systemName: "star.fill"), for: .selected)
         
         
         playBtn.setTitle("", for: .normal)
@@ -57,9 +65,33 @@ class RTPlayingViewController: RTBaseViewController {
         
     }
     
+    private func checkIfStationIsFavorite(uuid: String?) {
+        
+        guard let uuid = station?.stationuuid else { return }
+        
+        // Move database check to a background thread
+        DispatchQueue.global(qos: .userInitiated).async {
+            let isFavorite = RTDatabaseManager.shared.isFavoriteStation(uuid: uuid)
+            
+            DispatchQueue.main.async {
+                self.isFavorite = isFavorite
+                self.configData()
+            }
+        }
+    }
+    
+    
     private func configData() {
+        
         // icon View
         if let station = station {
+            
+            
+            if(isFavorite) {
+                favoriteBtn.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            } else {
+                favoriteBtn.setImage(UIImage(systemName: "star"), for: .normal)
+            }
             iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
             
             // title Label
@@ -73,8 +105,10 @@ class RTPlayingViewController: RTBaseViewController {
                 // the same, set the button's state
                 if RTAudioPlayer.shared.playerState == .playing {
                     playBtn.isSelected = true
+                    animationView.play()
                 } else {
                     playBtn.isSelected = false
+                    animationView.stop()
                 }
             }
         }
@@ -97,8 +131,28 @@ class RTPlayingViewController: RTBaseViewController {
     }
     @IBAction func favoriteAction(_ sender: UIButton) {
         if let station = station {
-            RTDatabaseManager.shared.addFavorite(station: convertStationToFavorite(station: station))
-            sender.isSelected = true
+            
+            RTAnimationUtility.favroiteButton(view: sender)
+            DispatchQueue.global(qos: .userInitiated).async {
+                let newFavoriteStatus = !self.isFavorite
+                
+                if newFavoriteStatus {
+                    RTDatabaseManager.shared.addFavorite(station: station)
+                } else {
+                    RTDatabaseManager.shared.deleteFavoriteByUUID(stationUUID: station.stationuuid)
+                }
+                
+                DispatchQueue.main.async {
+                    // Optimistically update the UI
+                    
+                    self.isFavorite = newFavoriteStatus
+                    let uiImage = newFavoriteStatus ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+                    self.favoriteBtn.setImage(uiImage, for: .normal)
+                    // Notify to favorite screen that the favorite stations have been updated
+                    NotificationCenter.default.post(name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
+                    
+                }
+            }
         }
     }
 }
@@ -110,14 +164,18 @@ extension RTPlayingViewController: RTAudioPlayerDelegate {
         if state == .playing {
             SVProgressHUD.dismiss()
             playBtn.isSelected = true
+            animationView.play()
         } else if state == .buffering {
             SVProgressHUD.show()
+            animationView.stop()
         } else if state == .error {
             SVProgressHUD.dismiss()
             SVProgressHUD.showError(withStatus: "load error")
             playBtn.isSelected = false
+            animationView.stop()
         } else {
             playBtn.isSelected = false
+            animationView.stop()
         }
     }
     

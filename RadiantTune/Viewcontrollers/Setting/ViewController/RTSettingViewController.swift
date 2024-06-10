@@ -9,18 +9,41 @@ import UIKit
 
 class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
     
+    @IBOutlet weak var playerWidgetView: RTPlayerWidgetView!
     @IBOutlet weak var sleepTimerSwitch: UISwitch!
     @IBOutlet weak var setTimerBtn: UIButton!
     var currentTimer: Timer?
+
     var hour: Int?
     var minute: Int?
     private let segueSleepTimer = "goToSleepTimerScreen"
     var isTimerSet: Bool = true
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let station = RTDatabaseManager.shared.activeStation {
+            playerWidgetView.station = station
+            playerWidgetView.refreshState(station: station)
+            playerWidgetView.isHidden = false
+        } else {
+            playerWidgetView.isHidden = true
+        }
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSwitchValue()
+        setupPlayerWidgetConstraints()
+    
+        let switchValue = UserDefaults.standard.bool(forKey: "Switch")
+        sleepTimerSwitch.isOn = switchValue
         
+        if switchValue == true {
+            setRadioTimer()
+        }
+        loadSwitchValue()
     }
     
     @IBAction func onEditTapped(_ sender: UIButton) {
@@ -67,6 +90,29 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
 //                RTPlayerWidgetView().playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .selected)
             }
         }
+
+    }
+    private func setupPlayerWidgetConstraints() {
+        
+        playerWidgetView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(playerWidgetView)
+        guard let superview = playerWidgetView.superview else { return }
+        
+        // Constraints
+        let heightConstraint = playerWidgetView.heightAnchor.constraint(equalToConstant: 70)
+        let leadingConstraint = playerWidgetView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
+        let trailingConstraint = playerWidgetView.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
+        let bottomConstraint = playerWidgetView.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)  // Adjusted for safe area
+        
+        // Activate all constraints
+        NSLayoutConstraint.activate([
+            heightConstraint,
+            leadingConstraint,
+            trailingConstraint,
+            bottomConstraint
+        ])
+
     }
     
     func invalidateCurrentTimer() {
