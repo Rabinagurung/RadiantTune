@@ -6,17 +6,20 @@
 //
 
 import UIKit
-
+import Lottie
 
 protocol RTPlayerWidgetViewDelegate {
     func clickIconImageView(station: Station?)
 }
 
+
 class RTPlayerWidgetView: UIView {
     
+    @IBOutlet weak var animationView: LottieAnimationView!
     var station: Station?
     
     var delegate: RTPlayerWidgetViewDelegate?
+    
     @IBOutlet var contentView:UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var tagsLabel: UILabel!
@@ -24,16 +27,29 @@ class RTPlayerWidgetView: UIView {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    static let shared = RTPlayerWidgetView()
+    var isFavorite: Bool = false
+    
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        setupAnimationView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
+        setupAnimationView()
+        
     }
     
+    private func setupAnimationView() {
+        setupLottieAnimation(animationView, withName: "wave")
+    }
+    
+
     func commonInit() {
         // 加载XIB文件
         Bundle.main.loadNibNamed("RTPlayerWidgetView", owner: self, options: nil)
@@ -55,17 +71,33 @@ class RTPlayerWidgetView: UIView {
         iconImageView.addGestureRecognizer(tapGesture)
     }
     
+    
+    func checkIfStationIsFavorite() {
+        guard let uuid = station?.stationuuid else { return }
+        isFavorite = RTDatabaseManager.shared.isFavoriteStation(uuid: uuid)
+        let imageName = isFavorite ? "star.fill" : "star"
+        saveButton.setImage(UIImage(systemName: imageName), for: .normal)
+        
+    }
+    
+    
+    
     // refresh widget state
     func refreshState(station: Station?) {
+        
         let playerState = RTAudioPlayer.shared.playerState
         if station != nil {
             self.station = station
+            
         }
+        checkIfStationIsFavorite()
         
         if (playerState == .playing) {
             playButton.isSelected = true
+            animationView.play()
         } else {
             playButton.isSelected = false
+            animationView.stop()
         }
         if let station = station {
             // icon Image View
@@ -79,6 +111,7 @@ class RTPlayerWidgetView: UIView {
         }
     }
     
+    
     @objc
     func iconImageViewAction() {
         delegate?.clickIconImageView(station: station)
@@ -86,23 +119,52 @@ class RTPlayerWidgetView: UIView {
     
     
     @IBAction func playStopAction(_ sender: UIButton) {
+       
         if let station = station {
             if(sender.isSelected) {
                 // to stop
                 RTAudioPlayer.shared.stop()
+                NotificationCenter.default.post(name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
+                animationView.stop()
             } else {
                 // to play
                 RTAudioPlayer.shared.playWith(url: station.url)
+                animationView.play()
             }
             sender.isSelected = !sender.isSelected
+            
         }
     }
+    
     
     @IBAction func saveButtonAction(_ sender: UIButton) {
         
         if let station = station {
-            RTDatabaseManager.shared.addFavorite(station: convertStationToFavorite(station: station))
-            sender.isSelected = true
+            
+            if(!self.isFavorite) {
+                RTAnimationUtility.favroiteButton(view: sender)
+            }
+            
+            let newFavoriteStatus = !self.isFavorite
+            sender.isEnabled = false;
+            DispatchQueue.global(qos: .userInitiated).async {
+                
+                if newFavoriteStatus {
+                    RTDatabaseManager.shared.addFavorite(station: station)
+                } else {
+                    RTDatabaseManager.shared.deleteFavoriteByUUID(stationUUID: station.stationuuid)
+                }
+                
+                DispatchQueue.main.async {
+                    
+                    self.isFavorite = newFavoriteStatus
+                    let uiImage = newFavoriteStatus ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+                    self.saveButton.setImage(uiImage, for: .normal)
+                    NotificationCenter.default.post(name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
+                    sender.isEnabled = true
+                    
+                }
+            }
         }
     }
     
