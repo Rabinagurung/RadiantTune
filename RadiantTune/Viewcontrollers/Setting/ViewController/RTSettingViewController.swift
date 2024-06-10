@@ -86,7 +86,8 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
             if(timeLeft == 0) {
                 timer.invalidate()
                 RTAudioPlayer.shared.stop()
-                RTPlayerWidgetView().playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .selected)
+                RTPlayerWidgetView.shared.refreshState(station: nil)
+//                RTPlayerWidgetView().playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .selected)
             }
         }
 

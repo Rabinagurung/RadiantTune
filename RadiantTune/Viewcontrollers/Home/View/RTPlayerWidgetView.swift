@@ -27,6 +27,7 @@ class RTPlayerWidgetView: UIView {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    static let shared = RTPlayerWidgetView()
     var isFavorite: Bool = false
     
     
