@@ -18,6 +18,16 @@ class RTHomeViewController: RTBaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var stations = [Station]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let station = RTDatabaseManager.shared.activeStation {
+            playerWidget.station = station
+            playerWidget.refreshState(station: station)
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshData()
@@ -152,6 +162,7 @@ extension RTHomeViewController: RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?) {
         playerWidget.station = station
         playerWidget.refreshState(station: station)
+        RTDatabaseManager.shared.activeStation = station
     }
 }
 
@@ -179,6 +190,7 @@ extension RTHomeViewController: SearchViewControllerDelegate {
     func rearchControllerDidClosed(station: Station?) {
         playerWidget.station = station
         playerWidget.refreshState(station: station)
+        RTDatabaseManager.shared.activeStation = station
     }
 }
 

@@ -120,6 +120,7 @@ class RTPlayingViewController: RTBaseViewController {
             if(sender.isSelected) {
                 // to stop
                 RTAudioPlayer.shared.stop()
+                animationView.stop()
             } else {
                 // to play
                 RTAudioPlayer.shared.playWith(url: station.url)
