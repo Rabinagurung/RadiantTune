@@ -9,7 +9,6 @@ import UIKit
 
 class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
     
-    @IBOutlet weak var  autoPlaySwitch: UISwitch!
     @IBOutlet weak var playerWidgetView: RTPlayerWidgetView!
     @IBOutlet weak var sleepTimerSwitch: UISwitch!
     @IBOutlet weak var setTimerBtn: UIButton!
@@ -22,24 +21,7 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configStation()
-        updateAutoPlaySwitch()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupPlayerWidgetConstraints(in: self, playerWidget: playerWidgetView)
-    
-        let switchValue = UserDefaults.standard.bool(forKey: "Switch")
-        sleepTimerSwitch.isOn = switchValue
         
-        if switchValue == true {
-            setRadioTimer()
-        }
-        loadSwitchValue()
-    }
-    
-    private func configStation () {
         if let station = RTDatabaseManager.shared.activeStation {
             playerWidgetView.station = station
             playerWidgetView.refreshState(station: station)
@@ -48,10 +30,20 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
             playerWidgetView.isHidden = true
         }
         
+        
     }
     
-    private func updateAutoPlaySwitch() {
-        autoPlaySwitch.isOn = RTLastPlayedStationManager.isAutoPlayEnabled()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupPlayerWidgetConstraints()
+    
+        let switchValue = UserDefaults.standard.bool(forKey: "Switch")
+        sleepTimerSwitch.isOn = switchValue
+        
+        if switchValue == true {
+            setRadioTimer()
+        }
+        loadSwitchValue()
     }
     
     @IBAction func onEditTapped(_ sender: UIButton) {
@@ -71,11 +63,6 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
             invalidateCurrentTimer()
         }
     }
-    
-    @IBAction func onAutoPlaySwitchChanged(_ sender: UISwitch) {
-        RTLastPlayedStationManager.setAutoPlayEnabled(sender.isOn)
-    }
-    
     
     func setRadioTimer() {
         
@@ -106,6 +93,28 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
 
             }
         }
+
+    }
+    private func setupPlayerWidgetConstraints() {
+        
+        playerWidgetView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(playerWidgetView)
+        guard let superview = playerWidgetView.superview else { return }
+        
+        // Constraints
+        let heightConstraint = playerWidgetView.heightAnchor.constraint(equalToConstant: 70)
+        let leadingConstraint = playerWidgetView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
+        let trailingConstraint = playerWidgetView.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
+        let bottomConstraint = playerWidgetView.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)  // Adjusted for safe area
+        
+        // Activate all constraints
+        NSLayoutConstraint.activate([
+            heightConstraint,
+            leadingConstraint,
+            trailingConstraint,
+            bottomConstraint
+        ])
 
     }
     

@@ -17,7 +17,6 @@
 		9904EB242C14E3B20069723E /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9904EB232C14E3B20069723E /* Lottie.framework */; };
 		991550A52C13EB4E00DC804A /* RTAnimationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */; };
 		991550A92C144CC200DC804A /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 991550A82C144CC200DC804A /* wave.json */; };
-		99C4DAC72C180B4200499DFE /* RTLastPlayedStationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C4DAC62C180B4200499DFE /* RTLastPlayedStationManager.swift */; };
 		AF7952282C1239F90093FE4A /* RTSleepTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */; };
 		BC1F9DA52C06257B009A074F /* RTAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */; };
 		BC1F9DA72C06B456009A074F /* RTPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA62C06B456009A074F /* RTPlayingViewController.swift */; };
@@ -59,7 +58,6 @@
 		9904EB232C14E3B20069723E /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAnimationUtility.swift; sourceTree = "<group>"; };
 		991550A82C144CC200DC804A /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
-		99C4DAC62C180B4200499DFE /* RTLastPlayedStationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTLastPlayedStationManager.swift; sourceTree = "<group>"; };
 		9A002F0EF9CE721E76397281 /* Pods-RadiantTune.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.debug.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.debug.xcconfig"; sourceTree = "<group>"; };
 		AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSleepTimerViewController.swift; sourceTree = "<group>"; };
 		BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAudioPlayer.swift; sourceTree = "<group>"; };
@@ -158,15 +156,6 @@
 				F44D776E46656430F569F95F /* Pods-RadiantTune.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		99C4DAC52C17855300499DFE /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				9904EB232C14E3B20069723E /* Lottie.framework */,
-				C937A0A7AE91CF82920CB983 /* Pods_RadiantTune.framework */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		BC7FE0E72BF26C35005C0B4C /* Home */ = {
@@ -284,7 +273,6 @@
 				BCB5E1372BF039D200C7ADB7 /* Products */,
 				8BF55B6E5A46271A5F4E07FE /* Pods */,
 				C176974EFA5D45500D0A2BB9 /* Frameworks */,
-				99C4DAC52C17855300499DFE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -332,7 +320,6 @@
 				BC1F9DAA2C06D026009A074F /* RadiantTune-Bridging-Header.h */,
 				991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */,
 				140534282C12571E0082D12D /* RTRadioAPI.swift */,
-				99C4DAC62C180B4200499DFE /* RTLastPlayedStationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -513,7 +500,6 @@
 				BC1F9DA92C06B4BF009A074F /* RTStationModel.swift in Sources */,
 				AF7952282C1239F90093FE4A /* RTSleepTimerViewController.swift in Sources */,
 				FA4042632C0EBA5500B43F72 /* RTFavoriteStationCell.swift in Sources */,
-				99C4DAC72C180B4200499DFE /* RTLastPlayedStationManager.swift in Sources */,
 				BC67D9242C0A179800A4D092 /* RTPlayerWidgetView.swift in Sources */,
 				991550A52C13EB4E00DC804A /* RTAnimationUtility.swift in Sources */,
 			);
