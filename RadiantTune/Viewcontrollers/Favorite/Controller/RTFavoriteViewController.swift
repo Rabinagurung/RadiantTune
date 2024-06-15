@@ -43,7 +43,7 @@ class RTFavoriteViewController: RTBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupPlayerWidgetConstraints()
+        setupPlayerWidgetConstraints(in: self, playerWidget: playerWidget)
         //
         NotificationCenter.default.addObserver(self, selector: #selector(refreshFavorites), name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
         addLoadingIndicator()
@@ -97,27 +97,6 @@ class RTFavoriteViewController: RTBaseViewController {
         
     }
     
-    func setupPlayerWidgetConstraints() {
-        
-        playerWidget.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(playerWidget)
-        guard let superview = playerWidget.superview else { return }
-        
-        // Constraints
-        let heightConstraint = playerWidget.heightAnchor.constraint(equalToConstant: 70)
-        let leadingConstraint = playerWidget.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        let trailingConstraint = playerWidget.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
-        let bottomConstraint = playerWidget.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)  // Adjusted for safe area
-        
-        // Activate all constraints
-        NSLayoutConstraint.activate([
-            heightConstraint,
-            leadingConstraint,
-            trailingConstraint,
-            bottomConstraint
-        ])
-    }
     
     func addEmptyLabel() {
         
