@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import SwiftUI
 
 class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
     
     @IBOutlet weak var playerWidgetView: RTPlayerWidgetView!
     @IBOutlet weak var sleepTimerSwitch: UISwitch!
     @IBOutlet weak var setTimerBtn: UIButton!
+    private var mySwiftUIView: RTAddStationView?
     var currentTimer: Timer?
 
     var hour: Int?
@@ -44,6 +46,7 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
             setRadioTimer()
         }
         loadSwitchValue()
+        
     }
     
     @IBAction func onEditTapped(_ sender: UIButton) {
@@ -144,4 +147,13 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
     func didUpdateTimer() {
         setRadioTimer()
     }
+    @IBAction func pushToAddStationAction(_ sender: UIButton) {
+        let swiftUIViewController = RTAddStationController(rootView: RTAddStationView())
+        swiftUIViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(swiftUIViewController, animated: true)
+    }
+    
+    
 }
+
+
