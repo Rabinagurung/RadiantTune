@@ -12,7 +12,14 @@ struct Constants {
     // MARK: - Reuse identifier for the FavoriteTableViewCell
     static let favoriteTableViewCell = "FavoriteTableViewCell"
     static let FavoritesUpdated = "FavoritesUpdated"
+    
+    static let StationPlaying = "StationPlaying"
     static let StationStopped = "StationStopped"
+
+    
+    // MARK: - Last played station UserDefaults key
+    static let LastPlayedStationKey = "LastPlayedStation"
+    static let AutoPlayEnabled = "AutoPlayEnabled"
 }
 
 
@@ -53,4 +60,24 @@ func setupLottieAnimation(_ animationView: LottieAnimationView, withName name: S
     animationView.contentMode = contentMode
     animationView.loopMode = loopMode
     animationView.animationSpeed = speed
+}
+
+func setupPlayerWidgetConstraints(in viewController: UIViewController, playerWidget: UIView) {
+    playerWidget.translatesAutoresizingMaskIntoConstraints = false
+    viewController.view.addSubview(playerWidget)
+    guard let superview = playerWidget.superview else { return }
+    
+    // Constraints
+    let heightConstraint = playerWidget.heightAnchor.constraint(equalToConstant: 70)
+    let leadingConstraint = playerWidget.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
+    let trailingConstraint = playerWidget.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
+    let bottomConstraint = playerWidget.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)  // Adjusted for safe area
+    
+    // Activate all constraints
+    NSLayoutConstraint.activate([
+        heightConstraint,
+        leadingConstraint,
+        trailingConstraint,
+        bottomConstraint
+    ])
 }

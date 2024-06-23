@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -39,11 +39,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Do5-Ja-RpE" customClass="RTPlayerWidgetView" customModule="RadiantTune" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Do5-Ja-RpE" customClass="RTPlayerWidgetView" customModule="RadiantTune" customModuleProvider="target">
                                 <rect key="frame" x="16" y="748" width="361" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="NBb-cQ-zlt"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohk-3V-jfo">
                                 <rect key="frame" x="0.0" y="59" width="393" height="50"/>
@@ -68,10 +67,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Do5-Ja-RpE" secondAttribute="trailing" constant="16" id="65R-qN-zcg"/>
                             <constraint firstItem="Ohk-3V-jfo" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AXM-4l-g2v"/>
-                            <constraint firstItem="Do5-Ja-RpE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="O4V-ph-cUG"/>
-                            <constraint firstItem="Do5-Ja-RpE" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="ZoD-ij-J9R"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ohk-3V-jfo" secondAttribute="trailing" id="kwg-tf-9F4"/>
                             <constraint firstItem="Ohk-3V-jfo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="n57-x9-mbe"/>
                         </constraints>
