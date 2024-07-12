@@ -43,9 +43,9 @@ class RTPlayingViewController: RTBaseViewController {
         SVProgressHUD.dismiss()
         
         // if the player is playing it should call the delegate to refresh the widget
-        if playBtn.isSelected {
+        //if playBtn.isSelected {
             delegate?.controllerDidClosed(station: station)
-        }
+        //}
     }
     
     private func setupAnimationView() {
