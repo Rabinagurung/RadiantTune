@@ -22,7 +22,7 @@ class RTTabbarController: UITabBarController {
         
         // set item config
         addChild(homeVC, title: "Home", normalImage: "live-n", selectedImage: "live-p")
-        addChild(favoriteVC, title: "Favorite", normalImage: "found-n", selectedImage: "found-p")
+        addChild(favoriteVC, title: "Favourites", normalImage: "found-n", selectedImage: "found-p")
         addChild(settingVC, title: "Setting", normalImage: "mine-n", selectedImage: "mine-p")
         viewControllers = vcArray
         
