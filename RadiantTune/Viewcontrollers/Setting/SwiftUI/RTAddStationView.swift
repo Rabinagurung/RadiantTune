@@ -7,39 +7,77 @@
 
 import SwiftUI
 
+var logoArray = [
+    "music.quarternote.3",
+    "music.mic",
+    "command",
+    "house.lodge.fill",
+    "pianokeys",
+    "graduationcap",
+    "sun.dust"
+]
+
 struct RTAddStationView: View {
     @State private var name = ""
     @State private var url = ""
+    @State private var logoColor: Color = .black
+    @State private var currentIndex = 0
+    
     
     var isButtonEnable: Bool {
-        return !name.isEmpty && !url.isEmpty
+        return !name.isEmpty && isValidURLString(url: url)
+    }
+    
+    var isValidStation: Bool {
+        return !RTDatabaseManager.shared.isFavoriteStation(uuid: base64String(originalString: url)!)
     }
     
     var body: some View {
         VStack{
+            let logoName = logoArray[currentIndex]
+            Image(systemName: logoName)
+                .frame(width: 100, height: 100)
+                .foregroundColor(.white)
+                .background(logoColor)
+            HStack {
+                Button {
+                    currentIndex = (currentIndex + 1) % logoArray.count
+                } label: {
+                    Text("logo")
+                }
+            }
             TextField("Please enter station name", text: $name)
-                 .padding(20)                .font(.system(size: 24, weight: .bold, design: .rounded))  // Set the font here
+                 .padding(20)                
+                 .font(.system(size: 24, weight: .bold, design: .rounded))
                  .foregroundColor(.black)
                  .textFieldStyle(RoundedBorderTextFieldStyle())
-                 .onChange(of: name) { newValue in
-                     print(name)
-                 }
+                 .submitLabel(.done)
              TextField("Please enter station url", text: $url)
-             .padding(20)                .font(.system(size: 24, weight: .bold, design: .rounded))  // Set the font here
+             .padding(20)
+             .font(.system(size: 24, weight: .bold, design: .rounded))
              .foregroundColor(.black)
              .textFieldStyle(RoundedBorderTextFieldStyle())
+             .submitLabel(.done)
             Button(action: {
-                let station = Station(changeuuid: "123", stationuuid: "343", name: name, url: url, favicon: "", country: "manual added", language: "manual added", tags: "manual added")
-                RTDatabaseManager.shared.addFavorite(station: station)
-                print("add successfully")
+                if isValidStation {
+                    let station = Station(changeuuid: "manual", stationuuid: base64String(originalString: url)!, name: name, url: url, favicon: logoName, country: "manual added", language: "manual added", tags: "manual added")
+                    RTDatabaseManager.shared.addFavorite(station: station)
+                    showHUDWithSuccess(message: "Add successfully")
+                    // refresh favorite page
+                    NotificationCenter.default.post(name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
+                } else {
+                    showHUDWithError(message: "Already exist")
+                }
+
             }, label: {
                 Text("Add")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(isButtonEnable ? .white : .gray)
+                    .foregroundColor(isButtonEnable ? .green : .gray)
             })
+            .frame(width: 150, height: 45)
+            .background(isButtonEnable ? Color.blue : Color.yellow)
             .disabled(!isButtonEnable)
             .cornerRadius(10)
-            .frame(width: 100, height: 40)
         }
     }
 }

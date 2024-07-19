@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import MediaPlayer
 
 protocol RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?)
@@ -42,10 +43,7 @@ class RTPlayingViewController: RTBaseViewController {
         // hide HUD
         SVProgressHUD.dismiss()
         
-        // if the player is playing it should call the delegate to refresh the widget
-//        if playBtn.isSelected {
-            delegate?.controllerDidClosed(station: station)
-//        }
+        delegate?.controllerDidClosed(station: station)
     }
     
     private func setupAnimationView() {
@@ -62,6 +60,8 @@ class RTPlayingViewController: RTBaseViewController {
         playBtn.setTitle("", for: .selected)
         favoriteBtn.setTitle("", for: .normal)
         favoriteBtn.setTitle("", for: .selected)
+        
+        setupAirPlay()
         
     }
     
@@ -130,6 +130,15 @@ class RTPlayingViewController: RTBaseViewController {
         playBtn.isSelected = !playBtn.isSelected
         
     }
+    
+    func setupAirPlay() {
+        let volumeView = MPVolumeView(frame: CGRect(x: 80, y: CGRectGetMinY(playBtn.frame), width: 100, height: 50))
+        volumeView.showsVolumeSlider = false // Hide the volume slider if you only want the AirPlay button
+        self.view.addSubview(volumeView)
+        volumeView.backgroundColor = .blue
+        self.view.bringSubviewToFront(volumeView)
+    }
+    
     @IBAction func favoriteAction(_ sender: UIButton) {
         if let station = station {
             
@@ -166,6 +175,7 @@ extension RTPlayingViewController: RTAudioPlayerDelegate {
             SVProgressHUD.dismiss()
             playBtn.isSelected = true
             animationView.play()
+            
         } else if state == .buffering {
             SVProgressHUD.show()
             animationView.stop()
