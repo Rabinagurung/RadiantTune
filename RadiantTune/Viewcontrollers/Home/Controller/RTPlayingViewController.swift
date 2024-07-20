@@ -27,6 +27,7 @@ class RTPlayingViewController: RTBaseViewController {
     var station: Station?
     var playerState: STKAudioPlayerState = STKAudioPlayerState.stopped
     private var isFavorite: Bool = false
+    private var didPlay:Bool = false
     
     
     
@@ -43,9 +44,10 @@ class RTPlayingViewController: RTBaseViewController {
         SVProgressHUD.dismiss()
         
         // if the player is playing it should call the delegate to refresh the widget
-//        if playBtn.isSelected {
+
+        if didPlay {
             delegate?.controllerDidClosed(station: station)
-//        }
+        }
     }
     
     private func setupAnimationView() {
@@ -125,6 +127,7 @@ class RTPlayingViewController: RTBaseViewController {
                 // to play
                 RTAudioPlayer.shared.playWith(url: station.url)
                 RTAudioPlayer.shared.delegate = self
+                didPlay.toggle()
             }
         }
         playBtn.isSelected = !playBtn.isSelected
