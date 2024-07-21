@@ -26,6 +26,7 @@ struct Constants {
 
 struct Search {
     static let SearchByStationsText = "Search by Radio Stations"
+    static let SearchByCountryText = "Search Radio Stations by Country"
     static let SearcyByTagText = "Search by Tags/Genre"
 }
 

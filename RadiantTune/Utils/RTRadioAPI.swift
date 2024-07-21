@@ -13,7 +13,8 @@ enum RadioAPI {
     case getMirrors
     case searchStations (codec: String?, order: String?, reverse: Bool?, limit: Int?)
     case searchbyname (searchTerm: String)
-    case searchByTags(tags: String)
+    case searchByCountry (searchTerm: String)
+    case searchByTags(searchTerm: String)
 }
 
 extension RadioAPI: TargetType {
@@ -28,9 +29,11 @@ extension RadioAPI: TargetType {
         case .searchStations:
             return "/json/stations/search"
         case .searchbyname(let searchTerm):
-                return "/json/stations/byname/\(searchTerm)"
-        case .searchByTags(let tags):
-                return "/json/stations/bytag/\(tags)"
+            return "/json/stations/byname/\(searchTerm)"
+        case .searchByCountry(let searchTerm):
+            return "/json/stations/bycountry/\(searchTerm)"
+        case .searchByTags(let searchTerm):
+            return "/json/stations/bytag/\(searchTerm)"
         }
         
         
@@ -38,7 +41,7 @@ extension RadioAPI: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .getMirrors, .searchStations, .searchbyname , .searchByTags:
+        case .getMirrors, .searchStations, .searchbyname , .searchByCountry, .searchByTags:
                 return .get
             }
     }
@@ -62,14 +65,18 @@ extension RadioAPI: TargetType {
                 params["limit"] = limit
             }
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
-        case .searchbyname, .searchByTags:
+        case .searchbyname, .searchByCountry, .searchByTags:
             return .requestPlain
         }
         
     }
     
     var headers: [String : String]? {
-                return ["Content-type": "application/json", "User-Agent": "RadiantTune/0.1"]
+                return ["User-Agent": "RadiantTune/0.1",
+                        "Accept": "*/*",
+                        "Accept-Encoding": "gzip, deflate, br",
+                        "Connection": "keep-alive",
+                        "Host": "de1.api.radio-browser.info"]
     }
     
     
