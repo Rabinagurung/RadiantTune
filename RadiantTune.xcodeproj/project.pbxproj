@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1400CC3A2C4D7BB200B6BD2F /* OptionallyDecodable in Frameworks */ = {isa = PBXBuildFile; productRef = 1400CC392C4D7BB200B6BD2F /* OptionallyDecodable */; };
 		140534042C102E5A0082D12D /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140534032C102E5A0082D12D /* Search.storyboard */; };
 		140534292C12571F0082D12D /* RTRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140534282C12571E0082D12D /* RTRadioAPI.swift */; };
 		1405342B2C1597A70082D12D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1405342A2C1597A70082D12D /* SearchViewController.swift */; };
@@ -45,7 +46,6 @@
 		BCCA70662C1D80AD003989E1 /* RTAddStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA70652C1D80AD003989E1 /* RTAddStationView.swift */; };
 		BCCA706A2C1D8B4C003989E1 /* RTAddStationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA70692C1D8B4C003989E1 /* RTAddStationController.swift */; };
 		BCE6132A2C4C9D01002BB285 /* TextFieldWithClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE613292C4C9D01002BB285 /* TextFieldWithClearButton.swift */; };
-		D1CD3567B2B4481F759C0AA8 /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C937A0A7AE91CF82920CB983 /* Pods_RadiantTune.framework */; };
 		FA4042602C0EBA4200B43F72 /* RTFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */; };
 		FA4042612C0EBA4200B43F72 /* RTFavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */; };
 		FA4042632C0EBA5500B43F72 /* RTFavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */; };
@@ -102,8 +102,6 @@
 		BCCA70652C1D80AD003989E1 /* RTAddStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAddStationView.swift; sourceTree = "<group>"; };
 		BCCA70692C1D8B4C003989E1 /* RTAddStationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAddStationController.swift; sourceTree = "<group>"; };
 		BCE613292C4C9D01002BB285 /* TextFieldWithClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextFieldWithClearButton.swift; path = RadiantTune/Viewcontrollers/Setting/SwiftUI/TextFieldWithClearButton.swift; sourceTree = SOURCE_ROOT; };
-		C937A0A7AE91CF82920CB983 /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F44D776E46656430F569F95F /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
 		FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteViewController.swift; sourceTree = "<group>"; };
 		FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTFavoriteViewController.storyboard; sourceTree = "<group>"; };
 		FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteStationCell.swift; sourceTree = "<group>"; };
@@ -117,6 +115,7 @@
 			files = (
 				9904EB242C14E3B20069723E /* Lottie.framework in Frameworks */,
 				9A869AEB8912DA6447F9689F /* Pods_RadiantTune.framework in Frameworks */,
+				1400CC3A2C4D7BB200B6BD2F /* OptionallyDecodable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +409,9 @@
 			dependencies = (
 			);
 			name = RadiantTune;
+			packageProductDependencies = (
+				1400CC392C4D7BB200B6BD2F /* OptionallyDecodable */,
+			);
 			productName = RadiantTune;
 			productReference = BCB5E1362BF039D200C7ADB7 /* RadiantTune.app */;
 			productType = "com.apple.product-type.application";
@@ -441,6 +443,9 @@
 				fr,
 			);
 			mainGroup = BCB5E12D2BF039D200C7ADB7;
+			packageReferences = (
+				1400CC382C4D7BB200B6BD2F /* XCRemoteSwiftPackageReference "OptionallyDecodable" */,
+			);
 			productRefGroup = BCB5E1372BF039D200C7ADB7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -802,6 +807,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1400CC382C4D7BB200B6BD2F /* XCRemoteSwiftPackageReference "OptionallyDecodable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/idrougge/OptionallyDecodable.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1400CC392C4D7BB200B6BD2F /* OptionallyDecodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1400CC382C4D7BB200B6BD2F /* XCRemoteSwiftPackageReference "OptionallyDecodable" */;
+			productName = OptionallyDecodable;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BCB5E12E2BF039D200C7ADB7 /* Project object */;
 }
