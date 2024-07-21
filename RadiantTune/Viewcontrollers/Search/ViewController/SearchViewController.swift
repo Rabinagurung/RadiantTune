@@ -29,6 +29,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var delegate: SearchViewControllerDelegate?
     var station: Station?
+    
     var searchString: String?
     var stations = [APIStation]()
     
@@ -266,5 +267,6 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController : RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?) {
         self.station = station
+        
     }
 }

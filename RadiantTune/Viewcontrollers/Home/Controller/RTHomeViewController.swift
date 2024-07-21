@@ -38,6 +38,7 @@ class RTHomeViewController: RTBaseViewController {
         super.viewDidLoad()
         refreshData()
         setupUI()
+        
         stationSearch.delegate = self
         stationSearch.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     }
