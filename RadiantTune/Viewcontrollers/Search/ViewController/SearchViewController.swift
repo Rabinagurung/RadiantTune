@@ -13,6 +13,7 @@ import Kingfisher
 enum SearchFilterType {
     case radioStations
     case tagsGenre
+    case country
 }
 protocol SearchViewControllerDelegate {
     func rearchControllerDidClosed(station: Station?)
@@ -49,11 +50,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if let searchString = searchString {
             searchBar.text = searchString
-//            debugPrint("Recieved \(searchString) from Homepage search")
+            //debugPrint("Recieved \(searchString) from Homepage search")
             if selectedFilter == .radioStations {
                 searchbyname(searchString: searchString)
                 searchBar.placeholder = Search.SearchByStationsText
-            } else {
+            } 
+            else if selectedFilter == .country {
+                searchByCountry(searchString: searchString)
+                searchBar.placeholder = Search.SearchByCountryText
+            }
+                else {
                 searchByGenre(searchString: searchString)
                 searchBar.placeholder = Search.SearcyByTagText
             }
@@ -138,15 +144,26 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchbyname(searchString: String) {
+        debugPrint("Seaching by name: \(searchString)")
         let moya = MoyaProvider<RadioAPI>()
         moya.request(RadioAPI.searchbyname(searchTerm: searchString)) { result in
             self.handleSearchResult(result, searchString: searchString)
         }
     }
     
-    func searchByGenre(searchString: String) {
+    func searchByCountry(searchString: String) {
+        debugPrint("Seaching by country: \(searchString)")
         let moya = MoyaProvider<RadioAPI>()
-        moya.request(RadioAPI.searchByTags(tags: searchString)) { result in
+        moya.request(RadioAPI.searchByCountry(searchTerm: searchString)) { result in
+            self.handleSearchResult(result, searchString: searchString)
+        }
+    }
+    
+    func searchByGenre(searchString: String) {
+        debugPrint("Seaching by tag: \(searchString)")
+        let moya = MoyaProvider<RadioAPI>()
+        moya.request(RadioAPI.searchByTags(searchTerm: searchString)) { result in
+            debugPrint(result)
             self.handleSearchResult(result, searchString: searchString)
         }
     }
@@ -156,7 +173,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             do {
                 let decoder = JSONDecoder()
                 self.stations = try decoder.decode([APIStation].self, from: moyaResponse.data)
-                
+                debugPrint(try moyaResponse.filterSuccessfulStatusCodes().mapString())
                 if self.stations.isEmpty {
                     let station = APIStation(
                         changeuuid: "",
@@ -228,7 +245,10 @@ extension SearchViewController: UISearchBarDelegate {
         if let searchString = searchString {
             if selectedFilter == .radioStations {
                 searchbyname(searchString: searchString)
-            } else if selectedFilter == .tagsGenre {
+            }else if selectedFilter == .country {
+                searchByCountry(searchString: searchString)
+            }
+            else if selectedFilter == .tagsGenre {
                 searchByGenre(searchString: searchString)
             }
           
