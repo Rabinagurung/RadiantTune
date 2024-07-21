@@ -7,6 +7,8 @@
 
 import UIKit
 import Lottie
+import MediaPlayer
+import AVKit
 
 protocol RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?)
@@ -43,10 +45,7 @@ class RTPlayingViewController: RTBaseViewController {
         // hide HUD
         SVProgressHUD.dismiss()
         
-        // if the player is playing it should call the delegate to refresh the widget
-        if didPlay {
-            delegate?.controllerDidClosed(station: station)
-        }
+        delegate?.controllerDidClosed(station: station)
     }
     
     private func setupAnimationView() {
@@ -63,6 +62,8 @@ class RTPlayingViewController: RTBaseViewController {
         playBtn.setTitle("", for: .selected)
         favoriteBtn.setTitle("", for: .normal)
         favoriteBtn.setTitle("", for: .selected)
+        
+        setupAirPlay()
         
     }
     
@@ -132,6 +133,23 @@ class RTPlayingViewController: RTBaseViewController {
         playBtn.isSelected = !playBtn.isSelected
         
     }
+    
+    func setupAirPlay() {
+        
+        let routePickerView = AVRoutePickerView()
+        routePickerView.translatesAutoresizingMaskIntoConstraints = false
+        routePickerView.activeTintColor = UIColor.blue
+        routePickerView.tintColor = UIColor.gray
+        view.addSubview(routePickerView)
+
+        NSLayoutConstraint.activate([
+            routePickerView.centerYAnchor.constraint(equalTo: playBtn.centerYAnchor),
+            routePickerView.leadingAnchor.constraint(equalTo: playBtn.trailingAnchor, constant: 40),
+            routePickerView.widthAnchor.constraint(equalToConstant: 50),
+            routePickerView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
     @IBAction func favoriteAction(_ sender: UIButton) {
         if let station = station {
             
@@ -146,8 +164,6 @@ class RTPlayingViewController: RTBaseViewController {
                 }
                 
                 DispatchQueue.main.async {
-                    // Optimistically update the UI
-                    
                     self.isFavorite = newFavoriteStatus
                     let uiImage = newFavoriteStatus ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
                     self.favoriteBtn.setImage(uiImage, for: .normal)
@@ -168,6 +184,7 @@ extension RTPlayingViewController: RTAudioPlayerDelegate {
             SVProgressHUD.dismiss()
             playBtn.isSelected = true
             animationView.play()
+            
         } else if state == .buffering {
             SVProgressHUD.show()
             animationView.stop()

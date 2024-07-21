@@ -178,7 +178,16 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
         
         let station = favoriteStations[indexPath.row]
         
-        cell.logoView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
+        if station.favicon.contains("http") {
+            cell.logoView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
+        } else if !station.favicon.isEmpty {
+//            cell.logoView.kf.setImage(with: UIImage(named: station.favicon))
+            cell.logoView.backgroundColor = .black
+            print(station.favicon)
+            cell.logoView.image = UIImage(systemName: station.favicon)
+        } else {
+            cell.logoView.image = UIImage(named: "default_station.jpg")
+        }
      
         let fullText = "\(station.country) | \(station.tags)"
         let maxLength = 35
@@ -202,7 +211,6 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
             }
           
         } else {
-           
             cell.cellContentView.backgroundColor = UIColor.clear
             cell.animationView.stop()
         }

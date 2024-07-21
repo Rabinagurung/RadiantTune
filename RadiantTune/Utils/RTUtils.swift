@@ -29,9 +29,6 @@ let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height
 
 
-
-
-
 // station name font
 func stationNameFont(label: UILabel) -> UILabel {
     label.textColor = .black
@@ -47,8 +44,18 @@ func stationTagFont(label: UILabel) -> UILabel {
 }
 
 
-func showHUDWithMessege(messege: String) {
-    SVProgressHUD.showError(withStatus: messege)
+func showHUDWithError(message: String) {
+    SVProgressHUD.showError(withStatus: message)
+    SVProgressHUD.dismiss(withDelay: 1.0)
+}
+
+func showHUDWithSuccess(message: String) {
+    SVProgressHUD.showSuccess(withStatus: message)
+    SVProgressHUD.dismiss(withDelay: 1.0)
+}
+
+func isValidURLString(url: String) -> Bool {
+    return !url.isEmpty && url.contains("http")
 }
 
 
@@ -80,4 +87,16 @@ func setupPlayerWidgetConstraints(in viewController: UIViewController, playerWid
         trailingConstraint,
         bottomConstraint
     ])
+}
+
+
+func base64String(originalString: String) -> String? {
+    // Convert the string to Data
+    if let data = originalString.data(using: .utf8) {
+        // Encode the data to Base64
+        let base64EncodedString = data.base64EncodedString()
+        return base64EncodedString
+    } else {
+        return nil
+    }
 }
