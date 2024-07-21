@@ -10,7 +10,7 @@ import Kingfisher
 import Moya
 
 class RTHomeViewController: RTBaseViewController {
-
+    
     let kHomeCellID = "RTHomeCollectionViewCell"
     
     @IBOutlet weak var stationSearch: UISearchBar!
@@ -21,12 +21,20 @@ class RTHomeViewController: RTBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let station = RTDatabaseManager.shared.activeStation {
-            playerWidget.station = station
-            playerWidget.refreshState(station: station)
+        
+        // Update the player widget with the last played station
+        if let lastPlayedStation = RTLastPlayedStationManager.loadLastPlayedStation() {
+            playerWidget.station = lastPlayedStation
+            playerWidget.refreshState(station: lastPlayedStation)
             playerWidget.isHidden = false
         } else {
-            playerWidget.isHidden = true
+            if let station = RTDatabaseManager.shared.activeStation {
+                playerWidget.station = station
+                playerWidget.refreshState(station: station)
+                playerWidget.isHidden = false
+            } else {
+                playerWidget.isHidden = true
+            }
         }
         
     }
@@ -57,7 +65,7 @@ class RTHomeViewController: RTBaseViewController {
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = .white
         collectionView.contentInset = UIEdgeInsets(top: 60, left: 5, bottom: 150, right: 5)
-       
+        
         setupPlayerWidgetConstraints(in: self, playerWidget: playerWidget)
         // widget View
         playerWidget.delegate = self
@@ -85,7 +93,7 @@ class RTHomeViewController: RTBaseViewController {
                 } catch {
                     
                 }
-
+                
             }
             
             if let error = error {
@@ -95,7 +103,7 @@ class RTHomeViewController: RTBaseViewController {
         
         task.resume()
     }
-
+    
 }
 
 extension RTHomeViewController: UISearchBarDelegate {
@@ -125,9 +133,9 @@ extension RTHomeViewController: UISearchBarDelegate {
         self.present(searchViewController, animated: true, completion: nil)
         //self.navigationController?.pushViewController(searchViewController, animated: true)
         
-      searchBar.text = ""
+        searchBar.text = ""
         searchBar.showsCancelButton = false
-      searchBar.endEditing(true)
+        searchBar.endEditing(true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -156,7 +164,7 @@ extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let station = stations[indexPath.row]
         pushToPlayingController(station: station)
-
+        
     }
     
 }
