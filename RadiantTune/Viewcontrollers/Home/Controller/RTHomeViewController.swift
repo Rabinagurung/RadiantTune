@@ -111,6 +111,13 @@ class RTHomeViewController: RTBaseViewController {
             self.updateFilterButtonAppearance()
         }
         
+        let searchByCountryAction = UIAlertAction(title: Search.SearchByCountryText, style: .default) { _ in
+            self.stationSearch.placeholder = Search.SearchByCountryText
+            self.selectedFilter = .country
+            self.isFilterSelected = true
+            self.updateFilterButtonAppearance()
+        }
+        
         let searchByTagsAction = UIAlertAction(title: Search.SearcyByTagText, style: .default) { _ in
             // Handle search by tags/genre
             self.stationSearch.placeholder = Search.SearcyByTagText
@@ -125,6 +132,7 @@ class RTHomeViewController: RTBaseViewController {
         }
         
         alertController.addAction(searchByStationsAction)
+        alertController.addAction(searchByCountryAction)
         alertController.addAction(searchByTagsAction)
         alertController.addAction(cancelAction)
         
@@ -167,7 +175,7 @@ extension RTHomeViewController: UISearchBarDelegate {
             return
         }
         
-        searchViewController.searchString = searchBar.text
+        searchViewController.searchString = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.lowercased()
         searchViewController.selectedFilter = selectedFilter
         searchViewController.modalPresentationStyle = .fullScreen
         searchViewController.delegate = self
