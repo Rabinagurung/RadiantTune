@@ -10,13 +10,14 @@ import Kingfisher
 import Moya
 
 class RTHomeViewController: RTBaseViewController {
-
+    
     let kHomeCellID = "RTHomeCollectionViewCell"
     
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var stationSearch: UISearchBar!
     @IBOutlet weak var playerWidget: RTPlayerWidgetView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var recentlyPlayedCollectionView: UICollectionView!
     var selectedFilter: SearchFilterType = SearchFilterType.radioStations
     
     var stations = [Station]()
@@ -31,6 +32,7 @@ class RTHomeViewController: RTBaseViewController {
         } else {
             playerWidget.isHidden = true
         }
+        updateRecentlyPlayedStations()
         
     }
     
@@ -41,6 +43,7 @@ class RTHomeViewController: RTBaseViewController {
         
         stationSearch.delegate = self
         stationSearch.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        updateRecentlyPlayedStations()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,13 +64,28 @@ class RTHomeViewController: RTBaseViewController {
         layout.itemSize = CGSize(width: (kScreenWidth - 20)/3, height: (kScreenWidth - 15)/3)
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = .white
-        collectionView.contentInset = UIEdgeInsets(top: 60, left: 5, bottom: 150, right: 5)
-       
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 5, bottom: 150, right: 5)
+        
+        //recentlyPlayedCollectionView
+        recentlyPlayedCollectionView.delegate = self
+        recentlyPlayedCollectionView.dataSource = self
+        recentlyPlayedCollectionView.register(nib, forCellWithReuseIdentifier: "RecentStationCell")
+        let recentLayout = UICollectionViewFlowLayout()
+        recentLayout.minimumLineSpacing = 5
+        recentLayout.minimumInteritemSpacing = 5
+        recentLayout.itemSize = CGSize(width: (recentlyPlayedCollectionView.bounds.width-25)/3, height: (recentlyPlayedCollectionView.bounds.width-15)/3)
+        recentlyPlayedCollectionView.collectionViewLayout = recentLayout
+        recentlyPlayedCollectionView.backgroundColor = .white
+        
         setupPlayerWidgetConstraints(in: self, playerWidget: playerWidget)
         // widget View
         playerWidget.delegate = self
         
         updateFilterButtonAppearance()
+        
+        
+        print("Collection view frame: \(recentlyPlayedCollectionView.frame)")
+        print("Item size: \(recentLayout.itemSize)")
         
     }
     
@@ -90,7 +108,7 @@ class RTHomeViewController: RTBaseViewController {
                 } catch {
                     
                 }
-
+                
             }
             
             if error != nil {
@@ -99,6 +117,10 @@ class RTHomeViewController: RTBaseViewController {
         }
         
         task.resume()
+    }
+    
+    func updateRecentlyPlayedStations() {
+        recentlyPlayedCollectionView.reloadData()
     }
     
     @IBAction func filterButtonTapped(_ sender: UIButton) {
@@ -152,7 +174,7 @@ class RTHomeViewController: RTBaseViewController {
             filterButton.tintColor = .gray
         }
     }
-
+    
 }
 
 extension RTHomeViewController: UISearchBarDelegate {
@@ -182,9 +204,9 @@ extension RTHomeViewController: UISearchBarDelegate {
         searchViewController.delegate = self
         self.present(searchViewController, animated: true, completion: nil)
         
-      searchBar.text = ""
+        searchBar.text = ""
         searchBar.showsCancelButton = false
-      searchBar.endEditing(true)
+        searchBar.endEditing(true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -193,29 +215,48 @@ extension RTHomeViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
     
-
+    
 }
 
 
 //MARK:- CollectionViewDelegate
 extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeCellID, for: indexPath) as! RTHomeCollectionViewCell
-        let station = stations[indexPath.row]
-        cell.iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
-        cell.nameLabel.text = station.name
-        return cell
+        
+        if collectionView == recentlyPlayedCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentStationCell", for: indexPath) as! RTHomeCollectionViewCell
+            let recentStations = RTLastPlayedStationManager.loadRecentlyPlayedStations()
+            let station = recentStations[indexPath.item]
+            cell.iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
+            cell.nameLabel.text = station.name
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeCellID, for: indexPath) as! RTHomeCollectionViewCell
+            let station = stations[indexPath.row]
+            cell.iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
+            cell.nameLabel.text = station.name
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return stations.count
+        if collectionView == recentlyPlayedCollectionView {
+            return RTLastPlayedStationManager.loadRecentlyPlayedStations().count
+        } else {
+            return stations.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == recentlyPlayedCollectionView {
+            let recentStations = RTLastPlayedStationManager.loadRecentlyPlayedStations()
+            let station = recentStations[indexPath.item]
+            pushToPlayingController(station: station)
+        } else {
+            let station = stations[indexPath.row]
+            pushToPlayingController(station: station)
+        }
         
-        let station = stations[indexPath.row]
-        pushToPlayingController(station: station)
-
     }
     
 }

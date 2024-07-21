@@ -127,11 +127,16 @@ class RTPlayingViewController: RTBaseViewController {
                 // to play
                 RTAudioPlayer.shared.playWith(url: station.url)
                 RTAudioPlayer.shared.delegate = self
+                saveLastPlayedStation(station)
                 didPlay.toggle()
             }
         }
         playBtn.isSelected = !playBtn.isSelected
         
+    }
+    
+    func saveLastPlayedStation(_ station: Station) {
+        RTLastPlayedStationManager.saveLastPlayedStation(station)
     }
     
     func setupAirPlay() {
@@ -184,6 +189,9 @@ extension RTPlayingViewController: RTAudioPlayerDelegate {
             SVProgressHUD.dismiss()
             playBtn.isSelected = true
             animationView.play()
+            if let station = station {
+                saveLastPlayedStation(station)
+            }
             
         } else if state == .buffering {
             SVProgressHUD.show()

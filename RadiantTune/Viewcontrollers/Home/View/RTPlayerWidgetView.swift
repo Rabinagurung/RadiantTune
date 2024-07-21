@@ -159,6 +159,7 @@ class RTPlayerWidgetView: UIView {
                 // to play
                 RTAudioPlayer.shared.playWith(url: station.url)
                 saveLastPlayedStation(station)
+                print("Station saved: \(station.name)")
                 animationView.play()
             }
             sender.isSelected = !sender.isSelected

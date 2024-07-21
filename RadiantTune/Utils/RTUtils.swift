@@ -20,6 +20,7 @@ struct Constants {
     // MARK: - Last played station UserDefaults key
     static let LastPlayedStationKey = "LastPlayedStation"
     static let AutoPlayEnabled = "AutoPlayEnabled"
+    static let RecentlyPlayedStationsKey = "RecentlyPlayedStationsKey"
     
 
 }
