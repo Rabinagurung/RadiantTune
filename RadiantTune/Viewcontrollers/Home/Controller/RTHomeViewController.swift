@@ -176,7 +176,7 @@ extension RTHomeViewController: UISearchBarDelegate {
             return
         }
         
-        searchViewController.searchString = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.lowercased()
+        searchViewController.searchString = searchBar.text?.lowercased()
         searchViewController.selectedFilter = selectedFilter
         searchViewController.modalPresentationStyle = .fullScreen
         searchViewController.delegate = self
