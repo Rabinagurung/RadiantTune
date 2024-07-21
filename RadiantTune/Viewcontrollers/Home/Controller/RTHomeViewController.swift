@@ -8,10 +8,6 @@
 import UIKit
 import Kingfisher
 import Moya
-<<<<<<< HEAD
-=======
-
->>>>>>> 203a798 (#22 sync with main branch and fix merge conflicts)
 
 class RTHomeViewController: RTBaseViewController {
 
