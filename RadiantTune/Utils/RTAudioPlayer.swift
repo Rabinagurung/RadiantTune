@@ -23,6 +23,7 @@ class RTAudioPlayer: NSObject {
     private override init() {
         super.init()
         player = STKAudioPlayer()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
         player.delegate = self
      }
     

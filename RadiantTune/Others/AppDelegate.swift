@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         playLastPlayedStation()
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch  {
+            
+        }
+        
         
         return true
     }

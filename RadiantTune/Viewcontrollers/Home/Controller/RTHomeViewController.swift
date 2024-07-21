@@ -71,6 +71,7 @@ class RTHomeViewController: RTBaseViewController {
     }
     
     fileprivate func refreshData() {
+        SVProgressHUD.show()
         let session = URLSession(configuration: URLSessionConfiguration.default)
         guard let url = URL(string: "https://de1.api.radio-browser.info/json/stations/bycountry/Canada?limit=40") else {
             return
@@ -78,6 +79,7 @@ class RTHomeViewController: RTBaseViewController {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let task = session.dataTask(with: request) { data, res, error in
+            SVProgressHUD.dismiss()
             if let data = data {
                 do {
                     self.stations = try JSONDecoder().decode([Station].self, from: data)
@@ -90,8 +92,8 @@ class RTHomeViewController: RTBaseViewController {
 
             }
             
-            if let error = error {
-                print(error)
+            if error != nil {
+                SVProgressHUD.dismiss()
             }
         }
         
@@ -170,7 +172,6 @@ extension RTHomeViewController: UISearchBarDelegate {
         searchViewController.modalPresentationStyle = .fullScreen
         searchViewController.delegate = self
         self.present(searchViewController, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(searchViewController, animated: true)
         
       searchBar.text = ""
         searchBar.showsCancelButton = false

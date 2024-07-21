@@ -44,6 +44,8 @@
 		BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */; };
 		BCCA70662C1D80AD003989E1 /* RTAddStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA70652C1D80AD003989E1 /* RTAddStationView.swift */; };
 		BCCA706A2C1D8B4C003989E1 /* RTAddStationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA70692C1D8B4C003989E1 /* RTAddStationController.swift */; };
+		BCE6132A2C4C9D01002BB285 /* TextFieldWithClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE613292C4C9D01002BB285 /* TextFieldWithClearButton.swift */; };
+		D1CD3567B2B4481F759C0AA8 /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C937A0A7AE91CF82920CB983 /* Pods_RadiantTune.framework */; };
 		FA4042602C0EBA4200B43F72 /* RTFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */; };
 		FA4042612C0EBA4200B43F72 /* RTFavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */; };
 		FA4042632C0EBA5500B43F72 /* RTFavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */; };
@@ -99,6 +101,9 @@
 		BCB5E1622BF059B800C7ADB7 /* RTBaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTBaseNavigationViewController.swift; sourceTree = "<group>"; };
 		BCCA70652C1D80AD003989E1 /* RTAddStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAddStationView.swift; sourceTree = "<group>"; };
 		BCCA70692C1D8B4C003989E1 /* RTAddStationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAddStationController.swift; sourceTree = "<group>"; };
+		BCE613292C4C9D01002BB285 /* TextFieldWithClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextFieldWithClearButton.swift; path = RadiantTune/Viewcontrollers/Setting/SwiftUI/TextFieldWithClearButton.swift; sourceTree = SOURCE_ROOT; };
+		C937A0A7AE91CF82920CB983 /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F44D776E46656430F569F95F /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
 		FA40425E2C0EBA4200B43F72 /* RTFavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteViewController.swift; sourceTree = "<group>"; };
 		FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTFavoriteViewController.storyboard; sourceTree = "<group>"; };
 		FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteStationCell.swift; sourceTree = "<group>"; };
@@ -231,6 +236,7 @@
 		BC8326C02BF2AC2B003C30D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BCE613292C4C9D01002BB285 /* TextFieldWithClearButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,7 +379,6 @@
 		BCCA70632C1D768F003989E1 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				9904EB232C14E3B20069723E /* Lottie.framework */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -524,6 +529,7 @@
 				1405342E2C15A2860082D12D /* RTAPIStation.swift in Sources */,
 				BCB5E1612BF03EAB00C7ADB7 /* RTSettingViewController.swift in Sources */,
 				BCB5E15D2BF03E8300C7ADB7 /* RTHomeViewController.swift in Sources */,
+				BCE6132A2C4C9D01002BB285 /* TextFieldWithClearButton.swift in Sources */,
 				140534292C12571F0082D12D /* RTRadioAPI.swift in Sources */,
 				BC8326CC2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift in Sources */,
 				BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */,
@@ -718,7 +724,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -755,7 +761,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
