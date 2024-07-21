@@ -86,7 +86,7 @@ class RTHomeViewController: RTBaseViewController {
 
             }
             
-            if let error = error {
+            if error != nil {
                 SVProgressHUD.dismiss()
             }
         }
@@ -121,7 +121,6 @@ extension RTHomeViewController: UISearchBarDelegate {
         searchViewController.modalPresentationStyle = .fullScreen
         searchViewController.delegate = self
         self.present(searchViewController, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(searchViewController, animated: true)
         
       searchBar.text = ""
         searchBar.showsCancelButton = false

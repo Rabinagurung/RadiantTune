@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 import MediaPlayer
+import AVKit
 
 protocol RTPlayingViewControllerDelegate {
     func controllerDidClosed(station: Station?)
@@ -28,6 +29,7 @@ class RTPlayingViewController: RTBaseViewController {
     var station: Station?
     var playerState: STKAudioPlayerState = STKAudioPlayerState.stopped
     private var isFavorite: Bool = false
+    private var didPlay:Bool = false
     
     
     
@@ -125,6 +127,7 @@ class RTPlayingViewController: RTBaseViewController {
                 // to play
                 RTAudioPlayer.shared.playWith(url: station.url)
                 RTAudioPlayer.shared.delegate = self
+                didPlay.toggle()
             }
         }
         playBtn.isSelected = !playBtn.isSelected
@@ -132,11 +135,19 @@ class RTPlayingViewController: RTBaseViewController {
     }
     
     func setupAirPlay() {
-        let volumeView = MPVolumeView(frame: CGRect(x: 80, y: CGRectGetMinY(playBtn.frame), width: 100, height: 50))
-        volumeView.showsVolumeSlider = false // Hide the volume slider if you only want the AirPlay button
-        self.view.addSubview(volumeView)
-        volumeView.backgroundColor = .blue
-        self.view.bringSubviewToFront(volumeView)
+        
+        let routePickerView = AVRoutePickerView()
+        routePickerView.translatesAutoresizingMaskIntoConstraints = false
+        routePickerView.activeTintColor = UIColor.blue
+        routePickerView.tintColor = UIColor.gray
+        view.addSubview(routePickerView)
+
+        NSLayoutConstraint.activate([
+            routePickerView.centerYAnchor.constraint(equalTo: playBtn.centerYAnchor),
+            routePickerView.leadingAnchor.constraint(equalTo: playBtn.trailingAnchor, constant: 40),
+            routePickerView.widthAnchor.constraint(equalToConstant: 50),
+            routePickerView.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     @IBAction func favoriteAction(_ sender: UIButton) {
@@ -153,8 +164,6 @@ class RTPlayingViewController: RTBaseViewController {
                 }
                 
                 DispatchQueue.main.async {
-                    // Optimistically update the UI
-                    
                     self.isFavorite = newFavoriteStatus
                     let uiImage = newFavoriteStatus ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
                     self.favoriteBtn.setImage(uiImage, for: .normal)

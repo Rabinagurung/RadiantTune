@@ -46,10 +46,12 @@ func stationTagFont(label: UILabel) -> UILabel {
 
 func showHUDWithError(message: String) {
     SVProgressHUD.showError(withStatus: message)
+    SVProgressHUD.dismiss(withDelay: 1.0)
 }
 
 func showHUDWithSuccess(message: String) {
     SVProgressHUD.showSuccess(withStatus: message)
+    SVProgressHUD.dismiss(withDelay: 1.0)
 }
 
 func isValidURLString(url: String) -> Bool {

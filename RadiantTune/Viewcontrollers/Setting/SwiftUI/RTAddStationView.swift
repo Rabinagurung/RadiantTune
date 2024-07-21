@@ -47,12 +47,14 @@ struct RTAddStationView: View {
                 }
             }
             TextField("Please enter station name", text: $name)
-                 .padding(20)                
+                .clearButton(text: $name)
+                 .padding(20)
                  .font(.system(size: 24, weight: .bold, design: .rounded))
                  .foregroundColor(.black)
                  .textFieldStyle(RoundedBorderTextFieldStyle())
                  .submitLabel(.done)
              TextField("Please enter station url", text: $url)
+                .clearButton(text: $url)
              .padding(20)
              .font(.system(size: 24, weight: .bold, design: .rounded))
              .foregroundColor(.black)
@@ -72,10 +74,10 @@ struct RTAddStationView: View {
             }, label: {
                 Text("Add")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(isButtonEnable ? .green : .gray)
+                    .foregroundColor(isButtonEnable ? .white : Color(UIColor.lightGray))
             })
             .frame(width: 150, height: 45)
-            .background(isButtonEnable ? Color.blue : Color.yellow)
+            .background(isButtonEnable ? .blue : .gray)
             .disabled(!isButtonEnable)
             .cornerRadius(10)
         }
