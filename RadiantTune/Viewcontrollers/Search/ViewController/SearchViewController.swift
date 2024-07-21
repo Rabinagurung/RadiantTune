@@ -144,7 +144,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchbyname(searchString: String) {
-        debugPrint("Seaching by name: \(searchString)")
+        //debugPrint("Seaching by name: \(searchString)")
         let moya = MoyaProvider<RadioAPI>()
         moya.request(RadioAPI.searchbyname(searchTerm: searchString)) { result in
             self.handleSearchResult(result, searchString: searchString)
@@ -152,7 +152,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchByCountry(searchString: String) {
-        debugPrint("Seaching by country: \(searchString)")
+        //debugPrint("Seaching by country: \(searchString)")
         let moya = MoyaProvider<RadioAPI>()
         moya.request(RadioAPI.searchByCountry(searchTerm: searchString)) { result in
             self.handleSearchResult(result, searchString: searchString)
@@ -160,10 +160,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchByGenre(searchString: String) {
-        debugPrint("Seaching by tag: \(searchString)")
+        //debugPrint("Seaching by tag: \(searchString)")
         let moya = MoyaProvider<RadioAPI>()
         moya.request(RadioAPI.searchByTags(searchTerm: searchString)) { result in
-            debugPrint(result)
+            //debugPrint(result)
             self.handleSearchResult(result, searchString: searchString)
         }
     }
