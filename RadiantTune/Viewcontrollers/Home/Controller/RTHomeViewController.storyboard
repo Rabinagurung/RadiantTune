@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -44,36 +44,46 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohk-3V-jfo">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKx-gO-zBg">
                                 <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Search for a Radio Station" translatesAutoresizingMaskIntoConstraints="NO" id="QIJ-ub-dwi">
-                                        <rect key="frame" x="0.0" y="-6" width="393" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="QWD-1E-poR"/>
                                         </connections>
                                     </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfW-lC-TMT">
+                                        <rect key="frame" x="343" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="mdL-5H-aYL"/>
+                                            <constraint firstAttribute="width" constant="50" id="r2b-IT-ccI"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="filterButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="76V-7N-Gjs"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="QIJ-ub-dwi" secondAttribute="trailing" id="DA7-5V-I2x"/>
-                                    <constraint firstAttribute="height" constant="50" id="F07-eN-ZF3"/>
-                                    <constraint firstAttribute="bottom" secondItem="QIJ-ub-dwi" secondAttribute="bottom" id="ji4-1B-QFI"/>
-                                    <constraint firstItem="QIJ-ub-dwi" firstAttribute="leading" secondItem="Ohk-3V-jfo" secondAttribute="leading" id="rj1-Xn-whB"/>
+                                    <constraint firstAttribute="trailing" secondItem="rfW-lC-TMT" secondAttribute="trailing" id="mo9-0I-dK6"/>
                                 </constraints>
-                            </view>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ohk-3V-jfo" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="AXM-4l-g2v"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ohk-3V-jfo" secondAttribute="trailing" id="kwg-tf-9F4"/>
-                            <constraint firstItem="Ohk-3V-jfo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="n57-x9-mbe"/>
+                            <constraint firstItem="aKx-gO-zBg" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="6zU-dc-gMe"/>
+                            <constraint firstItem="aKx-gO-zBg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="JP6-vE-54k"/>
+                            <constraint firstItem="aKx-gO-zBg" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ety-D3-97K"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Vqy-tg-AWk" id="V5k-wy-gSe"/>
+                        <outlet property="filterButton" destination="rfW-lC-TMT" id="dKH-hU-bB8"/>
                         <outlet property="playerWidget" destination="Do5-Ja-RpE" id="fKo-os-qIj"/>
                         <outlet property="stationSearch" destination="QIJ-ub-dwi" id="Da5-P4-9an"/>
                     </connections>
@@ -99,6 +109,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
