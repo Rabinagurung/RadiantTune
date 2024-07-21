@@ -13,11 +13,14 @@ class RTHomeViewController: RTBaseViewController {
     
     let kHomeCellID = "RTHomeCollectionViewCell"
     
+    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var stationSearch: UISearchBar!
     @IBOutlet weak var playerWidget: RTPlayerWidgetView!
     @IBOutlet weak var collectionView: UICollectionView!
+    var selectedFilter: SearchFilterType = SearchFilterType.radioStations
     
     var stations = [Station]()
+    var isFilterSelected: Bool = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +47,7 @@ class RTHomeViewController: RTBaseViewController {
         refreshData()
         setupUI()
         stationSearch.delegate = self
+        stationSearch.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,13 +74,12 @@ class RTHomeViewController: RTBaseViewController {
         // widget View
         playerWidget.delegate = self
         
-        
-        
-        
+        updateFilterButtonAppearance()
         
     }
     
     fileprivate func refreshData() {
+        SVProgressHUD.show()
         let session = URLSession(configuration: URLSessionConfiguration.default)
         guard let url = URL(string: "https://de1.api.radio-browser.info/json/stations/bycountry/Canada?limit=40") else {
             return
@@ -84,6 +87,7 @@ class RTHomeViewController: RTBaseViewController {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let task = session.dataTask(with: request) { data, res, error in
+            SVProgressHUD.dismiss()
             if let data = data {
                 do {
                     self.stations = try JSONDecoder().decode([Station].self, from: data)
@@ -96,14 +100,58 @@ class RTHomeViewController: RTBaseViewController {
                 
             }
             
-            if let error = error {
-                print(error)
+            if error != nil {
+                SVProgressHUD.dismiss()
             }
         }
         
         task.resume()
     }
     
+    @IBAction func filterButtonTapped(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Search Options", message: "Choose search type", preferredStyle: .actionSheet)
+        
+        let searchByStationsAction = UIAlertAction(title: Search.SearchByStationsText, style: .default) { _ in
+            // Handle search by radio stations
+            self.stationSearch.placeholder = Search.SearchByStationsText
+            self.selectedFilter = .radioStations
+            self.isFilterSelected = true
+            self.updateFilterButtonAppearance()
+        }
+        
+        let searchByTagsAction = UIAlertAction(title: Search.SearcyByTagText, style: .default) { _ in
+            // Handle search by tags/genre
+            self.stationSearch.placeholder = Search.SearcyByTagText
+            self.selectedFilter = .tagsGenre
+            self.isFilterSelected = true
+            self.updateFilterButtonAppearance()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.isFilterSelected = false
+            self.updateFilterButtonAppearance()
+        }
+        
+        alertController.addAction(searchByStationsAction)
+        alertController.addAction(searchByTagsAction)
+        alertController.addAction(cancelAction)
+        
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func updateFilterButtonAppearance() {
+        if isFilterSelected {
+            filterButton.tintColor = .systemBlue
+        } else {
+            filterButton.tintColor = .gray
+        }
+    }
+
 }
 
 extension RTHomeViewController: UISearchBarDelegate {
@@ -128,10 +176,10 @@ extension RTHomeViewController: UISearchBarDelegate {
         }
         
         searchViewController.searchString = searchBar.text
+        searchViewController.selectedFilter = selectedFilter
         searchViewController.modalPresentationStyle = .fullScreen
         searchViewController.delegate = self
         self.present(searchViewController, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(searchViewController, animated: true)
         
         searchBar.text = ""
         searchBar.showsCancelButton = false
@@ -143,6 +191,8 @@ extension RTHomeViewController: UISearchBarDelegate {
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
     }
+    
+
 }
 
 

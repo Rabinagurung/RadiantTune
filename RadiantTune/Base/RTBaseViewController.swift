@@ -14,11 +14,6 @@ class RTBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-    }
-    
-    func showHUDWithMessege(messege: String) {
-        
     }
 
 
