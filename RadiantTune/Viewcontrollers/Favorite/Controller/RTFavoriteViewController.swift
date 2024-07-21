@@ -43,7 +43,7 @@ class RTFavoriteViewController: RTBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupPlayerWidgetConstraints()
+        setupPlayerWidgetConstraints(in: self, playerWidget: playerWidget)
         //
         NotificationCenter.default.addObserver(self, selector: #selector(refreshFavorites), name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
         addLoadingIndicator()
@@ -97,27 +97,6 @@ class RTFavoriteViewController: RTBaseViewController {
         
     }
     
-    func setupPlayerWidgetConstraints() {
-        
-        playerWidget.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(playerWidget)
-        guard let superview = playerWidget.superview else { return }
-        
-        // Constraints
-        let heightConstraint = playerWidget.heightAnchor.constraint(equalToConstant: 70)
-        let leadingConstraint = playerWidget.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        let trailingConstraint = playerWidget.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
-        let bottomConstraint = playerWidget.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)  // Adjusted for safe area
-        
-        // Activate all constraints
-        NSLayoutConstraint.activate([
-            heightConstraint,
-            leadingConstraint,
-            trailingConstraint,
-            bottomConstraint
-        ])
-    }
     
     func addEmptyLabel() {
         
@@ -199,7 +178,16 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
         
         let station = favoriteStations[indexPath.row]
         
-        cell.logoView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
+        if station.favicon.contains("http") {
+            cell.logoView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
+        } else if !station.favicon.isEmpty {
+//            cell.logoView.kf.setImage(with: UIImage(named: station.favicon))
+            cell.logoView.backgroundColor = .black
+            print(station.favicon)
+            cell.logoView.image = UIImage(systemName: station.favicon)
+        } else {
+            cell.logoView.image = UIImage(named: "default_station.jpg")
+        }
      
         let fullText = "\(station.country) | \(station.tags)"
         let maxLength = 35
@@ -223,7 +211,6 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
             }
           
         } else {
-           
             cell.cellContentView.backgroundColor = UIColor.clear
             cell.animationView.stop()
         }

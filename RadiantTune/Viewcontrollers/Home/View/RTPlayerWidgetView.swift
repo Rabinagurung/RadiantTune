@@ -35,19 +35,34 @@ class RTPlayerWidgetView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        setupAnimationView()
+     
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
-        setupAnimationView()
-        
     }
     
-    private func setupAnimationView() {
-        setupLottieAnimation(animationView, withName: "wave")
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
+    
+    @objc private func playerPlaying() {
+        animationView.play()
+        
+        playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        playButton.isSelected = true
+    }
+    
+    
+    
+    @objc private func playerStop() {
+        animationView.stop()
+        
+        playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        playButton.isSelected = false
+    }
+    
     
 
     func commonInit() {
@@ -69,6 +84,12 @@ class RTPlayerWidgetView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(iconImageViewAction))
         iconImageView.isUserInteractionEnabled = true
         iconImageView.addGestureRecognizer(tapGesture)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(playerPlaying), name: NSNotification.Name(Constants.StationPlaying), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerStop), name: NSNotification.Name(Constants.StationStopped), object: nil)
+        
+        setupLottieAnimation(animationView, withName: "wave")
+        
     }
     
     
@@ -108,6 +129,14 @@ class RTPlayerWidgetView: UIView {
             
             // sub Label
             tagsLabel.text = station.country + "|" + station.tags
+            
+            if (playerState == .playing) {
+                playButton.isSelected = true
+                animationView.play()
+            } else {
+                playButton.isSelected = false
+                animationView.stop()
+            }
         }
     }
     
@@ -129,6 +158,7 @@ class RTPlayerWidgetView: UIView {
             } else {
                 // to play
                 RTAudioPlayer.shared.playWith(url: station.url)
+                saveLastPlayedStation(station)
                 animationView.play()
             }
             sender.isSelected = !sender.isSelected
@@ -168,4 +198,11 @@ class RTPlayerWidgetView: UIView {
         }
     }
     
+    private func saveLastPlayedStation(_ station: Station) {
+        RTLastPlayedStationManager.saveLastPlayedStation(station)
+    }
+    
 }
+
+
+

@@ -10,6 +10,10 @@ import UIKit
 import Moya
 import Kingfisher
 
+enum SearchFilterType {
+    case radioStations
+    case tagsGenre
+}
 protocol SearchViewControllerDelegate {
     func rearchControllerDidClosed(station: Station?)
 }
@@ -18,7 +22,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     
 
-    
+    var selectedFilter: SearchFilterType?
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
@@ -45,8 +49,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if let searchString = searchString {
             searchBar.text = searchString
-            //debugPrint("Recieved \(searchString) from Homepage search")
-            searchbyname(searchString: searchString)
+//            debugPrint("Recieved \(searchString) from Homepage search")
+            if selectedFilter == .radioStations {
+                searchbyname(searchString: searchString)
+                searchBar.placeholder = Search.SearchByStationsText
+            } else {
+                searchByGenre(searchString: searchString)
+                searchBar.placeholder = Search.SearcyByTagText
+            }
+         
         }
     }
     
@@ -126,78 +137,75 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //print("navigation launched")
     }
     
-    func searchbyname(searchString:String)
-    {
+    func searchbyname(searchString: String) {
         let moya = MoyaProvider<RadioAPI>()
-        /*
-        moya.request(RadioAPI.searchStations(codec: .none, order: .none, reverse: .none, limit: 1)) */
-        moya.request(RadioAPI.searchbyname(searchTerm: searchString) ) { result in
-            switch result {
-                case let .success(moyaResponse):
-                    do {
-                        //try moyaResponse.filterSuccessfulStatusCodes()
-                        //let data = try moyaResponse.mapJSON()
-                        
-                        let decoder = JSONDecoder()
-                        self.stations = try decoder.decode([APIStation].self, from: moyaResponse.data)
-                        
-                        if self.stations.isEmpty {
-                            let station = APIStation(
-                              changeuuid: "",
-                              stationuuid: "",
-                              serveruuid: "",
-                              name: "No stations found for \(searchString)",
-                              url: nil,
-                              urlResolved: "",
-                              homepage: "",
-                              favicon: "",
-                              tags: "radio,music",
-                              country: "Canada",
-                              countrycode: "CA",
-                              iso3166_2: nil,
-                              state: "Ontario",
-                              language: "English",
-                              languagecodes: "en",
-                              votes: 100,
-                              lastchangetime: "2024-06-09T00:00:00Z",
-                              lastchangetimeIso8601: "2024-06-09T00:00:00Z",
-                              codec: .aac,
-                              bitrate: 128000,
-                              hls: 1,
-                              lastcheckok: 1,
-                              lastchecktime: "2024-06-09T08:00:00Z",
-                              lastchecktimeIso8601: "2024-06-09T08:00:00Z",
-                              lastcheckoktime: "2024-06-09T08:00:00Z",
-                              lastcheckoktimeIso8601: "2024-06-09T08:00:00Z",
-                              lastlocalchecktime: nil,
-                              lastlocalchecktimeIso8601: nil,
-                              clicktimestamp: nil,
-                              clicktimestampIso8601: nil,
-                              clickcount: nil,
-                              clicktrend: nil,
-                              sslError: 0,
-                              geoLat: 7.1569,
-                              geoLong: -9.3872,
-                              hasExtendedInfo: false
-                            )
-                            self.stations.append(station)
-                        }
-                        DispatchQueue.main.async {
-                            self.searchTableView.reloadData()
-                        }
-                        /*
-                        for station in stations {
-                            debugPrint("Name: \(station.name!), Image: \(station.favicon!), URL:\(station.url!)")
-                        }*/
-                        //debugPrint(stations)
-                        //debugPrint(data)
-                    }
-                    catch {
-                        print(error)
-                    }
-                case let .failure(error):
-                    print(error.localizedDescription)
+        moya.request(RadioAPI.searchbyname(searchTerm: searchString)) { result in
+            self.handleSearchResult(result, searchString: searchString)
+        }
+    }
+    
+    func searchByGenre(searchString: String) {
+        let moya = MoyaProvider<RadioAPI>()
+        moya.request(RadioAPI.searchByTags(tags: searchString)) { result in
+            self.handleSearchResult(result, searchString: searchString)
+        }
+    }
+    func handleSearchResult(_ result: Result<Response, MoyaError>, searchString: String) {
+        switch result {
+        case let .success(moyaResponse):
+            do {
+                let decoder = JSONDecoder()
+                self.stations = try decoder.decode([APIStation].self, from: moyaResponse.data)
+                
+                if self.stations.isEmpty {
+                    let station = APIStation(
+                        changeuuid: "",
+                        stationuuid: "",
+                        serveruuid: "",
+                        name: "No stations found for \(searchString)",
+                        url: nil,
+                        urlResolved: "",
+                        homepage: "",
+                        favicon: "",
+                        tags: "radio,music",
+                        country: "Canada",
+                        countrycode: "CA",
+                        iso3166_2: nil,
+                        state: "Ontario",
+                        language: "English",
+                        languagecodes: "en",
+                        votes: 100,
+                        lastchangetime: "2024-06-09T00:00:00Z",
+                        lastchangetimeIso8601: "2024-06-09T00:00:00Z",
+                        codec: .aac,
+                        bitrate: 128000,
+                        hls: 1,
+                        lastcheckok: 1,
+                        lastchecktime: "2024-06-09T08:00:00Z",
+                        lastchecktimeIso8601: "2024-06-09T08:00:00Z",
+                        lastcheckoktime: "2024-06-09T08:00:00Z",
+                        lastcheckoktimeIso8601: "2024-06-09T08:00:00Z",
+                        lastlocalchecktime: nil,
+                        lastlocalchecktimeIso8601: nil,
+                        clicktimestamp: nil,
+                        clicktimestampIso8601: nil,
+                        clickcount: nil,
+                        clicktrend: nil,
+                        sslError: 0,
+                        geoLat: 7.1569,
+                        geoLong: -9.3872,
+                        hasExtendedInfo: false
+                    )
+                    self.stations.append(station)
                 }
+                DispatchQueue.main.async {
+                    self.searchTableView.reloadData()
+                }
+            } catch {
+                print(error)
+            }
+        case let .failure(error):
+            print(error.localizedDescription)
         }
     }
 }
@@ -218,7 +226,12 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchString = searchString {
-            searchbyname(searchString: searchString)
+            if selectedFilter == .radioStations {
+                searchbyname(searchString: searchString)
+            } else if selectedFilter == .tagsGenre {
+                searchByGenre(searchString: searchString)
+            }
+          
         }
         searchBar.showsCancelButton = true
         searchBar.endEditing(true)

@@ -13,6 +13,7 @@ enum RadioAPI {
     case getMirrors
     case searchStations (codec: String?, order: String?, reverse: Bool?, limit: Int?)
     case searchbyname (searchTerm: String)
+    case searchByTags(tags: String)
 }
 
 extension RadioAPI: TargetType {
@@ -22,19 +23,22 @@ extension RadioAPI: TargetType {
         
     var path: String {
         switch self {
-            case .getMirrors:
+        case .getMirrors:
                 return "/json/servers"
         case .searchStations:
             return "/json/stations/search"
         case .searchbyname(let searchTerm):
                 return "/json/stations/byname/\(searchTerm)"
+        case .searchByTags(let tags):
+                return "/json/stations/bytag/\(tags)"
         }
-
+        
+        
     }
     
     var method: Moya.Method {
         switch self {
-        case .getMirrors, .searchStations, .searchbyname:
+        case .getMirrors, .searchStations, .searchbyname , .searchByTags:
                 return .get
             }
     }
@@ -58,7 +62,7 @@ extension RadioAPI: TargetType {
                 params["limit"] = limit
             }
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
-        case .searchbyname:
+        case .searchbyname, .searchByTags:
             return .requestPlain
         }
         

@@ -23,6 +23,7 @@ class RTAudioPlayer: NSObject {
     private override init() {
         super.init()
         player = STKAudioPlayer()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
         player.delegate = self
      }
     
@@ -52,10 +53,16 @@ extension RTAudioPlayer: STKAudioPlayerDelegate {
     
     func audioPlayer(_ audioPlayer: STKAudioPlayer, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState) {
         playerState = state
+       
         delegate?.playerStateDidChanged(state: state)
     
         if playerState == .playing {
             NotificationCenter.default.post(name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(Constants.StationPlaying), object: nil)
+        }
+        
+        if playerState == .stopped {
+            NotificationCenter.default.post(name: NSNotification.Name(Constants.StationStopped), object: nil)
         }
           
       

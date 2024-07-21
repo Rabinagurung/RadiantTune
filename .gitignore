@@ -1,25 +1,20 @@
-
- macOS
+# macOS
 .DS_Store
 
 # Xcode
 /DerivedData/
 /build/
 
-
 # Ignore Xcode user data
 *.xcworkspace/xcuserdata/
 *.xcodeproj/xcuserdata/
+*.xcuserdatad
+*.xcuserstate
 
 # Pods
 /Pods/
 /Podfile.lock
-/xcuserdata/
-<<<<<<< HEAD
-*.xcuserdatad
-*.xcuserstate
+
+# Keep specific Podfile
 !/Pods/Podfile
 !Podfile
-RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/aaribnagurung.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/duyuele.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/elvis.xcuserdatad RadiantTune.xcodeproj/project.xcworkspace/xcuserdata/joycelinenathaniel.xcuserdatad
-=======
->>>>>>> 203a798 (#22 sync with main branch and fix merge conflicts)

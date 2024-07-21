@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
             RTDatabaseManager.shared.populateFavoriteUUIDs()
         }
+        
+        
+        playLastPlayedStation()
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch  {
+            
+        }
+        
+        
         return true
     }
 
@@ -33,6 +45,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+ 
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        saveCurrentStationState()
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        saveCurrentStationState()
+    }
+    
+    private func playLastPlayedStation() {
+        // Load the last played station from UserDefaults
+        if let lastPlayedStation = RTLastPlayedStationManager.loadLastPlayedStation() {
+            // Update the active station and UI state first
+            RTDatabaseManager.shared.activeStation = lastPlayedStation
+            RTPlayerWidgetView.shared.station = lastPlayedStation
+            
+            // Check if auto-play is enabled and start playback if it is
+            if RTLastPlayedStationManager.isAutoPlayEnabled() {
+                RTAudioPlayer.shared.playWith(url: lastPlayedStation.url)
+            }
+        }
+    }
+    
+    private func saveCurrentStationState() {
+        
+        if let station = RTDatabaseManager.shared.activeStation {
+            RTLastPlayedStationManager.saveLastPlayedStation(station)
+        }
+    }
 }
 
