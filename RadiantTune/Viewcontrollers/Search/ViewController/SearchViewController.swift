@@ -40,6 +40,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchTableView.dataSource = self
         searchBar.delegate = self
         
+        //Support dark mode
+        customizeSearchBar()
+        
         searchBar.resignFirstResponder()
         if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
             cancelButton.isEnabled = true
@@ -89,6 +92,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let station = stations[indexPath.row]
         
         cell.lblStationName.text = station.name
+        cell.backgroundColor = .systemBackground
         
         if let faviconURL = station.favicon {
             let url = URL(string: faviconURL)
@@ -261,6 +265,19 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.text = ""
         searchBar.endEditing(true)
         dismiss(animated: true)
+    }
+    
+    private func customizeSearchBar() {
+        searchBar.barTintColor = .systemBackground
+        searchBar.backgroundColor = .systemBackground
+        searchBar.tintColor = .systemBackground
+        searchBar.searchTextField.backgroundColor = .systemBackground
+        
+        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+            cancelButton.tintColor = .systemBackground
+            cancelButton.setTitleColor(.systemBlue, for: .normal)
+        }
+        
     }
 }
 
