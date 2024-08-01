@@ -13,6 +13,7 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
     @IBOutlet weak var  autoPlaySwitch: UISwitch!
     @IBOutlet weak var playerWidgetView: RTPlayerWidgetView!
     @IBOutlet weak var sleepTimerSwitch: UISwitch!
+    @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var setTimerBtn: UIButton!
     private var mySwiftUIView: RTAddStationView?
     var currentTimer: Timer?
@@ -39,6 +40,10 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
             setRadioTimer()
         }
         loadSwitchValue()
+        
+        //Set up dark mode switch
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        darkModeSwitch.isOn = isDarkMode
         
     }
     
@@ -79,6 +84,15 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
         RTLastPlayedStationManager.setAutoPlayEnabled(sender.isOn)
     }
     
+    @IBAction func onDarkModeSwitchChanged(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "isDarkMode")
+        
+        if sender.isOn {
+            view.window?.overrideUserInterfaceStyle = .dark
+        } else {
+            view.window?.overrideUserInterfaceStyle = .light
+        }
+    }
     
     func setRadioTimer() {
         

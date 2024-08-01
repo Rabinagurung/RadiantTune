@@ -31,7 +31,7 @@ class RTTabbarController: UITabBarController {
             // for iOS15
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor.white
+            appearance.backgroundColor = .systemBackground
             
             tabBar.standardAppearance = appearance
             tabBar.scrollEdgeAppearance = tabBar.standardAppearance

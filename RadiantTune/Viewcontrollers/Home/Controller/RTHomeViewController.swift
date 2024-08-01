@@ -43,6 +43,7 @@ class RTHomeViewController: RTBaseViewController {
         
         stationSearch.delegate = self
         stationSearch.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        stationSearch.backgroundColor = .systemBackground
         updateRecentlyPlayedStations()
     }
     
@@ -63,7 +64,7 @@ class RTHomeViewController: RTBaseViewController {
         layout.minimumInteritemSpacing = 5
         layout.itemSize = CGSize(width: (kScreenWidth - 20)/3, height: (kScreenWidth - 15)/3)
         collectionView.collectionViewLayout = layout
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 5, bottom: 150, right: 5)
         
         //recentlyPlayedCollectionView
@@ -75,7 +76,7 @@ class RTHomeViewController: RTBaseViewController {
         recentLayout.minimumInteritemSpacing = 5
         recentLayout.itemSize = CGSize(width: (recentlyPlayedCollectionView.bounds.width-25)/3, height: (recentlyPlayedCollectionView.bounds.width-15)/3)
         recentlyPlayedCollectionView.collectionViewLayout = recentLayout
-        recentlyPlayedCollectionView.backgroundColor = .white
+        recentlyPlayedCollectionView.backgroundColor = .systemBackground
         
         setupPlayerWidgetConstraints(in: self, playerWidget: playerWidget)
         // widget View
@@ -168,6 +169,7 @@ class RTHomeViewController: RTBaseViewController {
     }
     
     func updateFilterButtonAppearance() {
+        filterButton.backgroundColor = .systemBackground
         if isFilterSelected {
             filterButton.tintColor = .systemBlue
         } else {
@@ -229,12 +231,16 @@ extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let station = recentStations[indexPath.item]
             cell.iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
             cell.nameLabel.text = station.name
+            cell.backgroundColor = .systemBackground
+            cell.nameLabel.textColor = .label
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeCellID, for: indexPath) as! RTHomeCollectionViewCell
             let station = stations[indexPath.row]
             cell.iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
             cell.nameLabel.text = station.name
+            cell.backgroundColor = .systemBackground
+            cell.nameLabel.textColor = .label
             return cell
         }
     }
