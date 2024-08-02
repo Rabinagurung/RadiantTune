@@ -127,8 +127,9 @@ class RTPlayerWidgetView: UIView {
             // title Label
             stationNameLabel.text = station.name
             
+            
             // sub Label
-            tagsLabel.text = station.country + "|" + station.tags
+            tagsLabel.text = station.country + "|" + truncateTags(station.tags, maxWords: 2)
             
             if (playerState == .playing) {
                 playButton.isSelected = true
@@ -145,8 +146,12 @@ class RTPlayerWidgetView: UIView {
     func iconImageViewAction() {
         delegate?.clickIconImageView(station: station)
     }
-    
-    
+   
+    func truncateTags(_ tags: String, maxWords: Int) -> String {
+        let words = tags.split(separator: ",").map { String($0) }
+        let truncatedWords = words.prefix(maxWords)
+        return truncatedWords.joined(separator: ",")
+    }
     @IBAction func playStopAction(_ sender: UIButton) {
        
         if let station = station {

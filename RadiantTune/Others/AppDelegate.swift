@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        playLastPlayedStation()
+     
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
@@ -54,19 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCurrentStationState()
     }
     
-    private func playLastPlayedStation() {
-        // Load the last played station from UserDefaults
-        if let lastPlayedStation = RTLastPlayedStationManager.loadLastPlayedStation() {
-            // Update the active station and UI state first
-            RTDatabaseManager.shared.activeStation = lastPlayedStation
-            RTPlayerWidgetView.shared.station = lastPlayedStation
-            
-            // Check if auto-play is enabled and start playback if it is
-            if RTLastPlayedStationManager.isAutoPlayEnabled() {
-                RTAudioPlayer.shared.playWith(url: lastPlayedStation.url)
-            }
-        }
-    }
+
     
     private func saveCurrentStationState() {
         
