@@ -159,6 +159,34 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
     }
     
     
+    @IBAction func clearCacheAction(_ sender: UIButton) {
+        let alertView = UIAlertController(title: "Alert", message: "Are you sure to clear the cache?", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Ok", style: .default) { action in
+            let cache = URLCache.shared
+            cache.removeAllCachedResponses()
+            
+            let fileManager = FileManager.default
+            if let cacheDir = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first {
+                do {
+                    let cacheContents = try fileManager.contentsOfDirectory(atPath: cacheDir.path)
+                    for path in cacheContents {
+                        let fullPath = cacheDir.appendingPathComponent(path).path
+                        try fileManager.removeItem(atPath: fullPath)
+                    }
+                    showHUDWithSuccess(message: "Cache cleared successfully.")
+                    print("Cache cleared successfully.")
+                } catch {
+                    showHUDWithError(message: "Failed to clear cache: \(error)")
+                }
+            }
+
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertView.addAction(confirmAction)
+        alertView.addAction(cancelAction)
+        present(alertView, animated: true)
+        
+    }
 }
 
 
