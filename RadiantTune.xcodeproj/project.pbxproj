@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,11 +14,14 @@
 		1405342E2C15A2860082D12D /* RTAPIStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1405342D2C15A2860082D12D /* RTAPIStation.swift */; };
 		140534392C15D27A0082D12D /* RTSearchStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140534372C15D27A0082D12D /* RTSearchStationTableViewCell.swift */; };
 		1405343A2C15D27A0082D12D /* RTSearchStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 140534382C15D27A0082D12D /* RTSearchStationTableViewCell.xib */; };
+		146A5CA22C5E21C7007A8759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 146A5CA12C5E21C7007A8759 /* Localizable.xcstrings */; };
+		5EBFB83EF99C823288989ABE /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1532FD8CB431371334FEC4 /* Pods_RadiantTune.framework */; };
 		9904EB242C14E3B20069723E /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9904EB232C14E3B20069723E /* Lottie.framework */; };
 		991550A52C13EB4E00DC804A /* RTAnimationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */; };
 		991550A92C144CC200DC804A /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 991550A82C144CC200DC804A /* wave.json */; };
+		9981974F2C5C97020008595F /* radio.json in Resources */ = {isa = PBXBuildFile; fileRef = 9981974E2C5C97020008595F /* radio.json */; };
+		998197512C5CA3AE0008595F /* splash-sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 998197502C5CA3AE0008595F /* splash-sound.wav */; };
 		99C4DAC72C180B4200499DFE /* RTLastPlayedStationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C4DAC62C180B4200499DFE /* RTLastPlayedStationManager.swift */; };
-		9A869AEB8912DA6447F9689F /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B71766D190BCB0FE2CE2DD2 /* Pods_RadiantTune.framework */; };
 		AF7952282C1239F90093FE4A /* RTSleepTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */; };
 		BC1BF0ED2C259A7200FBB828 /* ManualViewMoel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1BF0EC2C259A7200FBB828 /* ManualViewMoel.swift */; };
 		BC1F9DA52C06257B009A074F /* RTAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */; };
@@ -27,7 +30,6 @@
 		BC1F9DAF2C0763B3009A074F /* RTPlayingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC1F9DAE2C0763B3009A074F /* RTPlayingViewController.storyboard */; };
 		BC67D9242C0A179800A4D092 /* RTPlayerWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC67D9232C0A179800A4D092 /* RTPlayerWidgetView.swift */; };
 		BC67D9262C0A17A900A4D092 /* RTPlayerWidgetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC67D9252C0A17A900A4D092 /* RTPlayerWidgetView.xib */; };
-		BC67D9392C0A1CDB00A4D092 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC67D93B2C0A1CDB00A4D092 /* Localizable.strings */; };
 		BC7FE0E92BF26C52005C0B4C /* RTHomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */; };
 		BC7FE0EF2BF26C86005C0B4C /* RTSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */; };
 		BC7FE0F62BF28000005C0B4C /* RTUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FE0F52BF28000005C0B4C /* RTUtils.swift */; };
@@ -53,20 +55,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1532FD8CB431371334FEC4 /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		140534032C102E5A0082D12D /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		140534282C12571E0082D12D /* RTRadioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRadioAPI.swift; sourceTree = "<group>"; };
 		1405342A2C1597A70082D12D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1405342D2C15A2860082D12D /* RTAPIStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAPIStation.swift; sourceTree = "<group>"; };
 		140534372C15D27A0082D12D /* RTSearchStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSearchStationTableViewCell.swift; sourceTree = "<group>"; };
 		140534382C15D27A0082D12D /* RTSearchStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTSearchStationTableViewCell.xib; sourceTree = "<group>"; };
-		1B71766D190BCB0FE2CE2DD2 /* Pods_RadiantTune.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadiantTune.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		97BC21A0D1E43FD086E5084C /* Pods-RadiantTune.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.debug.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.debug.xcconfig"; sourceTree = "<group>"; };
+		146A5C9F2C5E21A0007A8759 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/LaunchScreen.xcstrings; sourceTree = "<group>"; };
+		146A5CA02C5E21A0007A8759 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
+		146A5CA12C5E21C7007A8759 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		322C7F2AB7CE5D9E81492BA3 /* Pods-RadiantTune.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.debug.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.debug.xcconfig"; sourceTree = "<group>"; };
 		9904EB232C14E3B20069723E /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAnimationUtility.swift; sourceTree = "<group>"; };
 		991550A82C144CC200DC804A /* wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wave.json; sourceTree = "<group>"; };
+		9981974E2C5C97020008595F /* radio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = radio.json; sourceTree = "<group>"; };
+		998197502C5CA3AE0008595F /* splash-sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "splash-sound.wav"; sourceTree = "<group>"; };
 		99C4DAC62C180B4200499DFE /* RTLastPlayedStationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTLastPlayedStationManager.swift; sourceTree = "<group>"; };
 		AF7952272C1239F90093FE4A /* RTSleepTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSleepTimerViewController.swift; sourceTree = "<group>"; };
-		AFCB1C3D86C2AFC9B30862EF /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
 		BC1BF0EC2C259A7200FBB828 /* ManualViewMoel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewMoel.swift; sourceTree = "<group>"; };
 		BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAudioPlayer.swift; sourceTree = "<group>"; };
 		BC1F9DA62C06B456009A074F /* RTPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayingViewController.swift; sourceTree = "<group>"; };
@@ -75,13 +81,6 @@
 		BC1F9DAE2C0763B3009A074F /* RTPlayingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTPlayingViewController.storyboard; sourceTree = "<group>"; };
 		BC67D9232C0A179800A4D092 /* RTPlayerWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPlayerWidgetView.swift; sourceTree = "<group>"; };
 		BC67D9252C0A17A900A4D092 /* RTPlayerWidgetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTPlayerWidgetView.xib; sourceTree = "<group>"; };
-		BC67D9332C0A1C8400A4D092 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		BC67D9342C0A1C8500A4D092 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		BC67D9352C0A1C8E00A4D092 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
-		BC67D9362C0A1C8E00A4D092 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		BC67D93A2C0A1CDB00A4D092 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		BC67D93C2C0A1D2B00A4D092 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		BC67D93D2C0A1D4C00A4D092 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC7FE0E82BF26C52005C0B4C /* RTHomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTHomeViewController.storyboard; sourceTree = "<group>"; };
 		BC7FE0EE2BF26C86005C0B4C /* RTSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RTSettingViewController.storyboard; sourceTree = "<group>"; };
 		BC7FE0F52BF28000005C0B4C /* RTUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTUtils.swift; sourceTree = "<group>"; };
@@ -106,6 +105,7 @@
 		FA40425F2C0EBA4200B43F72 /* RTFavoriteViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTFavoriteViewController.storyboard; sourceTree = "<group>"; };
 		FA4042622C0EBA5500B43F72 /* RTFavoriteStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFavoriteStationCell.swift; sourceTree = "<group>"; };
 		FA4042662C0EBA8100B43F72 /* RTDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDatabaseManager.swift; sourceTree = "<group>"; };
+		FEAF12A7671133870FC9936D /* Pods-RadiantTune.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.release.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,18 +114,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9904EB242C14E3B20069723E /* Lottie.framework in Frameworks */,
-				9A869AEB8912DA6447F9689F /* Pods_RadiantTune.framework in Frameworks */,
 				1400CC3A2C4D7BB200B6BD2F /* OptionallyDecodable in Frameworks */,
+				5EBFB83EF99C823288989ABE /* Pods_RadiantTune.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		135AAD4B2421F25E1A6B427F /* Frameworks */ = {
+		066E57131DE8741CDED1135F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1B71766D190BCB0FE2CE2DD2 /* Pods_RadiantTune.framework */,
+				0A1532FD8CB431371334FEC4 /* Pods_RadiantTune.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,8 +169,8 @@
 		8BF55B6E5A46271A5F4E07FE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				97BC21A0D1E43FD086E5084C /* Pods-RadiantTune.debug.xcconfig */,
-				AFCB1C3D86C2AFC9B30862EF /* Pods-RadiantTune.release.xcconfig */,
+				322C7F2AB7CE5D9E81492BA3 /* Pods-RadiantTune.debug.xcconfig */,
+				FEAF12A7671133870FC9936D /* Pods-RadiantTune.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -302,7 +302,7 @@
 				8BF55B6E5A46271A5F4E07FE /* Pods */,
 				BCCA70632C1D768F003989E1 /* Recovered References */,
 				99C4DAC52C17855300499DFE /* Recovered References */,
-				135AAD4B2421F25E1A6B427F /* Frameworks */,
+				066E57131DE8741CDED1135F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,6 +323,8 @@
 				BCB5E14D2BF03AF000C7ADB7 /* Viewcontrollers */,
 				BCB5E13F2BF039D200C7ADB7 /* Main.storyboard */,
 				BCB5E1422BF039D500C7ADB7 /* Assets.xcassets */,
+				998197502C5CA3AE0008595F /* splash-sound.wav */,
+				9981974E2C5C97020008595F /* radio.json */,
 				991550A82C144CC200DC804A /* wave.json */,
 				BCB5E1442BF039D500C7ADB7 /* LaunchScreen.storyboard */,
 				BCB5E1472BF039D500C7ADB7 /* Info.plist */,
@@ -360,7 +362,7 @@
 			children = (
 				BCB5E1392BF039D200C7ADB7 /* AppDelegate.swift */,
 				BCB5E13B2BF039D200C7ADB7 /* SceneDelegate.swift */,
-				BC67D93B2C0A1CDB00A4D092 /* Localizable.strings */,
+				146A5CA12C5E21C7007A8759 /* Localizable.xcstrings */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -398,11 +400,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCB5E14A2BF039D500C7ADB7 /* Build configuration list for PBXNativeTarget "RadiantTune" */;
 			buildPhases = (
-				5037808663A1C2027E00765A /* [CP] Check Pods Manifest.lock */,
+				F2BE96B6C7F3C24C05D96E89 /* [CP] Check Pods Manifest.lock */,
 				BCB5E1322BF039D200C7ADB7 /* Sources */,
 				BCB5E1332BF039D200C7ADB7 /* Frameworks */,
 				BCB5E1342BF039D200C7ADB7 /* Resources */,
-				1BD134C74BC310328EDE3471 /* [CP] Embed Pods Frameworks */,
+				7EC11F67BD54722B1EB2D050 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -461,25 +463,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7FE0E92BF26C52005C0B4C /* RTHomeViewController.storyboard in Resources */,
+				9981974F2C5C97020008595F /* radio.json in Resources */,
 				BC8326CD2BF2B29D003C30D6 /* RTHomeCollectionViewCell.xib in Resources */,
 				BC1F9DAF2C0763B3009A074F /* RTPlayingViewController.storyboard in Resources */,
 				BCB5E1462BF039D500C7ADB7 /* LaunchScreen.storyboard in Resources */,
 				BC67D9262C0A17A900A4D092 /* RTPlayerWidgetView.xib in Resources */,
-				BC67D9392C0A1CDB00A4D092 /* Localizable.strings in Resources */,
 				140534042C102E5A0082D12D /* Search.storyboard in Resources */,
 				BCB5E1432BF039D500C7ADB7 /* Assets.xcassets in Resources */,
 				FA4042612C0EBA4200B43F72 /* RTFavoriteViewController.storyboard in Resources */,
 				991550A92C144CC200DC804A /* wave.json in Resources */,
 				BC7FE0EF2BF26C86005C0B4C /* RTSettingViewController.storyboard in Resources */,
+				146A5CA22C5E21C7007A8759 /* Localizable.xcstrings in Resources */,
 				BCB5E1412BF039D200C7ADB7 /* Main.storyboard in Resources */,
 				1405343A2C15D27A0082D12D /* RTSearchStationTableViewCell.xib in Resources */,
+				998197512C5CA3AE0008595F /* splash-sound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BD134C74BC310328EDE3471 /* [CP] Embed Pods Frameworks */ = {
+		7EC11F67BD54722B1EB2D050 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -496,7 +500,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RadiantTune/Pods-RadiantTune-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5037808663A1C2027E00765A /* [CP] Check Pods Manifest.lock */ = {
+		F2BE96B6C7F3C24C05D96E89 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -558,22 +562,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BC67D93B2C0A1CDB00A4D092 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BC67D93A2C0A1CDB00A4D092 /* en */,
-				BC67D93C2C0A1D2B00A4D092 /* zh-Hans */,
-				BC67D93D2C0A1D4C00A4D092 /* fr */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		BCB5E13F2BF039D200C7ADB7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BCB5E1402BF039D200C7ADB7 /* Base */,
-				BC67D9332C0A1C8400A4D092 /* zh-Hans */,
-				BC67D9352C0A1C8E00A4D092 /* fr */,
+				146A5CA02C5E21A0007A8759 /* mul */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -582,8 +575,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BCB5E1452BF039D500C7ADB7 /* Base */,
-				BC67D9342C0A1C8500A4D092 /* zh-Hans */,
-				BC67D9362C0A1C8E00A4D092 /* fr */,
+				146A5C9F2C5E21A0007A8759 /* mul */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -714,7 +706,7 @@
 		};
 		BCB5E14B2BF039D500C7ADB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97BC21A0D1E43FD086E5084C /* Pods-RadiantTune.debug.xcconfig */;
+			baseConfigurationReference = 322C7F2AB7CE5D9E81492BA3 /* Pods-RadiantTune.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -751,7 +743,7 @@
 		};
 		BCB5E14C2BF039D500C7ADB7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFCB1C3D86C2AFC9B30862EF /* Pods-RadiantTune.release.xcconfig */;
+			baseConfigurationReference = FEAF12A7671133870FC9936D /* Pods-RadiantTune.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
