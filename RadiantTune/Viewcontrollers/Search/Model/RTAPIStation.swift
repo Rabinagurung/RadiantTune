@@ -91,7 +91,7 @@ class JSONNull: Codable, Hashable {
     public var hashValue: Int {
             return 0
     }
-
+        
     public init() {}
 
     public required init(from decoder: Decoder) throws {

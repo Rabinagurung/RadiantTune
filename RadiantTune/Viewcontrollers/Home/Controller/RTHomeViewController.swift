@@ -343,8 +343,8 @@ extension RTHomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        let latitude = location.coordinate.latitude
-        let longitude = location.coordinate.longitude
+        //let latitude = location.coordinate.latitude
+        //let longitude = location.coordinate.longitude
         
         reverseGeocodeLocation(location) { city, state, country in
             if let state = state {
