@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import Moya
+import CoreLocation
 
 class RTHomeViewController: RTBaseViewController {
     
@@ -18,10 +19,15 @@ class RTHomeViewController: RTBaseViewController {
     @IBOutlet weak var playerWidget: RTPlayerWidgetView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var recentlyPlayedCollectionView: UICollectionView!
+    
+    @IBOutlet weak var Recommendations: UILabel!
+    
     var selectedFilter: SearchFilterType = SearchFilterType.radioStations
     
     var stations = [Station]()
     var isFilterSelected: Bool = false
+    
+    private let locationManager = CLLocationManager()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,6 +46,7 @@ class RTHomeViewController: RTBaseViewController {
         super.viewDidLoad()
         refreshData()
         setupUI()
+        setupLocationManager()
         
         stationSearch.delegate = self
         stationSearch.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
@@ -90,12 +97,28 @@ class RTHomeViewController: RTBaseViewController {
         
     }
     
-    fileprivate func refreshData() {
+    fileprivate func refreshData( state: String? = nil) {
         SVProgressHUD.show()
+        
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        guard let url = URL(string: "https://de1.api.radio-browser.info/json/stations/bycountry/Canada?limit=40") else {
-            return
+        
+        let baseURL = "https://de1.api.radio-browser.info/json/stations"
+        
+        var urlString: String
+        
+        if let state = state, !state.isEmpty {
+            urlString = "\(baseURL)/bystate/\(state)?limit=80"
+            Recommendations.text = "Stations near \(state)"
+        } else {
+            Recommendations.text = "Browse Stations"
+            urlString = "\(baseURL)/bycountry/Canada?limit=80"
         }
+        
+        guard let url = URL(string: urlString) else {
+                    SVProgressHUD.dismiss()
+                    return
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let task = session.dataTask(with: request) { data, res, error in
@@ -309,3 +332,55 @@ extension RTHomeViewController: SearchViewControllerDelegate {
     }
 }
 
+
+extension RTHomeViewController: CLLocationManagerDelegate {
+    fileprivate func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        
+        reverseGeocodeLocation(location) { city, state, country in
+            if let state = state {
+                self.refreshData(state: state)
+            } else {
+                self.refreshData()
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
+    }
+}
+
+
+extension RTHomeViewController {
+    private func reverseGeocodeLocation(_ location: CLLocation, completion: @escaping (String?, String?, String?) -> Void) {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                print("Reverse geocoding failed: \(error.localizedDescription)")
+                completion(nil, nil, nil)
+                return
+            }
+            
+            guard let placemark = placemarks?.first else {
+                completion(nil, nil, nil)
+                return
+            }
+            
+            let city = placemark.locality
+            let state = placemark.administrativeArea
+            let country = placemark.country
+            
+            completion(city, state, country)
+        }
+    }
+}

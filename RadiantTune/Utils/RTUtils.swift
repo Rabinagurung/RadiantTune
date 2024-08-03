@@ -78,16 +78,16 @@ func setupLottieAnimation(_ animationView: LottieAnimationView, withName name: S
     animationView.animationSpeed = speed
 }
 
-func setupPlayerWidgetConstraints(in viewController: UIViewController, playerWidget: UIView) {
+func setupPlayerWidgetConstraints(in viewController: UIViewController, playerWidget: UIView, topPadding: CGFloat = 16, bottomPadding: CGFloat = 16) {
     playerWidget.translatesAutoresizingMaskIntoConstraints = false
     viewController.view.addSubview(playerWidget)
     guard let superview = playerWidget.superview else { return }
     
-    // Constraints
+
     let heightConstraint = playerWidget.heightAnchor.constraint(equalToConstant: 70)
-    let leadingConstraint = playerWidget.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-    let trailingConstraint = playerWidget.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
-    let bottomConstraint = playerWidget.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)  // Adjusted for safe area
+    let leadingConstraint = playerWidget.leadingAnchor.constraint(equalTo: superview.leadingAnchor)
+    let trailingConstraint = playerWidget.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+    let bottomConstraint = playerWidget.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor) // No extra padding needed
     
     // Activate all constraints
     NSLayoutConstraint.activate([
@@ -97,7 +97,6 @@ func setupPlayerWidgetConstraints(in viewController: UIViewController, playerWid
         bottomConstraint
     ])
 }
-
 
 func base64String(originalString: String) -> String? {
     // Convert the string to Data
