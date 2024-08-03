@@ -14,6 +14,7 @@
 		140534392C15D27A0082D12D /* RTSearchStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140534372C15D27A0082D12D /* RTSearchStationTableViewCell.swift */; };
 		1405343A2C15D27A0082D12D /* RTSearchStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 140534382C15D27A0082D12D /* RTSearchStationTableViewCell.xib */; };
 		146A5CA22C5E21C7007A8759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 146A5CA12C5E21C7007A8759 /* Localizable.xcstrings */; };
+		146A5CAA2C5EB0E3007A8759 /* OptionallyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A5CA92C5EB0E3007A8759 /* OptionallyDecodable.swift */; };
 		5EBFB83EF99C823288989ABE /* Pods_RadiantTune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1532FD8CB431371334FEC4 /* Pods_RadiantTune.framework */; };
 		9904EB242C14E3B20069723E /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9904EB232C14E3B20069723E /* Lottie.framework */; };
 		991550A52C13EB4E00DC804A /* RTAnimationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */; };
@@ -65,6 +66,7 @@
 		146A5C9F2C5E21A0007A8759 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/LaunchScreen.xcstrings; sourceTree = "<group>"; };
 		146A5CA02C5E21A0007A8759 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
 		146A5CA12C5E21C7007A8759 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		146A5CA92C5EB0E3007A8759 /* OptionallyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionallyDecodable.swift; sourceTree = "<group>"; };
 		322C7F2AB7CE5D9E81492BA3 /* Pods-RadiantTune.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadiantTune.debug.xcconfig"; path = "Target Support Files/Pods-RadiantTune/Pods-RadiantTune.debug.xcconfig"; sourceTree = "<group>"; };
 		9904EB232C14E3B20069723E /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTAnimationUtility.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */,
 				140534282C12571E0082D12D /* RTRadioAPI.swift */,
 				99C4DAC62C180B4200499DFE /* RTLastPlayedStationManager.swift */,
+				146A5CA92C5EB0E3007A8759 /* OptionallyDecodable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -538,7 +541,7 @@
 				BCB5E1612BF03EAB00C7ADB7 /* RTSettingViewController.swift in Sources */,
 				BCB5E15D2BF03E8300C7ADB7 /* RTHomeViewController.swift in Sources */,
 				BCE6132A2C4C9D01002BB285 /* TextFieldWithClearButton.swift in Sources */,
-				BC6D7F6D2C5EB02700B9C40C /* OptionallyDecodable.swift in Sources */,
+				146A5CAA2C5EB0E3007A8759 /* OptionallyDecodable.swift in Sources */,
 				140534292C12571F0082D12D /* RTRadioAPI.swift in Sources */,
 				BC8326CC2BF2B29D003C30D6 /* RTHomeCollectionViewCell.swift in Sources */,
 				BCB5E1632BF059B800C7ADB7 /* RTBaseNavigationViewController.swift in Sources */,

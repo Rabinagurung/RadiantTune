@@ -5,14 +5,6 @@
 //  Created by Iggy Drougge on 2020-09-29.
 //
 
-/*Citation:
-Retrieved from: https://github.com/idrougge/OptionallyDecodable
- On: July 21st, 2024
- Reason: API search would sometimes fail with decode failures.
- There was already a solution for this which was simple to add to the project.
- */
-
-
 /// Decodes a value when possible, otherwise yielding `nil`, for more resilient handling of JSON with unexpected shapes such as missing fields or incorrect types. Normally, this would throw a `DecodingError`, aborting the decoding process even of the parent object.
 @propertyWrapper public struct OptionallyDecodable<Wrapped: Decodable> {
     public let wrappedValue: Wrapped?
