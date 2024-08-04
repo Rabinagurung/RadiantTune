@@ -97,7 +97,8 @@ class RTHomeViewController: RTBaseViewController {
         
     }
     
-    fileprivate func refreshData( state: String? = nil) {
+    fileprivate func refreshData( city: String? = nil, with_name: Bool = false) {
+        print("refresh data called \(city) \(with_name)")
         SVProgressHUD.show()
         
         let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -106,12 +107,19 @@ class RTHomeViewController: RTBaseViewController {
         
         var urlString: String
         
-        if let state = state, !state.isEmpty {
-            urlString = "\(baseURL)/bystate/\(state)?limit=80"
-            Recommendations.text = "Stations near \(state)"
+        if let city = city {
+            if (with_name == false) {
+                Recommendations.text = "Stations near \(city)"
+                urlString = "\(baseURL)/bystate/\(city)?limit=80"
+            }
+           else
+            {
+               Recommendations.text = "Stations near \(city)"
+               urlString = "\(baseURL)/byname/\(city)?limit=80"
+            }
         } else {
-            Recommendations.text = "Browse Stations"
             urlString = "\(baseURL)/bycountry/Canada?limit=80"
+            Recommendations.text = "Browse stations"
         }
         
         guard let url = URL(string: urlString) else {
@@ -126,8 +134,18 @@ class RTHomeViewController: RTBaseViewController {
             if let data = data {
                 do {
                     self.stations = try JSONDecoder().decode([Station].self, from: data)
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
+                    
+                    if self.stations.isEmpty && with_name == false {
+                        self.refreshData(city: city, with_name: true)
+                    }
+                    else if (self.stations.isEmpty && with_name == true) {
+                        self.refreshData()
+                    }
+
+                    if (!self.stations.isEmpty) {
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+                        }
                     }
                 } catch {
                     
@@ -347,8 +365,8 @@ extension RTHomeViewController: CLLocationManagerDelegate {
         //let longitude = location.coordinate.longitude
         
         reverseGeocodeLocation(location) { city, state, country in
-            if let state = state {
-                self.refreshData(state: state)
+            if let city = city {
+                self.refreshData(city: city)
             } else {
                 self.refreshData()
             }
@@ -357,6 +375,7 @@ extension RTHomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
+        self.refreshData(city: nil)
     }
 }
 
