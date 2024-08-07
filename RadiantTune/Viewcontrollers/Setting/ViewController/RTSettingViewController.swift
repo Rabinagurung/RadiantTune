@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
+class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate, RTPlayerWidgetViewDelegate {
     
     @IBOutlet weak var  autoPlaySwitch: UISwitch!
     @IBOutlet weak var playerWidgetView: RTPlayerWidgetView!
@@ -44,6 +44,8 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
         //Set up dark mode switch
         let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
         darkModeSwitch.isOn = isDarkMode
+        
+        playerWidgetView.delegate = self
         
     }
     
@@ -190,3 +192,20 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate {
 }
 
 
+
+extension RTSettingViewController: RTPlayingViewControllerDelegate {
+    func controllerDidClosed(station: Station?) {
+    }
+    
+    func clickIconImageView(station: Station?) {
+        guard let station = station else { return }
+        pushToPlayingController(station: station)
+    }
+    fileprivate func pushToPlayingController(station: Station) {
+        let playingVC = UIStoryboard.init(name: "RTPlayingViewController", bundle: nil).instantiateInitialViewController() as! RTPlayingViewController
+        playingVC.station = station
+        playingVC.delegate = self
+        playingVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(playingVC, animated: true)
+    }
+}

@@ -30,7 +30,13 @@ class RTPlayingViewController: RTBaseViewController {
     var playerState: STKAudioPlayerState = STKAudioPlayerState.stopped
     private var isFavorite: Bool = false
     private var didPlay:Bool = false
+   
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
     
     
     override func viewDidLoad() {

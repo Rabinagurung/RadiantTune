@@ -108,3 +108,26 @@ func base64String(originalString: String) -> String? {
         return nil
     }
 }
+
+
+let supportedFormats = ["png", "jpg", "jpeg"]
+let zoomerUUID = "cce309bf-7005-422a-a097-a38bf7a0f51b"
+
+func setImageForImageView(_ imageView: UIImageView, with urlString: String, for id: String) {
+    if id == zoomerUUID && UITraitCollection.current.userInterfaceStyle == .dark {
+        imageView.image = UIImage(named: "default_station.jpg")
+        return
+    }
+    
+    if let url = URL(string: urlString) {
+        let fileExtension = url.pathExtension.lowercased()
+        
+        if supportedFormats.contains(fileExtension) {
+            imageView.kf.setImage(with: url, placeholder: UIImage(named: "default_station.jpg"))
+        } else {
+            imageView.image = UIImage(named: "default_station.jpg")
+        }
+    } else {
+        imageView.image = UIImage(named: "default_station.jpg")
+    }
+}
