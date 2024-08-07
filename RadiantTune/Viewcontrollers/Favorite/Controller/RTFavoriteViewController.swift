@@ -136,7 +136,7 @@ class RTFavoriteViewController: RTBaseViewController {
         present(actionSheet, animated: true)
     }
     
-    private func deleteAllFavorites() {
+    func deleteAllFavorites() {
         
         DispatchQueue.global(qos: .userInitiated).async {
             RTDatabaseManager.shared.deleteAllFavorites()
@@ -227,6 +227,7 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
             if previousIndexPath == indexPath, activeStation?.stationuuid == station.stationuuid , isNotPlaying {
 
                 playRadioStation(station: station)
+                RTLastPlayedStationManager.saveRecentlyPlayedStation(station)
                 return
             }
             
