@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class RTFavoriteViewController: RTBaseViewController {
+class RTFavoriteViewController: RTBaseViewController, RTPlayerWidgetViewDelegate {
     
     
     @IBOutlet weak var favoriteTableView: UITableView!
@@ -49,7 +49,8 @@ class RTFavoriteViewController: RTBaseViewController {
         addLoadingIndicator()
         initialSetup()
         addEmptyLabel()
-        
+       
+        playerWidget.delegate = self
         
     }
     
@@ -63,6 +64,8 @@ class RTFavoriteViewController: RTBaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+
+
     private func addLoadingIndicator() {
         
         activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -359,4 +362,22 @@ extension RTFavoriteViewController: RTAudioPlayerDelegate {
         }
     }
     
+}
+
+
+extension RTFavoriteViewController: RTPlayingViewControllerDelegate {
+    func controllerDidClosed(station: Station?) {
+    }
+    
+    func clickIconImageView(station: Station?) {
+        guard let station = station else { return }
+        pushToPlayingController(station: station)
+    }
+    fileprivate func pushToPlayingController(station: Station) {
+        let playingVC = UIStoryboard.init(name: "RTPlayingViewController", bundle: nil).instantiateInitialViewController() as! RTPlayingViewController
+        playingVC.station = station
+        playingVC.delegate = self
+        playingVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(playingVC, animated: true)
+    }
 }
