@@ -13,14 +13,12 @@ class RTFavoriteViewController: RTBaseViewController, RTPlayerWidgetViewDelegate
     
     @IBOutlet weak var favoriteTableView: UITableView!
     @IBOutlet weak var trashUIButton: UIButton!
-    
-    
     @IBOutlet weak var playerWidget: RTPlayerWidgetView!
     
-    
+    var currentStation: Station?
     var emptyLabel: UILabel!
     var activityIndicator: UIActivityIndicatorView!
-    var  favoriteStations: [Station] = []
+    var favoriteStations: [Station] = []
     var previouslySelectedIndexPath: IndexPath?
     
     
@@ -31,6 +29,7 @@ class RTFavoriteViewController: RTBaseViewController, RTPlayerWidgetViewDelegate
         
         favoriteTableView.reloadData()
         if let station = RTDatabaseManager.shared.activeStation {
+            currentStation = station
             playerWidget.station = station
             playerWidget.refreshState(station: station)
             playerWidget.isHidden = false
@@ -84,7 +83,7 @@ class RTFavoriteViewController: RTBaseViewController, RTPlayerWidgetViewDelegate
         trashUIButton.setTitle("", for: .normal)
         
         activityIndicator.startAnimating()
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).sync {
             let favorites = RTDatabaseManager.shared.fetchFavorites()
             DispatchQueue.main.async {
                 self.favoriteStations = favorites
@@ -230,7 +229,7 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
             if previousIndexPath == indexPath, activeStation?.stationuuid == station.stationuuid , isNotPlaying {
 
                 playRadioStation(station: station)
-                RTLastPlayedStationManager.saveRecentlyPlayedStation(station)
+                RTLastPlayedStationManager.saveLastPlayedStation(station)
                 return
             }
             
@@ -269,7 +268,7 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
         
         
         let station = favoriteStations[indexPath.row]
-        
+        currentStation = station
         if RTAudioPlayer.shared.currentURL == station.url {
             // the same, set the button's state
             if RTAudioPlayer.shared.playerState == .playing {
@@ -280,6 +279,7 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
         } else {
             
             playRadioStation(station: station)
+            RTLastPlayedStationManager.saveLastPlayedStation(station)
         }
         
         
@@ -288,12 +288,12 @@ extension RTFavoriteViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     private func playRadioStation (station: Station) {
+        RTAudioPlayer.shared.playWith(url: station.url)
+        RTAudioPlayer.shared.delegate = self
         playerWidget.station = station
         playerWidget.refreshState(station: station)
         playerWidget.playButton.isSelected = true
         playerWidget.isHidden = false
-        RTAudioPlayer.shared.playWith(url: station.url)
-        RTAudioPlayer.shared.delegate = self
         RTDatabaseManager.shared.activeStation = station
     }
     
