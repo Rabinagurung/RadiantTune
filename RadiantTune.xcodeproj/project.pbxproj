@@ -346,6 +346,7 @@
 		BCB5E1502BF03B1400C7ADB7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				146A5CA92C5EB0E3007A8759 /* OptionallyDecodable.swift */,
 				FA4042662C0EBA8100B43F72 /* RTDatabaseManager.swift */,
 				BC7FE0F52BF28000005C0B4C /* RTUtils.swift */,
 				BC1F9DA42C06257B009A074F /* RTAudioPlayer.swift */,
@@ -353,7 +354,6 @@
 				991550A42C13EB4E00DC804A /* RTAnimationUtility.swift */,
 				140534282C12571E0082D12D /* RTRadioAPI.swift */,
 				99C4DAC62C180B4200499DFE /* RTLastPlayedStationManager.swift */,
-				146A5CA92C5EB0E3007A8759 /* OptionallyDecodable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
