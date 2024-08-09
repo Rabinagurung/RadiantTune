@@ -45,12 +45,18 @@ class RTFavoriteViewController: RTBaseViewController, RTPlayerWidgetViewDelegate
         setupPlayerWidgetConstraints(in: self, playerWidget: playerWidget)
         //
         NotificationCenter.default.addObserver(self, selector: #selector(refreshFavorites), name: NSNotification.Name(Constants.FavoritesUpdated), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFavoritesCleared), name: NSNotification.Name("FavoritesCleared"), object: nil)
         addLoadingIndicator()
         initialSetup()
         addEmptyLabel()
-       
         playerWidget.delegate = self
-        
+    }
+    
+    @objc func handleFavoritesCleared() {
+        self.favoriteStations.removeAll()
+        self.favoriteTableView.reloadData()
+        self.updateEmptyStateUI()
     }
     
     
