@@ -122,6 +122,14 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate, RTPla
                 //Update UI after timer is up
                 RTPlayerWidgetView.shared.refreshState(station: nil)
                 
+                //Clear timer setting once timer completes
+                UserDefaults.standard.set(false, forKey: "Switch")
+                self.sleepTimerSwitch.isOn = false
+                self.setTimerBtn.isHidden = true
+                self.invalidateCurrentTimer()
+                self.isTimerSet = false
+                
+                
 
             }
         }
