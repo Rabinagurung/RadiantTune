@@ -170,6 +170,7 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate, RTPla
             let fileManager = FileManager.default
             if let cacheDir = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first {
                 do {
+                    
                     let cacheContents = try fileManager.contentsOfDirectory(atPath: cacheDir.path)
                     for path in cacheContents {
                         let fullPath = cacheDir.appendingPathComponent(path).path
@@ -180,6 +181,27 @@ class RTSettingViewController: RTBaseViewController, RTSleepTimerDelegate, RTPla
                 } catch {
                     showHUDWithError(message: "Failed to clear cache: \(error)")
                 }
+                
+                //Empty Favourites
+                RTDatabaseManager.shared.deleteAllFavorites()
+                NotificationCenter.default.post(name: NSNotification.Name("FavoritesCleared"), object: nil)
+                
+                //Clear darkmode settings
+                UserDefaults.standard.set(false, forKey: "isDarkMode")
+                self.view.window?.overrideUserInterfaceStyle = .light
+                self.darkModeSwitch.isOn = false
+                
+                //Clear sleep timer settings
+                UserDefaults.standard.set(false, forKey: "Switch")
+                self.sleepTimerSwitch.isOn = false
+                self.setTimerBtn.isHidden = true
+                self.invalidateCurrentTimer()
+                self.isTimerSet = false
+                
+                //Autoplay disabled
+                RTLastPlayedStationManager.setAutoPlayEnabled(false)
+                 self.autoPlaySwitch.isOn = false
+                
             }
 
         }
