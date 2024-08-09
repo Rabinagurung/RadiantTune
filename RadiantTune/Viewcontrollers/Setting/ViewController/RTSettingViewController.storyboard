@@ -134,7 +134,7 @@
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Clear cache"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Clear App Data"/>
                                 <connections>
                                     <action selector="clearCacheAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lnK-dg-jEU"/>
                                     <action selector="pushToAddStationAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6wl-xX-QeT"/>

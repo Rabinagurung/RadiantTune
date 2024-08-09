@@ -51,9 +51,14 @@ class RTPlayingViewController: RTBaseViewController {
         // hide HUD
         SVProgressHUD.dismiss()
         
-        if RTAudioPlayer.shared.playerState == .playing && RTAudioPlayer.shared.currentURL == station?.url {
+        if didPlay {
             delegate?.controllerDidClosed(station: station)
         }
+        
+        /*if RTAudioPlayer.shared.playerState == .playing && RTAudioPlayer.shared.currentURL == station?.url {
+            delegate?.controllerDidClosed(station: station)
+        }*/
+        
     }
     
     private func setupAnimationView() {
@@ -136,8 +141,8 @@ class RTPlayingViewController: RTBaseViewController {
                 RTAudioPlayer.shared.playWith(url: station.url)
                 RTAudioPlayer.shared.delegate = self
                 saveLastPlayedStation(station)
-                didPlay.toggle()
             }
+            didPlay = true
         }
         playBtn.isSelected = !playBtn.isSelected
         
