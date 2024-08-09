@@ -264,28 +264,21 @@ extension RTHomeViewController: UISearchBarDelegate {
 
 //MARK:- CollectionViewDelegate
 extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == recentlyPlayedCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentStationCell", for: indexPath) as! RTHomeCollectionViewCell
-            let recentStations = filteredStations(RTLastPlayedStationManager.loadRecentlyPlayedStations())
+            let recentStations = RTLastPlayedStationManager.loadRecentlyPlayedStations()
             let station = recentStations[indexPath.item]
-            
-            setImageForImageView(cell.iconImageView, with: station.favicon, for: station.stationuuid)
-            
+            cell.iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
             cell.nameLabel.text = station.name
             cell.backgroundColor = .systemBackground
             cell.nameLabel.textColor = .label
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeCellID, for: indexPath) as! RTHomeCollectionViewCell
-            let filteredStations = filteredStations(stations)
-            let station = filteredStations[indexPath.row]
-            
-            setImageForImageView(cell.iconImageView, with: station.favicon, for: station.stationuuid)
-            
+            let station = stations[indexPath.row]
+            cell.iconImageView.kf.setImage(with: URL(string: station.favicon), placeholder: UIImage(named: "default_station.jpg"))
             cell.nameLabel.text = station.name
             cell.backgroundColor = .systemBackground
             cell.nameLabel.textColor = .label
@@ -293,17 +286,11 @@ extension RTHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
-    func filteredStations(_ stations: [Station]) -> [Station] {
-        return stations.filter { $0.stationuuid != zoomerUUID }
-    }
-
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == recentlyPlayedCollectionView {
-            let recentStations = RTLastPlayedStationManager.loadRecentlyPlayedStations()
-            return filteredStations(recentStations).count
+            return RTLastPlayedStationManager.loadRecentlyPlayedStations().count
         } else {
-            return filteredStations(stations).count
+            return stations.count
         }
     }
     
@@ -416,5 +403,3 @@ extension RTHomeViewController {
         }
     }
 }
-
-
